@@ -1,6 +1,6 @@
 using System;
 
-namespace Test.Models
+namespace HospitalScheds.Web.Models
 {
     public class ErrorViewModel
     {
