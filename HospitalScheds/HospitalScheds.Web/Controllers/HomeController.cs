@@ -10,11 +10,18 @@ namespace HospitalScheds.Web.Controllers
 {
     public class HomeController : Controller
     {
+        /// <summary>
+        /// SD 
+        /// </summary>
+        /// <returns></returns>
         public IActionResult Index()
         {
             return View();
         }
-
+        /// <summary>
+        /// 阿瓦达无
+        /// </summary>
+        /// <returns></returns>
         public IActionResult About()
         {
             ViewData["Message"] = "Your application description page.";

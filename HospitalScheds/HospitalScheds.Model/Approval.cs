@@ -8,9 +8,16 @@ namespace HospitalScheds.Model
     /// 审批表
     /// </summary>
     public class Approval
-    {
-        public int Id { get; set; }//Id
-        public string Name { get; set; }//姓名
+    {  
+        /// <summary>
+        /// ID
+        /// </summary>
+        public int Id { get; set; }
+
+        /// <summary>
+        /// 姓名
+        /// </summary>
+        public string Name { get; set; }
         public int IsAllowModify { get; set; }//IsAllowModify
         public int IsAllowVersion { get; set; }//IsAllowVersion
         public string Creator { get; set; }//创建人
