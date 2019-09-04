@@ -10,13 +10,13 @@
 
   <ItemGroup>
     <Reference Include="PagedList">
-      <HintPath>..\..\..\..\学习\月考需要\PagedList.dll</HintPath>
+      <HintPath>D:\学习\大一杂项\Dll文件夹\PagedList.dll</HintPath>
     </Reference>
     <Reference Include="PagedList.Mvc">
-      <HintPath>..\..\..\..\学习\月考需要\PagedList.Mvc.dll</HintPath>
+      <HintPath>D:\学习\大一杂项\Dll文件夹\PagedList.Mvc.dll</HintPath>
     </Reference>
     <Reference Include="Webdiyer.MvcPager">
-      <HintPath>..\..\..\..\学习\月考需要\Webdiyer.MvcPager.dll</HintPath>
+      <HintPath>D:\学习\大一杂项\Dll文件夹\Webdiyer.MvcPager.dll</HintPath>
     </Reference>
   </ItemGroup>
 
