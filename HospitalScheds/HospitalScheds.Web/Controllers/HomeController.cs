@@ -14,7 +14,10 @@ namespace HospitalScheds.Web.Controllers
         {
             return View();
         }
-
+        /// <summary>
+        /// 阿瓦达无
+        /// </summary>
+        /// <returns></returns>
         public IActionResult About()
         {
             ViewData["Message"] = "Your application description page.";
