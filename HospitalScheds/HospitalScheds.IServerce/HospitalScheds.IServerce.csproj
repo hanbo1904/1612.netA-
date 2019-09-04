@@ -5,6 +5,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\HospitalScheds.Common\HospitalScheds.Common.csproj" />
     <ProjectReference Include="..\HospitalScheds.Model\HospitalScheds.Model.csproj" />
   </ItemGroup>
 
