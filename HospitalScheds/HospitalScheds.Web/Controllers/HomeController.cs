@@ -10,6 +10,10 @@ namespace HospitalScheds.Web.Controllers
 {
     public class HomeController : Controller
     {
+        /// <summary>
+        /// SD 
+        /// </summary>
+        /// <returns></returns>
         public IActionResult Index()
         {
             return View();
