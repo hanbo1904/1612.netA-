@@ -15,7 +15,7 @@ namespace HospitalScheds.IServerce
         /// 查询显示
         /// </summary>
         /// <returns></returns>
-        List<UserInfo> GetUserInfo(string name = "");
+        PageModel<UserInfo> GetUserInfo(string name = "",int pageIndex=1,int pageSize=3);
 
         /// <summary>
         /// 添加

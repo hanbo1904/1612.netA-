@@ -7,42 +7,43 @@ using HospitalScheds.Model;
 namespace HospitalScheds.IServerce
 {
     /// <summary>
-    /// 手术排班
+    /// 审批条件
     /// </summary>
-    public interface IoperationServerce
+    public interface IApprovalCriteriaServerce
     {
+        
         /// <summary>
         /// 显示
         /// </summary>
         /// <returns></returns>
-        PageModel<operation> Getoperation(int pageIndex=1,int pageSize=3);
+        PageModel<ApprovalCriteria> GetApprovalCriteria(int pageIndex = 1, int pageSize = 3);
 
         /// <summary>
         /// 添加
         /// </summary>
         /// <param name="crewscheduling"></param>
         /// <returns></returns>
-        int Addoperation(operation operation);
+        int AddApprovalCriteria(ApprovalCriteria approvalCriteria);
 
         /// <summary>
         /// 修改
         /// </summary>
         /// <param name="crewscheduling"></param>
         /// <returns></returns>
-        int Editoperation(operation operation);
+        int EditApprovalCriteria(ApprovalCriteria approvalCriteria);
 
         /// <summary>
         /// 反填
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
-        operation GetModel(int id);
+        ApprovalCriteria GetModel(int id);
 
         /// <summary>
         /// 删除
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
-        int Deleteoperation(int id);
+        int DeleteApprovalCriteria(int id);
     }
 }

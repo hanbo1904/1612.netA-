@@ -15,7 +15,7 @@ namespace HospitalScheds.IServerce
             /// 显示
             /// </summary>
             /// <returns></returns>
-            List<SurgeryFor> GetSurgeryFor();
+            PageModel<SurgeryFor> GetSurgeryFor(int pageIndex=1,int pageSize=3);
 
             /// <summary>
             /// 添加

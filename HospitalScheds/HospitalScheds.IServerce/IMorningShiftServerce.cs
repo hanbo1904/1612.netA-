@@ -15,7 +15,7 @@ namespace HospitalScheds.IServerce
         /// 显示
         /// </summary>
         /// <returns></returns>
-        List<MorningShift> GetMorningShift();
+        PageModel<MorningShift> GetMorningShift(int pageIndex = 1, int pageSize = 3);
 
         /// <summary>
         /// 添加
