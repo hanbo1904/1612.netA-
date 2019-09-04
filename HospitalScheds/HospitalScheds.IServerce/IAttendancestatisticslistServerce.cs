@@ -25,7 +25,7 @@ namespace HospitalScheds.IServerce
         /// <param name="pageIndex"></param>
         /// <param name="pageSize"></param>
         /// <returns></returns>
-        int PagedList<Attendancestatisticslist>(String Name = "", int pageIndex = 0, int pageSize = 3);
+         PageModel<Attendancestatisticslist> attendancestatisticslist(String Name = "", int pageIndex = 0, int pageSize = 3);
 
         /// <summary>
         /// 删除

@@ -26,7 +26,8 @@ namespace HospitalScheds.IServerce
         /// <param name="pageIndex"></param>
         /// <param name="pageSize"></param>
         /// <returns></returns>
-       int  PagedList<Shifthoursstatistics>(String Name = "",int pageIndex=0,int pageSize=3);
+        PageModel<Shifthoursstatistics> shifthoursstatistics (String Name = "",int pageIndex=0,int pageSize=3);
+
 
         /// <summary>
         /// 删除
