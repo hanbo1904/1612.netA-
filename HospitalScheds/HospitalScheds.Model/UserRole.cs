@@ -5,9 +5,9 @@ using System.Text;
 namespace HospitalScheds.Model
 {
     /// <summary>
-    /// 
+    /// 角色权限关联表
     /// </summary>
-   public class UserRole
+    public class UserRole
     {
         public int Id { get; set; }//Id
         public int Use_Id { get; set; }//Use_Id
