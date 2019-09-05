@@ -2,50 +2,51 @@
 using System.Collections.Generic;
 using System.Text;
 
-using HospitalScheds.Model;
 using System.Data;
+using HospitalScheds.Model;
 
 namespace HospitalScheds.IServerce
 {
     /// <summary>
-    /// 连休
+    /// 接龙设置表
     /// </summary>
-    public interface IStraightServerce
+    
+    public interface ISolitaireSetServerce
     {
         /// <summary>
         /// 添加
         /// </summary>
-        /// <param name="straight"></param>
+        /// <param name="solitaireSet"></param>
         /// <returns></returns>
-        int Add(Straight straight);
+        int Add(SolitaireSet solitaireSet);
 
         /// <summary>
         /// 显示
         /// </summary>
         /// <param name="Name"></param>
         /// <returns></returns>
-        List<Straight> GetStraight(string Name = "");
+        List<SolitaireSet> GetSolitaireSet(string Name = "");
 
         /// <summary>
         /// 反填
         /// </summary>
         /// <param name="Id"></param>
         /// <returns></returns>
-        Straight GetStraight(int Id);
+        SolitaireSet GetSolitaireSet(int Id);
 
         /// <summary>
         /// 修改
         /// </summary>
-        /// <param name="straight"></param>
+        /// <param name="solitaireSet"></param>
         /// <param name="Id"></param>
         /// <returns></returns>
-        int GetStraight(Straight straight, int Id);
+        int GetSolitaireSet(SolitaireSet solitaireSet, int Id);
 
         /// <summary>
         /// 删除
         /// </summary>
         /// <param name="Id"></param>
         /// <returns></returns>
-        int DelPermission(int Id);
+        int DelSolitaireSet(int Id);
     }
 }
