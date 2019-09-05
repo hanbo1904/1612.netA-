@@ -12,53 +12,27 @@ namespace HospitalScheds.Serverce
     /// </summary>
     public class RoleServerce : IRoleServerce
     {
-        /// <summary>
-        /// 添加
-        /// </summary>
-        /// <param name="role"></param>
-        /// <returns></returns>
-        public int Add(IRoleServerce role)
+        public int Add(Role role)
         {
             throw new NotImplementedException();
         }
 
-    /// <summary>
-    /// 显示
-    /// </summary>
-    /// <param name="Id"></param>
-    /// <returns></returns>
         public int DelRole(int Id)
         {
             throw new NotImplementedException();
         }
 
-        /// <summary>
-        /// 反填
-        /// </summary>
-        /// <param name="Name"></param>
-        /// <returns></returns>
-        public List<IRoleServerce> GetRole(string Name = "")
+        public List<Role> GetRole(string Name = "")
         {
             throw new NotImplementedException();
         }
 
-        /// <summary>
-        /// 修改
-        /// </summary>
-        /// <param name="Id"></param>
-        /// <returns></returns>
-        public IRoleServerce GetRole(int Id)
+        public Role GetRole(int Id)
         {
             throw new NotImplementedException();
         }
 
-        /// <summary>
-        /// 删除
-        /// </summary>
-        /// <param name="role"></param>
-        /// <param name="Id"></param>
-        /// <returns></returns>
-        public int GetRole(IRoleServerce role, int Id)
+        public int GetRole(Role role, int Id)
         {
             throw new NotImplementedException();
         }
