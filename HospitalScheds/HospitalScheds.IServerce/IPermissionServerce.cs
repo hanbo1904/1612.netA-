@@ -7,44 +7,46 @@ using System.Data;
 
 namespace HospitalScheds.IServerce
 {
-    public  interface IUserRole
+    /// <summary>
+    ///权限表接口
+    /// </summary>
+    public interface IPermissionServerce
     {
-
         /// <summary>
         /// 添加
         /// </summary>
-        /// <param name="userRole"></param>
+        /// <param name="permission"></param>
         /// <returns></returns>
-        int Add(IUserRole userRole);
+        int Add(Permission permission);
 
         /// <summary>
         /// 显示
         /// </summary>
         /// <param name="Name"></param>
         /// <returns></returns>
-        List<IUserRole> GetUserRole(string Name = "");
+        List<Permission> GetPermission(string Name="");
 
         /// <summary>
         /// 反填
         /// </summary>
         /// <param name="Id"></param>
         /// <returns></returns>
-        IUserRole GetUserRole(int Id);
+        Permission GetPermission(int Id);
 
         /// <summary>
         /// 修改
         /// </summary>
-        /// <param name="userRole"></param>
+        /// <param name="permission"></param>
         /// <param name="Id"></param>
         /// <returns></returns>
-        int GetUserRole(IUserRole userRole, int Id);
+        int GetPermission(Permission permission, int Id);
 
         /// <summary>
         /// 删除
         /// </summary>
         /// <param name="Id"></param>
         /// <returns></returns>
-        int DelUserRole(int Id);
-
-    }
+        int DelPermission(int Id);
+      
+        }
 }

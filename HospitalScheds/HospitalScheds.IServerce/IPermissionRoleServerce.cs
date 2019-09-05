@@ -10,7 +10,7 @@ namespace HospitalScheds.IServerce
     /// <summary>
     /// 角色权限关联表
     /// </summary>
-    public interface IPermissionRole
+    public interface IPermissionRoleServerce
     {
 
         /// <summary>
@@ -18,21 +18,21 @@ namespace HospitalScheds.IServerce
         /// </summary>
         /// <param name="permissionRole"></param>
         /// <returns></returns>
-        int Add(IPermissionRole permissionRole);
+        int Add(PermissionRole permissionRole);
 
         /// <summary>
         /// 显示
         /// </summary>
         /// <param name="Name"></param>
         /// <returns></returns>
-        List<IPermissionRole> GetPermissionRole(string Name = "");
+        List<IPermissionRoleServerce> GetPermissionRole(string Name = "");
 
         /// <summary>
         /// 反填
         /// </summary>
         /// <param name="Id"></param>
         /// <returns></returns>
-        IPermissionRole GetPermissionRole(int Id);
+        IPermissionRoleServerce GetPermissionRole(int Id);
 
         /// <summary>
         /// 修改
@@ -40,7 +40,7 @@ namespace HospitalScheds.IServerce
         /// <param name="permissionRole"></param>
         /// <param name="Id"></param>
         /// <returns></returns>
-        int GetPermissionRole(IPermissionRole permissionRole, int Id);
+        int GetPermissionRole(IPermissionRoleServerce permissionRole, int Id);
 
         /// <summary>
         /// 删除

@@ -11,28 +11,28 @@ namespace HospitalScheds.IServerce
     /// <summary>
     /// 班次设置表
     /// </summary>
-    public interface IShiftsSetting
+    public interface IShiftsSettingServerce
     {
         /// <summary>
         /// 添加
         /// </summary>
         /// <param name="shiftsSetting"></param>
         /// <returns></returns>
-        int Add(IShiftsSetting shiftsSetting);
+        int Add(ShiftsSetting shiftsSetting);
 
         /// <summary>
         /// 显示
         /// </summary>
         /// <param name="Name"></param>
         /// <returns></returns>
-        List<IShiftsSetting> GetShiftsSetting(string Name = "");
+        List<ShiftsSetting> GetShiftsSetting(string Name = "");
 
         /// <summary>
         /// 反填
         /// </summary>
         /// <param name="Id"></param>
         /// <returns></returns>
-        IShiftsSetting GetShiftsSetting(int Id);
+        ShiftsSetting GetShiftsSetting(int Id);
 
         /// <summary>
         /// 修改
@@ -40,7 +40,7 @@ namespace HospitalScheds.IServerce
         /// <param name="shiftsSetting"></param>
         /// <param name="Id"></param>
         /// <returns></returns>
-        int GetShiftsSetting(IShiftsSetting shiftsSetting, int Id);
+        int GetShiftsSetting(ShiftsSetting shiftsSetting, int Id);
 
         /// <summary>
         /// 删除

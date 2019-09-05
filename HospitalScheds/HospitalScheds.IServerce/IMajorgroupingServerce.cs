@@ -2,50 +2,51 @@
 using System.Collections.Generic;
 using System.Text;
 
-using System.Data;
+
 using HospitalScheds.Model;
+using System.Data;
 
 namespace HospitalScheds.IServerce
 {
     /// <summary>
-    /// 审批活动表
+    /// 专业分组设置
     /// </summary>
-    public interface IApprovalactivity
+    public interface IMajorgroupingServerce
     {
         /// <summary>
         /// 添加
         /// </summary>
-        /// <param name="approvalactivity"></param>
+        /// <param name="majorgrouping"></param>
         /// <returns></returns>
-        int Add(IApprovalactivity approvalactivity);
+        int Add(IMajorgroupingServerce majorgrouping);
 
         /// <summary>
         /// 显示
         /// </summary>
         /// <param name="Name"></param>
         /// <returns></returns>
-        List<IApprovalactivity> GetApprovalactivity(string Name = "");
+        List<IMajorgroupingServerce> GetMajorgrouping(string Name = "");
 
         /// <summary>
         /// 反填
         /// </summary>
         /// <param name="Id"></param>
         /// <returns></returns>
-        IApprovalactivity GetApprovalactivity(int Id);
+        IMajorgroupingServerce GetMajorgrouping(int Id);
 
         /// <summary>
         /// 修改
         /// </summary>
-        /// <param name="approvalactivity"></param>
+        /// <param name="majorgrouping"></param>
         /// <param name="Id"></param>
         /// <returns></returns>
-        int GetApprovalactivity(IApprovalactivity approvalactivity, int Id);
+        int GetMajorgrouping(IMajorgroupingServerce majorgrouping, int Id);
 
         /// <summary>
         /// 删除
         /// </summary>
         /// <param name="Id"></param>
         /// <returns></returns>
-        int DelApprovalactivity(int Id);
+        int DelMajorgrouping(int Id);
     }
 }

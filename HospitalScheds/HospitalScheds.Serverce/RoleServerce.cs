@@ -10,14 +10,14 @@ namespace HospitalScheds.Serverce
     /// <summary>
     /// 角色表
     /// </summary>
-    public class RoleServerce : IRole
+    public class RoleServerce : IRoleServerce
     {
         /// <summary>
         /// 添加
         /// </summary>
         /// <param name="role"></param>
         /// <returns></returns>
-        public int Add(IRole role)
+        public int Add(IRoleServerce role)
         {
             throw new NotImplementedException();
         }
@@ -37,7 +37,7 @@ namespace HospitalScheds.Serverce
         /// </summary>
         /// <param name="Name"></param>
         /// <returns></returns>
-        public List<IRole> GetRole(string Name = "")
+        public List<IRoleServerce> GetRole(string Name = "")
         {
             throw new NotImplementedException();
         }
@@ -47,7 +47,7 @@ namespace HospitalScheds.Serverce
         /// </summary>
         /// <param name="Id"></param>
         /// <returns></returns>
-        public IRole GetRole(int Id)
+        public IRoleServerce GetRole(int Id)
         {
             throw new NotImplementedException();
         }
@@ -58,7 +58,7 @@ namespace HospitalScheds.Serverce
         /// <param name="role"></param>
         /// <param name="Id"></param>
         /// <returns></returns>
-        public int GetRole(IRole role, int Id)
+        public int GetRole(IRoleServerce role, int Id)
         {
             throw new NotImplementedException();
         }

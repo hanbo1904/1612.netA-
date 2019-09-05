@@ -2,48 +2,50 @@
 using System.Collections.Generic;
 using System.Text;
 
-using HospitalScheds.Model;
 using System.Data;
+using HospitalScheds.Model;
 
 namespace HospitalScheds.IServerce
 {
-    public interface ISchedulingRules
+    /// <summary>
+    /// 审批表
+    /// </summary>
+    public interface IApprovalServerce
     {
         /// <summary>
         /// 添加
         /// </summary>
-        /// <param name="schedulingRules"></param>
+        /// <param name="approval"></param>
         /// <returns></returns>
-        int Add(ISchedulingRules schedulingRules);
+        int Add(IApprovalServerce approval);
 
         /// <summary>
         /// 显示
         /// </summary>
         /// <param name="Name"></param>
         /// <returns></returns>
-        List<ISchedulingRules> GetSchedulingRules(string Name = "");
+        List<IApprovalServerce> GetApproval(string Name = "");
 
         /// <summary>
         /// 反填
         /// </summary>
         /// <param name="Id"></param>
         /// <returns></returns>
-        ISchedulingRules GetSchedulingRules(int Id);
+        IApprovalServerce GetApproval(int Id);
 
         /// <summary>
         /// 修改
         /// </summary>
-        /// <param name="schedulingRules"></param>
+        /// <param name="approval"></param>
         /// <param name="Id"></param>
         /// <returns></returns>
-        int GetSchedulingRules(ISchedulingRules schedulingRules, int Id);
+        int GetPermission(IApprovalServerce approval, int Id);
 
         /// <summary>
         /// 删除
         /// </summary>
         /// <param name="Id"></param>
         /// <returns></returns>
-        int DelSchedulingRules(int Id);
-
+        int DelApproval(int Id);
     }
 }

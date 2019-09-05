@@ -2,52 +2,48 @@
 using System.Collections.Generic;
 using System.Text;
 
-using System.Data;
 using HospitalScheds.Model;
+using System.Data;
 
 namespace HospitalScheds.IServerce
 {
-    /// <summary>
-    /// 部门表
-    /// </summary>
-    public interface IDepartment
+    public interface ISchedulingRulesServerce
     {
-
         /// <summary>
         /// 添加
         /// </summary>
-        /// <param name="department"></param>
+        /// <param name="schedulingRules"></param>
         /// <returns></returns>
-        int Add(IDepartment department);
+        int Add(ISchedulingRulesServerce schedulingRules);
 
         /// <summary>
         /// 显示
         /// </summary>
         /// <param name="Name"></param>
         /// <returns></returns>
-        List<IDepartment> GetDepartment(string Name = "");
+        List<ISchedulingRulesServerce> GetSchedulingRules(string Name = "");
 
         /// <summary>
         /// 反填
         /// </summary>
         /// <param name="Id"></param>
         /// <returns></returns>
-        IDepartment GetDepartment(int Id);
+        ISchedulingRulesServerce GetSchedulingRules(int Id);
 
         /// <summary>
         /// 修改
         /// </summary>
-        /// <param name="department"></param>
+        /// <param name="schedulingRules"></param>
         /// <param name="Id"></param>
         /// <returns></returns>
-        int GetDepartment(IDepartment department, int Id);
+        int GetSchedulingRules(ISchedulingRulesServerce schedulingRules, int Id);
 
         /// <summary>
         /// 删除
         /// </summary>
         /// <param name="Id"></param>
         /// <returns></returns>
-        int DelDepartment(int Id);
+        int DelSchedulingRules(int Id);
 
     }
 }

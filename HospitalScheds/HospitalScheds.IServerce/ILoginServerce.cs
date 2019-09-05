@@ -2,51 +2,51 @@
 using System.Collections.Generic;
 using System.Text;
 
-using HospitalScheds.Model;
+
 using System.Data;
+using HospitalScheds.Model;
 
 namespace HospitalScheds.IServerce
 {
     /// <summary>
-    ///权限表接口
+    /// 登录表
     /// </summary>
-    public interface IPermission
+    public interface ILoginServerce
     {
         /// <summary>
         /// 添加
         /// </summary>
-        /// <param name="permission"></param>
+        /// <param name="login"></param>
         /// <returns></returns>
-        int Add(IPermission permission);
+        int Add(ILoginServerce login);
 
         /// <summary>
         /// 显示
         /// </summary>
         /// <param name="Name"></param>
         /// <returns></returns>
-        List<IPermission> GetPermission(string Name="");
+        List<ILoginServerce> GetLogin(string Name = "");
 
         /// <summary>
         /// 反填
         /// </summary>
         /// <param name="Id"></param>
         /// <returns></returns>
-        IPermission GetPermission(int Id);
+        ILoginServerce GetLogin(int Id);
 
         /// <summary>
         /// 修改
         /// </summary>
-        /// <param name="permission"></param>
+        /// <param name="login"></param>
         /// <param name="Id"></param>
         /// <returns></returns>
-        int GetPermission(IPermission permission, int Id);
+        int GetLogin(ILoginServerce login, int Id);
 
         /// <summary>
         /// 删除
         /// </summary>
         /// <param name="Id"></param>
         /// <returns></returns>
-        int DelPermission(int Id);
-      
-        }
+        int DelLogin(int Id);
+    }
 }

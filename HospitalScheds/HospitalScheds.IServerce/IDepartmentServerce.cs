@@ -2,51 +2,52 @@
 using System.Collections.Generic;
 using System.Text;
 
-
 using System.Data;
 using HospitalScheds.Model;
 
 namespace HospitalScheds.IServerce
 {
     /// <summary>
-    /// 登录表
+    /// 部门表
     /// </summary>
-    public interface ILogin
+    public interface IDepartmentServerce
     {
+
         /// <summary>
         /// 添加
         /// </summary>
-        /// <param name="login"></param>
+        /// <param name="department"></param>
         /// <returns></returns>
-        int Add(ILogin login);
+        int Add(IDepartmentServerce department);
 
         /// <summary>
         /// 显示
         /// </summary>
         /// <param name="Name"></param>
         /// <returns></returns>
-        List<ILogin> GetLogin(string Name = "");
+        List<IDepartmentServerce> GetDepartment(string Name = "");
 
         /// <summary>
         /// 反填
         /// </summary>
         /// <param name="Id"></param>
         /// <returns></returns>
-        ILogin GetLogin(int Id);
+        IDepartmentServerce GetDepartment(int Id);
 
         /// <summary>
         /// 修改
         /// </summary>
-        /// <param name="login"></param>
+        /// <param name="department"></param>
         /// <param name="Id"></param>
         /// <returns></returns>
-        int GetLogin(ILogin login, int Id);
+        int GetDepartment(IDepartmentServerce department, int Id);
 
         /// <summary>
         /// 删除
         /// </summary>
         /// <param name="Id"></param>
         /// <returns></returns>
-        int DelLogin(int Id);
+        int DelDepartment(int Id);
+
     }
 }
