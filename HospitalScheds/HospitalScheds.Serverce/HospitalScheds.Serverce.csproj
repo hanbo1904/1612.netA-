@@ -10,6 +10,8 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\HospitalScheds.Cache\HospitalScheds.Cache.csproj" />
+    <ProjectReference Include="..\HospitalScheds.Common\HospitalScheds.Common.csproj" />
     <ProjectReference Include="..\HospitalScheds.IServerce\HospitalScheds.IServerce.csproj" />
     <ProjectReference Include="..\HospitalScheds.Model\HospitalScheds.Model.csproj" />
   </ItemGroup>

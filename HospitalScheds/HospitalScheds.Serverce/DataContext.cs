@@ -24,7 +24,7 @@ namespace HospitalScheds.Serverce
         {
             if (!optionsBuilder.IsConfigured)
             {
-                optionsBuilder.UseMySQL("Data Source=169.254.139.102;Initial Catalog=projectmanage;User ID=root;pwd=123456");
+                optionsBuilder.UseMySQL("Data Source=127.0.0.1;Initial Catalog=projectmanage;User ID=root;pwd=123456");
             }
         }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
