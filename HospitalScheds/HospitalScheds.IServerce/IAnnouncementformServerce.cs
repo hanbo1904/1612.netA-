@@ -4,29 +4,26 @@ using System.Text;
 
 using HospitalScheds.Model;
 using System.Data;
-
-
 namespace HospitalScheds.IServerce
 {
-  public  interface IShifthoursstatisticsServerce
+  public interface IAnnouncementformServerce
     {
         /// <summary>
         /// 添加
         /// </summary>
-        /// <param name="shifthoursstatistics"></param>
+        /// <param name="announcementform"></param>
         /// <returns></returns>
-        int Add(Shifthoursstatistics shifthoursstatistics);
+        int Add(Announcementform announcementform);
 
         /// <summary>
         /// 显示分页
         /// </summary>
-        /// <typeparam name="Shifthoursstatistics"></typeparam>
+        /// <typeparam name="announcementform"></typeparam>
         /// <param name="Name"></param>
         /// <param name="pageIndex"></param>
         /// <param name="pageSize"></param>
         /// <returns></returns>
-        PageModel<Shifthoursstatistics> shifthoursstatistics (String Name = "",int pageIndex=0,int pageSize=3);
-
+        PageModel<Announcementform> announcementform(String Name = "", int pageIndex = 0, int pageSize = 3);
 
         /// <summary>
         /// 删除
@@ -41,14 +38,14 @@ namespace HospitalScheds.IServerce
         /// <param name="dd"></param>
         /// <param name="id"></param>
         /// <returns></returns>
-        int Update(Shifthoursstatistics shifthoursstatistics, int id);
+        int Update(Announcementform announcementform, int id);
 
         /// <summary>
         /// 反填
         /// </summary>
         /// <param name="Id"></param>
         /// <returns></returns>
-        List<Shifthoursstatistics> shifthoursstatistics();
+        List<Announcementform> announcementform();
 
     }
 }
