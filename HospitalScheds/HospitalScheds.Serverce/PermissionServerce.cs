@@ -2,62 +2,65 @@
 using System.Collections.Generic;
 using System.Text;
 
-
-using HospitalScheds.Model;
 using HospitalScheds.IServerce;
+using HospitalScheds.Model;
 
 namespace HospitalScheds.Serverce
 {
     /// <summary>
-    /// 用户角色关联表
+    /// 权限表
     /// </summary>
-    public class IUserRoleServerce : IUserRole
+    public class PermissionServerce : IPermission
     {
         /// <summary>
-        /// 添加
+        /// 查询
         /// </summary>
-        /// <param name="userRole"></param>
+        /// <param name="permission"></param>
         /// <returns></returns>
-        public int Add(IUserRole userRole)
+        public int Add(IPermission permission)
         {
             throw new NotImplementedException();
         }
         /// <summary>
         /// 显示
         /// </summary>
-        /// <param name="Id"></param>
+        /// <param name="id"></param>
         /// <returns></returns>
-        public int DelUserRole(int Id)
+        public int DelPermission(int id)
         {
             throw new NotImplementedException();
         }
         /// <summary>
         /// 反填
         /// </summary>
-        /// <param name="Name"></param>
+        /// <param name="id"></param>
         /// <returns></returns>
-        public List<IUserRole> GetUserRole(string Name = "")
+        public IPermission GetPermission(int id)
         {
             throw new NotImplementedException();
         }
+
         /// <summary>
         /// 修改
         /// </summary>
+        /// <param name="permission"></param>
         /// <param name="Id"></param>
         /// <returns></returns>
-        public IUserRole GetUserRole(int Id)
+        public int GetPermission(IPermission permission, int Id)
         {
             throw new NotImplementedException();
         }
+ 
         /// <summary>
-        /// 删除 
+        /// 删除
         /// </summary>
-        /// <param name="userRole"></param>
-        /// <param name="Id"></param>
+        /// <param name="Name"></param>
         /// <returns></returns>
-        public int GetUserRole(IUserRole userRole, int Id)
+        public List<IPermission> GetPermission(string Name = "")
         {
             throw new NotImplementedException();
         }
+
+       }
     }
-}
+

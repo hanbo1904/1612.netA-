@@ -10,7 +10,7 @@ namespace HospitalScheds.Serverce
     /// <summary>
     /// 角色权限关联表
     /// </summary>
-    public class IPermissionRoleServerce : IPermissionRole
+    public class PermissionRoleServerce : IPermissionRole
     {
         /// <summary>
         /// 添加

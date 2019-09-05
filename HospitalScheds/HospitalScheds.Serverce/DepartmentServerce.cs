@@ -10,7 +10,7 @@ namespace HospitalScheds.Serverce
     /// <summary>
     /// 部门表
     /// </summary>
-    public class IDepartmentServerce : IDepartment
+    public class DepartmentServerce : IDepartment
     {
         /// <summary>
         /// 添加

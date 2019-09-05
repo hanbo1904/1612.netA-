@@ -3,46 +3,46 @@ using System.Collections.Generic;
 using System.Text;
 
 using HospitalScheds.Model;
-using System.Data;
 
 namespace HospitalScheds.IServerce
 {
-    public interface IUserInfo
+    /// <summary>
+    /// 考勤统计
+    /// </summary>
+    public interface IAttendanceServerce
     {
-        /// <summary>
-        /// 添加
-        /// </summary>
-        /// <param name="userInfo"></param>
-        /// <returns></returns>
-        int Add(IUserInfo userInfo);
-
         /// <summary>
         /// 显示
         /// </summary>
-        /// <param name="Name"></param>
         /// <returns></returns>
-        List<IUserInfo> GetUserInfo(String Name = "");
+        PageModel<Attendance> GetAttendance(int pageIndex = 1, int pageSize = 3);
 
         /// <summary>
-        /// 反填
+        /// 添加
         /// </summary>
-        /// <param name="Id"></param>
+        /// <param name="crewscheduling"></param>
         /// <returns></returns>
-        IUserInfo GetUserInfo(int Id);
+        int AddAttendance(Attendance attendance);
 
         /// <summary>
         /// 修改
         /// </summary>
-        /// <param name="userInfo"></param>
-        /// <param name="Id"></param>
+        /// <param name="crewscheduling"></param>
         /// <returns></returns>
-        int GetUserInfo(IUserInfo userInfo, int Id);
+        int EditAttendance(Attendance attendance);
+
+        /// <summary>
+        /// 反填
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        Attendance GetModel(int id);
 
         /// <summary>
         /// 删除
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
-        int DelUserInfos(int id);
+        int DeleteAttendance(int id);
     }
 }

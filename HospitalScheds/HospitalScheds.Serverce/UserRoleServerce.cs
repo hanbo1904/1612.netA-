@@ -2,70 +2,62 @@
 using System.Collections.Generic;
 using System.Text;
 
+
 using HospitalScheds.Model;
 using HospitalScheds.IServerce;
 
 namespace HospitalScheds.Serverce
 {
     /// <summary>
-    /// 用户表
+    /// 用户角色关联表
     /// </summary>
-    public class IUserInfoServerce : IUserInfo
+    public class UserRoleServerce : IUserRole
     {
         /// <summary>
         /// 添加
         /// </summary>
-        /// <param name="userInfo"></param>
+        /// <param name="userRole"></param>
         /// <returns></returns>
-        public int Add(IUserInfo userInfo)
+        public int Add(IUserRole userRole)
         {
             throw new NotImplementedException();
         }
         /// <summary>
         /// 显示
         /// </summary>
-        /// <param name="id"></param>
+        /// <param name="Id"></param>
         /// <returns></returns>
-        public int DelUserInfo(int id)
+        public int DelUserRole(int Id)
         {
             throw new NotImplementedException();
         }
-
-        public int DelUserInfos(int id)
-        {
-            throw new NotImplementedException();
-        }
-
-
-
         /// <summary>
         /// 反填
         /// </summary>
-        /// <param name="Id"></param>
+        /// <param name="Name"></param>
         /// <returns></returns>
-        public IUserInfo GetUserInfo(int Id)
+        public List<IUserRole> GetUserRole(string Name = "")
         {
             throw new NotImplementedException();
         }
         /// <summary>
         /// 修改
         /// </summary>
-        /// <param name="Name"></param>
+        /// <param name="Id"></param>
         /// <returns></returns>
-        public List<IUserInfo> GetUserInfo(string Name = "")
+        public IUserRole GetUserRole(int Id)
         {
             throw new NotImplementedException();
         }
         /// <summary>
-        /// 删除
+        /// 删除 
         /// </summary>
-        /// <param name="userInfo"></param>
+        /// <param name="userRole"></param>
         /// <param name="Id"></param>
         /// <returns></returns>
-        public int GetUserInfo(IUserInfo userInfo, int Id)
+        public int GetUserRole(IUserRole userRole, int Id)
         {
             throw new NotImplementedException();
         }
-        
     }
 }

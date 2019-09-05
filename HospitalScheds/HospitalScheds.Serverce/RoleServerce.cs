@@ -8,34 +8,36 @@ using HospitalScheds.Model;
 namespace HospitalScheds.Serverce
 {
     /// <summary>
-    /// 权限表
+    /// 角色表
     /// </summary>
-    public class IPermissionServerce : IPermission
+    public class RoleServerce : IRole
     {
         /// <summary>
-        /// 查询
+        /// 添加
         /// </summary>
-        /// <param name="permission"></param>
+        /// <param name="role"></param>
         /// <returns></returns>
-        public int Add(IPermission permission)
+        public int Add(IRole role)
         {
             throw new NotImplementedException();
         }
-        /// <summary>
-        /// 显示
-        /// </summary>
-        /// <param name="id"></param>
-        /// <returns></returns>
-        public int DelPermission(int id)
+
+    /// <summary>
+    /// 显示
+    /// </summary>
+    /// <param name="Id"></param>
+    /// <returns></returns>
+        public int DelRole(int Id)
         {
             throw new NotImplementedException();
         }
+
         /// <summary>
         /// 反填
         /// </summary>
-        /// <param name="id"></param>
+        /// <param name="Name"></param>
         /// <returns></returns>
-        public IPermission GetPermission(int id)
+        public List<IRole> GetRole(string Name = "")
         {
             throw new NotImplementedException();
         }
@@ -43,24 +45,22 @@ namespace HospitalScheds.Serverce
         /// <summary>
         /// 修改
         /// </summary>
-        /// <param name="permission"></param>
         /// <param name="Id"></param>
         /// <returns></returns>
-        public int GetPermission(IPermission permission, int Id)
+        public IRole GetRole(int Id)
         {
             throw new NotImplementedException();
         }
- 
+
         /// <summary>
         /// 删除
         /// </summary>
-        /// <param name="Name"></param>
+        /// <param name="role"></param>
+        /// <param name="Id"></param>
         /// <returns></returns>
-        public List<IPermission> GetPermission(string Name = "")
+        public int GetRole(IRole role, int Id)
         {
             throw new NotImplementedException();
         }
-
-       }
     }
-
+}
