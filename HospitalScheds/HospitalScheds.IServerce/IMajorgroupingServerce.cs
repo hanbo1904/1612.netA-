@@ -18,21 +18,21 @@ namespace HospitalScheds.IServerce
         /// </summary>
         /// <param name="majorgrouping"></param>
         /// <returns></returns>
-        int Add(Majorgrouping majorgrouping);
+        int Add(IMajorgroupingServerce majorgrouping);
 
         /// <summary>
         /// 显示
         /// </summary>
         /// <param name="Name"></param>
         /// <returns></returns>
-        List<Majorgrouping> GetMajorgrouping(string Name = "");
+        List<IMajorgroupingServerce> GetMajorgrouping(string Name = "");
 
         /// <summary>
         /// 反填
         /// </summary>
         /// <param name="Id"></param>
         /// <returns></returns>
-        Majorgrouping GetMajorgrouping(int Id);
+        IMajorgroupingServerce GetMajorgrouping(int Id);
 
         /// <summary>
         /// 修改
@@ -40,7 +40,7 @@ namespace HospitalScheds.IServerce
         /// <param name="majorgrouping"></param>
         /// <param name="Id"></param>
         /// <returns></returns>
-        int GetMajorgrouping(Majorgrouping majorgrouping, int Id);
+        int GetMajorgrouping(IMajorgroupingServerce majorgrouping, int Id);
 
         /// <summary>
         /// 删除

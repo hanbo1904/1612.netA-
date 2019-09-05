@@ -18,21 +18,21 @@ namespace HospitalScheds.IServerce
         /// </summary>
         /// <param name="login"></param>
         /// <returns></returns>
-        int Add(Login login);
+        int Add(ILoginServerce login);
 
         /// <summary>
         /// 显示
         /// </summary>
         /// <param name="Name"></param>
         /// <returns></returns>
-        List<Login GetLogin(string Name = "");
+        List<ILoginServerce> GetLogin(string Name = "");
 
         /// <summary>
         /// 反填
         /// </summary>
         /// <param name="Id"></param>
         /// <returns></returns>
-        Login GetLogin(int Id);
+        ILoginServerce GetLogin(int Id);
 
         /// <summary>
         /// 修改
@@ -40,7 +40,7 @@ namespace HospitalScheds.IServerce
         /// <param name="login"></param>
         /// <param name="Id"></param>
         /// <returns></returns>
-        int GetLogin(Login login, int Id);
+        int GetLogin(ILoginServerce login, int Id);
 
         /// <summary>
         /// 删除

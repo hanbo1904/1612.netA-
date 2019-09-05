@@ -25,14 +25,14 @@ namespace HospitalScheds.IServerce
         /// </summary>
         /// <param name="Name"></param>
         /// <returns></returns>
-        List<PermissionRole> GetPermissionRole(string Name = "");
+        List<IPermissionRoleServerce> GetPermissionRole(string Name = "");
 
         /// <summary>
         /// 反填
         /// </summary>
         /// <param name="Id"></param>
         /// <returns></returns>
-        PermissionRole GetPermissionRole(int Id);
+        IPermissionRoleServerce GetPermissionRole(int Id);
 
         /// <summary>
         /// 修改
@@ -40,7 +40,7 @@ namespace HospitalScheds.IServerce
         /// <param name="permissionRole"></param>
         /// <param name="Id"></param>
         /// <returns></returns>
-        int GetPermissionRole(PermissionRole permissionRole, int Id);
+        int GetPermissionRole(IPermissionRoleServerce permissionRole, int Id);
 
         /// <summary>
         /// 删除

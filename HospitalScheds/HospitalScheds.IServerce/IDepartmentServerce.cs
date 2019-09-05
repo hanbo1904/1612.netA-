@@ -18,21 +18,21 @@ namespace HospitalScheds.IServerce
         /// </summary>
         /// <param name="department"></param>
         /// <returns></returns>
-        int Add(Department department);
+        int Add(IDepartmentServerce department);
 
         /// <summary>
         /// 显示
         /// </summary>
         /// <param name="Name"></param>
         /// <returns></returns>
-        List<Department> GetDepartment(string Name = "");
+        List<IDepartmentServerce> GetDepartment(string Name = "");
 
         /// <summary>
         /// 反填
         /// </summary>
         /// <param name="Id"></param>
         /// <returns></returns>
-        Department GetDepartment(int Id);
+        IDepartmentServerce GetDepartment(int Id);
 
         /// <summary>
         /// 修改
@@ -40,7 +40,7 @@ namespace HospitalScheds.IServerce
         /// <param name="department"></param>
         /// <param name="Id"></param>
         /// <returns></returns>
-        int GetDepartment(Department department, int Id);
+        int GetDepartment(IDepartmentServerce department, int Id);
 
         /// <summary>
         /// 删除

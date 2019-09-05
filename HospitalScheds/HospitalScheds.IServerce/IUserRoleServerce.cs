@@ -15,21 +15,21 @@ namespace HospitalScheds.IServerce
         /// </summary>
         /// <param name="userRole"></param>
         /// <returns></returns>
-        int Add(UserRole userRole);
+        int Add(IUserRoleServerce userRole);
 
         /// <summary>
         /// 显示
         /// </summary>
         /// <param name="Name"></param>
         /// <returns></returns>
-        List<UserRole> GetUserRole(string Name = "");
+        List<IUserRoleServerce> GetUserRole(string Name = "");
 
         /// <summary>
         /// 反填
         /// </summary>
         /// <param name="Id"></param>
         /// <returns></returns>
-        UserRole GetUserRole(int Id);
+        IUserRoleServerce GetUserRole(int Id);
 
         /// <summary>
         /// 修改
@@ -37,7 +37,7 @@ namespace HospitalScheds.IServerce
         /// <param name="userRole"></param>
         /// <param name="Id"></param>
         /// <returns></returns>
-        int GetUserRole(UserRole userRole, int Id);
+        int GetUserRole(IUserRoleServerce userRole, int Id);
 
         /// <summary>
         /// 删除

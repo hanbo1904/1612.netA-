@@ -17,21 +17,21 @@ namespace HospitalScheds.IServerce
         /// </summary>
         /// <param name="approval"></param>
         /// <returns></returns>
-        int Add(Approval approval);
+        int Add(IApprovalServerce approval);
 
         /// <summary>
         /// 显示
         /// </summary>
         /// <param name="Name"></param>
         /// <returns></returns>
-        List<Approval> GetApproval(string Name = "");
+        List<IApprovalServerce> GetApproval(string Name = "");
 
         /// <summary>
         /// 反填
         /// </summary>
         /// <param name="Id"></param>
         /// <returns></returns>
-        Approval GetApproval(int Id);
+        IApprovalServerce GetApproval(int Id);
 
         /// <summary>
         /// 修改
@@ -39,7 +39,7 @@ namespace HospitalScheds.IServerce
         /// <param name="approval"></param>
         /// <param name="Id"></param>
         /// <returns></returns>
-        int GetPermission(Approval approval, int Id);
+        int GetPermission(IApprovalServerce approval, int Id);
 
         /// <summary>
         /// 删除
