@@ -4,7 +4,9 @@ using System.Text;
 
 namespace HospitalScheds.Model
 {
-    //专业分组设置
+    /// <summary>
+    /// 专业分组设置
+    /// </summary>
     public class Majorgrouping
     {
         public int Id { get; set; }                    //ID
