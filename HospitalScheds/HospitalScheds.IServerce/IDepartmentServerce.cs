@@ -2,50 +2,52 @@
 using System.Collections.Generic;
 using System.Text;
 
-using HospitalScheds.Model;
 using System.Data;
+using HospitalScheds.Model;
 
 namespace HospitalScheds.IServerce
 {
     /// <summary>
-    /// 角色表接口
+    /// 部门表
     /// </summary>
-    public interface IRole
+    public interface IDepartmentServerce
     {
+
         /// <summary>
         /// 添加
         /// </summary>
-        /// <param name="role"></param>
+        /// <param name="department"></param>
         /// <returns></returns>
-        int Add(IRole role);
+        int Add(Department department);
 
         /// <summary>
         /// 显示
         /// </summary>
         /// <param name="Name"></param>
         /// <returns></returns>
-        List<IRole> GetRole(String Name = "");
+        List<Department> GetDepartment(string Name = "");
 
         /// <summary>
         /// 反填
         /// </summary>
         /// <param name="Id"></param>
         /// <returns></returns>
-        IRole GetRole(int Id);
+        Department GetDepartment(int Id);
 
         /// <summary>
         /// 修改
         /// </summary>
-        /// <param name="role"></param>
+        /// <param name="department"></param>
         /// <param name="Id"></param>
         /// <returns></returns>
-        int GetRole(IRole role, int Id);
+        int GetDepartment(Department department, int Id);
 
         /// <summary>
         /// 删除
         /// </summary>
         /// <param name="Id"></param>
         /// <returns></returns>
-        int DelRole(int Id);
+        int DelDepartment(int Id);
+
     }
 }

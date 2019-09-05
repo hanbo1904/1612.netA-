@@ -9,44 +9,44 @@ using System.Data;
 namespace HospitalScheds.IServerce
 {
     /// <summary>
-    /// 专业分组设置
+    /// 班次设置表
     /// </summary>
-    public interface IMajorgrouping
+    public interface IShiftsSettingServerce
     {
         /// <summary>
         /// 添加
         /// </summary>
-        /// <param name="majorgrouping"></param>
+        /// <param name="shiftsSetting"></param>
         /// <returns></returns>
-        int Add(IMajorgrouping majorgrouping);
+        int Add(ShiftsSetting shiftsSetting);
 
         /// <summary>
         /// 显示
         /// </summary>
         /// <param name="Name"></param>
         /// <returns></returns>
-        List<IMajorgrouping> GetMajorgrouping(string Name = "");
+        List<ShiftsSetting> GetShiftsSetting(string Name = "");
 
         /// <summary>
         /// 反填
         /// </summary>
         /// <param name="Id"></param>
         /// <returns></returns>
-        IMajorgrouping GetMajorgrouping(int Id);
+        ShiftsSetting GetShiftsSetting(int Id);
 
         /// <summary>
         /// 修改
         /// </summary>
-        /// <param name="majorgrouping"></param>
+        /// <param name="shiftsSetting"></param>
         /// <param name="Id"></param>
         /// <returns></returns>
-        int GetMajorgrouping(IMajorgrouping majorgrouping, int Id);
+        int GetShiftsSetting(ShiftsSetting shiftsSetting, int Id);
 
         /// <summary>
         /// 删除
         /// </summary>
         /// <param name="Id"></param>
         /// <returns></returns>
-        int DelMajorgrouping(int Id);
+        int DelShiftsSetting(int Id);
     }
 }

@@ -10,28 +10,28 @@ namespace HospitalScheds.IServerce
     /// <summary>
     /// 连休
     /// </summary>
-    public interface IStraight
+    public interface IStraightServerce
     {
         /// <summary>
         /// 添加
         /// </summary>
         /// <param name="straight"></param>
         /// <returns></returns>
-        int Add(IStraight straight);
+        int Add(Straight straight);
 
         /// <summary>
         /// 显示
         /// </summary>
         /// <param name="Name"></param>
         /// <returns></returns>
-        List<IStraight> GetStraight(string Name = "");
+        List<Straight> GetStraight(string Name = "");
 
         /// <summary>
         /// 反填
         /// </summary>
         /// <param name="Id"></param>
         /// <returns></returns>
-        IStraight GetStraight(int Id);
+        Straight GetStraight(int Id);
 
         /// <summary>
         /// 修改
@@ -39,7 +39,7 @@ namespace HospitalScheds.IServerce
         /// <param name="straight"></param>
         /// <param name="Id"></param>
         /// <returns></returns>
-        int GetStraight(IStraight straight, int Id);
+        int GetStraight(Straight straight, int Id);
 
         /// <summary>
         /// 删除

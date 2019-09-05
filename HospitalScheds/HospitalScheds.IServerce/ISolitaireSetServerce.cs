@@ -8,46 +8,45 @@ using HospitalScheds.Model;
 namespace HospitalScheds.IServerce
 {
     /// <summary>
-    /// 部门表
+    /// 接龙设置表
     /// </summary>
-    public interface IDepartment
+    
+    public interface ISolitaireSetServerce
     {
-
         /// <summary>
         /// 添加
         /// </summary>
-        /// <param name="department"></param>
+        /// <param name="solitaireSet"></param>
         /// <returns></returns>
-        int Add(IDepartment department);
+        int Add(SolitaireSet solitaireSet);
 
         /// <summary>
         /// 显示
         /// </summary>
         /// <param name="Name"></param>
         /// <returns></returns>
-        List<IDepartment> GetDepartment(string Name = "");
+        List<SolitaireSet> GetSolitaireSet(string Name = "");
 
         /// <summary>
         /// 反填
         /// </summary>
         /// <param name="Id"></param>
         /// <returns></returns>
-        IDepartment GetDepartment(int Id);
+        SolitaireSet GetSolitaireSet(int Id);
 
         /// <summary>
         /// 修改
         /// </summary>
-        /// <param name="department"></param>
+        /// <param name="solitaireSet"></param>
         /// <param name="Id"></param>
         /// <returns></returns>
-        int GetDepartment(IDepartment department, int Id);
+        int GetSolitaireSet(SolitaireSet solitaireSet, int Id);
 
         /// <summary>
         /// 删除
         /// </summary>
         /// <param name="Id"></param>
         /// <returns></returns>
-        int DelDepartment(int Id);
-
+        int DelSolitaireSet(int Id);
     }
 }

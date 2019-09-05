@@ -10,14 +10,14 @@ namespace HospitalScheds.Serverce
     /// <summary>
     /// 角色权限关联表
     /// </summary>
-    public class PermissionRoleServerce : IPermissionRole
+    public class PermissionRoleServerce : IPermissionRoleServerce
     {
         /// <summary>
         /// 添加
         /// </summary>
         /// <param name="permissionRole"></param>
         /// <returns></returns>
-        public int Add(IPermissionRole permissionRole)
+        public int Add(IPermissionRoleServerce permissionRole)
         {
             throw new NotImplementedException();
         }
@@ -37,7 +37,7 @@ namespace HospitalScheds.Serverce
         /// </summary>
         /// <param name="Name"></param>
         /// <returns></returns>
-        public List<IPermissionRole> GetPermissionRole(string Name = "")
+        public List<IPermissionRoleServerce> GetPermissionRole(string Name = "")
         {
             throw new NotImplementedException();
         }
@@ -47,7 +47,7 @@ namespace HospitalScheds.Serverce
         /// </summary>
         /// <param name="Id"></param>
         /// <returns></returns>
-        public IPermissionRole GetPermissionRole(int Id)
+        public IPermissionRoleServerce GetPermissionRole(int Id)
         {
             throw new NotImplementedException();
         }
@@ -58,7 +58,7 @@ namespace HospitalScheds.Serverce
         /// <param name="permissionRole"></param>
         /// <param name="Id"></param>
         /// <returns></returns>
-        public int GetPermissionRole(IPermissionRole permissionRole, int Id)
+        public int GetPermissionRole(IPermissionRoleServerce permissionRole, int Id)
         {
             throw new NotImplementedException();
         }

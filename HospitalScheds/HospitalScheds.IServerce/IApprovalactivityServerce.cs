@@ -10,28 +10,28 @@ namespace HospitalScheds.IServerce
     /// <summary>
     /// 审批活动表
     /// </summary>
-    public interface IApprovalactivity
+    public interface IApprovalactivityServerce
     {
         /// <summary>
         /// 添加
         /// </summary>
         /// <param name="approvalactivity"></param>
         /// <returns></returns>
-        int Add(IApprovalactivity approvalactivity);
+        int Add(Approvalactivity approvalactivity);
 
         /// <summary>
         /// 显示
         /// </summary>
         /// <param name="Name"></param>
         /// <returns></returns>
-        List<IApprovalactivity> GetApprovalactivity(string Name = "");
+        List<Approvalactivity> GetApprovalactivity(string Name = "");
 
         /// <summary>
         /// 反填
         /// </summary>
         /// <param name="Id"></param>
         /// <returns></returns>
-        IApprovalactivity GetApprovalactivity(int Id);
+        Approvalactivity GetApprovalactivity(int Id);
 
         /// <summary>
         /// 修改
@@ -39,7 +39,7 @@ namespace HospitalScheds.IServerce
         /// <param name="approvalactivity"></param>
         /// <param name="Id"></param>
         /// <returns></returns>
-        int GetApprovalactivity(IApprovalactivity approvalactivity, int Id);
+        int GetApprovalactivity(Approvalactivity approvalactivity, int Id);
 
         /// <summary>
         /// 删除

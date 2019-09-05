@@ -7,7 +7,7 @@ using System.Data;
 
 namespace HospitalScheds.IServerce
 {
-    public  interface IUserRole
+    public  interface IUserRoleServerce
     {
 
         /// <summary>
@@ -15,21 +15,21 @@ namespace HospitalScheds.IServerce
         /// </summary>
         /// <param name="userRole"></param>
         /// <returns></returns>
-        int Add(IUserRole userRole);
+        int Add(UserRole userRole);
 
         /// <summary>
         /// 显示
         /// </summary>
         /// <param name="Name"></param>
         /// <returns></returns>
-        List<IUserRole> GetUserRole(string Name = "");
+        List<UserRole> GetUserRole(string Name = "");
 
         /// <summary>
         /// 反填
         /// </summary>
         /// <param name="Id"></param>
         /// <returns></returns>
-        IUserRole GetUserRole(int Id);
+        UserRole GetUserRole(int Id);
 
         /// <summary>
         /// 修改
@@ -37,7 +37,7 @@ namespace HospitalScheds.IServerce
         /// <param name="userRole"></param>
         /// <param name="Id"></param>
         /// <returns></returns>
-        int GetUserRole(IUserRole userRole, int Id);
+        int GetUserRole(UserRole userRole, int Id);
 
         /// <summary>
         /// 删除
