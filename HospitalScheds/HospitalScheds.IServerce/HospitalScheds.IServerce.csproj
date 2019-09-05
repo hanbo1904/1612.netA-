@@ -9,16 +9,4 @@
     <ProjectReference Include="..\HospitalScheds.Model\HospitalScheds.Model.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Reference Include="PagedList">
-      <HintPath>D:\学习\大一杂项\Dll文件夹\PagedList.dll</HintPath>
-    </Reference>
-    <Reference Include="PagedList.Mvc">
-      <HintPath>D:\学习\大一杂项\Dll文件夹\PagedList.Mvc.dll</HintPath>
-    </Reference>
-    <Reference Include="Webdiyer.MvcPager">
-      <HintPath>D:\学习\大一杂项\Dll文件夹\Webdiyer.MvcPager.dll</HintPath>
-    </Reference>
-  </ItemGroup>
-
 </Project>
