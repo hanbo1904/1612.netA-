@@ -16,7 +16,7 @@ namespace HospitalScheds.Serverce
         {
 
         }
-
+       
         public DbSet<UserInfo> UserInfolist { get; set; }
 
 
