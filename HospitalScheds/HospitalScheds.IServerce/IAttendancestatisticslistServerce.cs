@@ -4,8 +4,6 @@ using System.Text;
 
 using HospitalScheds.Model;
 using System.Data;
-using PagedList.Mvc;
-using Webdiyer.WebControls;
 namespace HospitalScheds.IServerce
 {
    public  interface IAttendancestatisticslistServerce
