@@ -4,6 +4,7 @@ using System.Text;
 
 using HospitalScheds.Model;
 using System.Data;
+
 namespace HospitalScheds.IServerce
 {
   public  interface ISpecialworkinghoursServerce
