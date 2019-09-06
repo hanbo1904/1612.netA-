@@ -2,7 +2,9 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-
+using HospitalScheds.Model;
+using HospitalScheds.IServerce;
+using HospitalScheds.Serverce;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
@@ -29,7 +31,7 @@ namespace HospitalScheds
         {
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
 
-
+            //services.AddScoped<IAnnouncementformServerce,AnnouncementformServerce>();
 
 
             //注册跨域服务，允许所有来源

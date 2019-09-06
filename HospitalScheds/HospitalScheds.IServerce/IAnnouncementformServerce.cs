@@ -45,7 +45,7 @@ namespace HospitalScheds.IServerce
         /// </summary>
         /// <param name="Id"></param>
         /// <returns></returns>
-        List<Announcementform> announcementform();
+        Announcementform Byid(int id);
 
     }
 }
