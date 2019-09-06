@@ -59,19 +59,12 @@ namespace HospitalScheds.Serverce
         /// </summary>
         public DbSet<Attendancestatisticssummary> Attendancestatisticssummary { get; set; }
 
-        /// <summary>
-        /// 
-        /// </summary>
-        public DbSet<BaseEntity> BaseEntity { get; set; }
 
         /// <summary>
         /// 人员排班
         /// </summary>
         public DbSet<Crewscheduling> Crewscheduling { get; set; }
    
-
-
-
 
         /// <summary>
         /// 部门表
