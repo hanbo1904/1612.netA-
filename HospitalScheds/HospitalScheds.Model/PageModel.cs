@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace HospitalScheds.Model
 {
-    public class PageModel<T>
+    public class PageModel<T> : BaseEntity
     {
         /// <summary>
         /// 分页数据集

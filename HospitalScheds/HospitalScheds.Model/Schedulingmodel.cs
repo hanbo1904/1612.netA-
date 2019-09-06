@@ -7,7 +7,7 @@ namespace HospitalScheds.Model
     /// <summary>
     /// 手术排班(护士)
     /// </summary>
-    public class Schedulingmodel
+    public class Schedulingmodel : BaseEntity
     {
         public int ID { get; set; }//ID
         public int Operation { get; set; }//手术间

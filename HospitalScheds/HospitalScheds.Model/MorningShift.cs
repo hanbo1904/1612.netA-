@@ -7,7 +7,7 @@ namespace HospitalScheds.Model
     /// <summary>
     /// 早班人员列表
     /// </summary>
-    public class MorningShift
+    public class MorningShift : BaseEntity
     {
         public int ID { get; set; }//ID
         public string Name { get; set; }//姓名

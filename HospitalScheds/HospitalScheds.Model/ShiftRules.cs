@@ -5,7 +5,7 @@ using System.Text;
 namespace HospitalScheds.Model
 {
     //班次规则表
-    public class ShiftRules
+    public class ShiftRules : BaseEntity
     {
         public int ID { get; set; }                  //ID
         public string ShiftScorise { get; set; }     //班次规则

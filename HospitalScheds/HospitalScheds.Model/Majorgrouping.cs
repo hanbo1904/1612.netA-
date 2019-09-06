@@ -7,7 +7,7 @@ namespace HospitalScheds.Model
     /// <summary>
     /// 专业分组设置
     /// </summary>
-    public class Majorgrouping
+    public class Majorgrouping : BaseEntity
     {
         public int Id { get; set; }                    //ID
         public string Professional { get; set; }       //专业组颜色

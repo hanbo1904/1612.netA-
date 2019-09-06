@@ -7,7 +7,7 @@ namespace HospitalScheds.Model
     /// <summary>
     /// 用户表
     /// </summary>
-   public class UserInfo
+   public class UserInfo : BaseEntity
     {
         public int Id { get; set; }//Id
         public string UserName { get; set; }//用户名

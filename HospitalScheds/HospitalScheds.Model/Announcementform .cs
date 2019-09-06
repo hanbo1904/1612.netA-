@@ -7,7 +7,7 @@ namespace HospitalScheds.Model
     /// <summary>
     /// 消息公布
     /// </summary>
-  public   class Announcementform
+  public   class Announcementform: BaseEntity
     {
         /// <summary>
         /// 主键ID

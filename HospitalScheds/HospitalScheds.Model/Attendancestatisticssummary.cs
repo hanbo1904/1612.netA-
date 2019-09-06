@@ -5,7 +5,7 @@ using System.Text;
 namespace HospitalScheds.Model
 {
     //考勤统计汇总
-    public class Attendancestatisticssummary
+    public class Attendancestatisticssummary : BaseEntity
     {
         public int ID { get; set; }                   //ID
         public string Personnel { get; set; }         //人员

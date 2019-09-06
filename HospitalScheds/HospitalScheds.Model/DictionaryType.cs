@@ -7,7 +7,7 @@ namespace HospitalScheds.Model
     /// <summary>
     /// 字典表
     /// </summary>
-   public class DictionaryType
+   public class DictionaryType : BaseEntity
     {
         public int Id { get; set; }//Id
         public int Did { get; set; }//Did
