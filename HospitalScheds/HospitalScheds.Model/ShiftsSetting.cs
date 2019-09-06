@@ -16,6 +16,7 @@ namespace HospitalScheds.Model
         public int IsPunch { get; set; }         //是否打卡
         public int ShiftType { get; set; }       //班次类型
         public int ShiftOrder { get; set; }      //班次顺序
+        
     }
 }
 

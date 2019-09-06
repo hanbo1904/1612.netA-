@@ -25,7 +25,7 @@ namespace HospitalScheds.IServerce
         /// </summary>
         /// <param name="Name"></param>
         /// <returns></returns>
-        List<ShiftsSetting> GetShiftsSetting(string Name = "");
+        PageModel<ShiftsSetting> GetShiftsSetting(string Name = "",int pageIndex = 1, int pageSize = 3);
 
         /// <summary>
         /// 反填

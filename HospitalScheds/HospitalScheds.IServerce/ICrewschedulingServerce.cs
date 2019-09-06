@@ -7,7 +7,7 @@ using HospitalScheds.Model;
 namespace HospitalScheds.IServerce
 {
     /// <summary>
-    /// 班次设置表
+    ///人员排班
     /// </summary>
     public interface ICrewschedulingServerce
     {
