@@ -12,6 +12,7 @@ namespace HospitalScheds.Serverce
     /// </summary>
     public class UserInfoServerce : IUserInfoServerce
     {
+        DataContext EF=new DataContext();
         /// <summary>
         /// 添加
         /// </summary>
@@ -19,6 +20,7 @@ namespace HospitalScheds.Serverce
         /// <returns></returns>
         public int Add(IUserInfoServerce userInfoServerce)
         {
+
             throw new NotImplementedException();
         }
 
