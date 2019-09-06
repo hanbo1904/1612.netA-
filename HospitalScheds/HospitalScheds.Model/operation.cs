@@ -7,7 +7,7 @@ namespace HospitalScheds.Model
     /// <summary>
     /// 手术排班
     /// </summary>
-    public class operation
+    public class operation 
     {
         public int ID { get; set; }//ID
         public string operationroom { get; set; }//手术间

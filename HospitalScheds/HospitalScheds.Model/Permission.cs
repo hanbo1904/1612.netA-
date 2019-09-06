@@ -7,7 +7,7 @@ namespace HospitalScheds.Model
     /// <summary>
     /// Permission 权限表
     /// </summary>
-    public class Permission
+    public class Permission 
     {
         public int Id { get; set; }//id
         public string Pname { get; set; }//权限名称

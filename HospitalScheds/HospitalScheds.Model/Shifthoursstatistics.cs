@@ -7,7 +7,7 @@ namespace HospitalScheds.Model
     /// <summary>
     /// 班次工时统计
     /// </summary>
-    public class Shifthoursstatistics
+    public class Shifthoursstatistics 
     {
         public int ID { get; set; }//ID
         public string personnel { get; set; }//人员

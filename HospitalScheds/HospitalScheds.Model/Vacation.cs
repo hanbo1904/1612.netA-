@@ -5,7 +5,7 @@ using System.Text;
 namespace HospitalScheds.Model
 {
     //假期申请
-    public class Vacation
+    public class Vacation 
     {
         public int Id { get; set; }          //ID
         public int Day { get; set; }         //每日申请

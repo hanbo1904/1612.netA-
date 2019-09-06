@@ -7,7 +7,7 @@ namespace HospitalScheds.Model
     /// <summary>
     /// 审批活动表
     /// </summary>
-    public class Approvalactivity
+    public class Approvalactivity 
     {
         public int Id { get; set; }//Id
         public int ProcessID { get; set; }//审批流程Id

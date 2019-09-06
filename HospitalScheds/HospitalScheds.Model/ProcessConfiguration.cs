@@ -7,7 +7,7 @@ namespace HospitalScheds.Model
     /// <summary>
     /// 审批流程配置表
     /// </summary>
-    public class ProcessConfiguration
+    public class ProcessConfiguration 
     {
         public int Id { get; set; }//Id
         public int ProcessID { get; set; }//审批流程Id

@@ -7,7 +7,7 @@ namespace HospitalScheds.Model
     /// <summary>
     /// 特殊工时
     /// </summary>
-    public class Specialworkinghours
+    public class Specialworkinghours 
     {
         public int ID { get; set; }//ID
         public string Personnel { get; set; }//人员

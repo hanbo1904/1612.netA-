@@ -7,7 +7,7 @@ namespace HospitalScheds.Model
     /// <summary>
     /// RoleInfo 角色表
     /// </summary>
-    public class Role
+    public class Role 
     {
         public int Id { get; set; }//Id
         public string Rname { get; set; }//角色名称

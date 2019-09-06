@@ -5,7 +5,7 @@ using System.Text;
 namespace HospitalScheds.Model 
 {
     //排班规则设置表
-    public class SchedulingRules
+    public class SchedulingRules 
     {
         public int ID { get; set; }                   //ID
         public int DateTimesOne { get; set; }         //时间1

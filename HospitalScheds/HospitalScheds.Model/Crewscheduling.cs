@@ -7,7 +7,7 @@ namespace HospitalScheds.Model
     /// <summary>
     /// 人员排班
     /// </summary>
-    public class Crewscheduling
+    public class Crewscheduling 
     {
         public int ID { get; set; }//ID
         public string CrewsName { get; set; }//姓名
