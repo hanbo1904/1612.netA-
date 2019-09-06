@@ -5,7 +5,7 @@ using System.Text;
 namespace HospitalScheds.Model
 {
     //班次设置表
-    public class ShiftsSetting : BaseEntity
+    public class ShiftsSetting 
     {
         public int Id { get; set; }              //ID
         public string ColorShift { get; set; }      //班次颜色

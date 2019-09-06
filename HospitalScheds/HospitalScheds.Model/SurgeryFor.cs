@@ -7,7 +7,7 @@ namespace HospitalScheds.Model
     /// <summary>
     /// 手术申请表
     /// </summary>
-    public class SurgeryFor : BaseEntity
+    public class SurgeryFor 
     {
         public int ID { get; set; }//ID
         public int Setnumber { get; set; }//台次

@@ -5,7 +5,7 @@ using System.Text;
 namespace HospitalScheds.Model
 {
     //年假申请设置
-    public class AnnualVacation : BaseEntity
+    public class AnnualVacation 
     {
         public int Id { get; set; }                    //主键id
         public DateTime Being { get; set; }            //开始时间

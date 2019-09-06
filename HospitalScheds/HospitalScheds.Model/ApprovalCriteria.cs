@@ -7,7 +7,7 @@ namespace HospitalScheds.Model
     /// <summary>
     /// 审批条件
     /// </summary>
-    public class ApprovalCriteria : BaseEntity
+    public class ApprovalCriteria 
     {
         public int Id { get; set; }//Id
         public int YeId { get; set; }//业务Id

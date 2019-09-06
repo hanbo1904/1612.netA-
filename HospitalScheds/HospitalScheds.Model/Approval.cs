@@ -7,7 +7,7 @@ namespace HospitalScheds.Model
     /// <summary>
     /// 审批表
     /// </summary>
-    public class Approval : BaseEntity
+    public class Approval 
     {  
         /// <summary>
         /// ID
