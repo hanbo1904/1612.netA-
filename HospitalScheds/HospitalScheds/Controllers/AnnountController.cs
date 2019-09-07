@@ -55,17 +55,17 @@ namespace HospitalScheds.Controllers
         }
 
 
-        /// <summary>
-        /// 反填数据
-        /// </summary>
-        /// <param name="announcementform"></param>
-        /// <returns></returns> 
-        [HttpGet]
-        public Announcementform Byid(int id)
-        {
-            Announcementform ann = _announcementformServerce.Byid(id);
-            return ann;
-        }
+        ///// <summary>
+        ///// 反填数据
+        ///// </summary>
+        ///// <param name="announcementform"></param>
+        ///// <returns></returns> 
+        //[HttpGet]
+        //public Announcementform Byid(int id)
+        //{
+        //    Announcementform ann = _announcementformServerce.Byid(id);
+        //    return ann;
+        //}
 
 
         /// <summary>

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Text;
 
 namespace HospitalScheds.Model
@@ -9,10 +10,11 @@ namespace HospitalScheds.Model
     /// </summary>
   public   class Announcementform
     {
+        [Key]
         /// <summary>
         /// 主键ID
         /// </summary>
-        public int NID { get; set; }
+        public int ID { get; set; }
 
         /// <summary>
         /// 发布内容

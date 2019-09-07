@@ -1,0 +1,90 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <script src="~/Scripts/vue.js"></script>
+    <script src="~/Scripts/vue-resource.js"></script>
+    <script src="~/Scripts/jquery-3.3.1.js"></script>
+    <script src="~/Scripts/axios.js"></script>
+    <link href="~/Content/bootstrap.css" rel="stylesheet" />
+    <script src="~/Scripts/bootstrap.js"></script>
+    <title>Add</title>
+</head>
+<body>
+    <div>
+        <h2>消息通知</h2>
+       
+        <button class="btn btn-primary btn-2g" data-toggle="modal" data-target="#myModal">添加</button>
+    </div>
+    <div>
+        <h4 class="modal-title" id="myModalLabel">用户添加</h4>
+    </div>
+    <div id="AccountAdd" class="modal-body">
+        <table class="table table-hover">
+            <tr>
+                <td>序号</td>
+                <td><input type="text" v-model="s.ID" /></td>
+            </tr>
+            <tr>
+                <td>发布内容</td>
+                <td><input type="text" v-model="s.ReleaseContent" /></td>
+            </tr>
+            <tr>
+                <td>状态</td>
+                <td><input type="text" v-model="s.Status" /></td>
+            </tr>
+            <tr>
+                <td>发布人员</td>
+                <td><input type="text" v-model="s.ReleasePeople" /></td>
+            </tr>
+            <tr>
+                <td>发布时间</td>
+                <td><input type="text" v-model="s.ReleaseTime" /></td>
+            </tr>
+            <tr>
+                <td>读取状态</td>
+                <td><input type="text" v-model="s.ReadStatus" /></td>
+            </tr>
+            <tr>
+                <td>
+                    <button v-on:click="AddAccount()"> 添加</button>
+                    <button type="button" data-dismiss="modal">
+                        关闭
+                    </button>
+                </td>
+            </tr>
+        </table>
+    </div>
+</body>
+</html>
+<script>
+    var vm = new Vue({
+        el: "#AccountAdd",
+        type:"post",
+        data: {
+            //NID: "",
+            //ReleaseContent: "",
+            //Status: "",111111111
+            //ReleasePeople: "",
+            //ReleaseTime: "",
+            //ReadStatus: ""
+            s: {}
+        },
+        methods: {
+            AddAccount: function () {
+                axios.post('http://localhost:61163/api/Annount/Add', this.s).then((response) => { alert('添加成功'); location.reload() }).catch(function (response) { alert('失败') })
+
+
+            }
+
+
+        }
+
+    })
+</script>

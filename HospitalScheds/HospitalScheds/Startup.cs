@@ -30,8 +30,8 @@ namespace HospitalScheds
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
-
-            //services.AddScoped<IAnnouncementformServerce,AnnouncementformServerce>();
+            //消息通知
+            services.AddScoped<IAnnouncementformServerce, AnnouncementformServerce>();
 
 
             //注册跨域服务，允许所有来源

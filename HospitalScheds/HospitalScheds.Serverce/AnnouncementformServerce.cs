@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace HospitalScheds.Serverce
 {
-    public class AnnouncementformServerce
+    public class AnnouncementformServerce:IAnnouncementformServerce
     {
         DataContext db = new DataContext();
         /// <summary>
@@ -79,7 +79,7 @@ namespace HospitalScheds.Serverce
         /// <param name="announcementform"></param>
         /// <param name="id"></param>
         /// <returns></returns>
-        public int Update(Announcementform announcementform)
+        public int Update(Announcementform announcementform,int id)
         {
             db.Entry(announcementform).State = EntityState.Modified;
             int i = db.SaveChanges();
