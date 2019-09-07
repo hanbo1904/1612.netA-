@@ -25,7 +25,7 @@ namespace HospitalScheds.IServerce
         /// </summary>
         /// <param name="Name"></param>
         /// <returns></returns>
-        List<SolitaireSet> GetSolitaireSet(string Name = "");
+        PageModel<SolitaireSet>GetSolitaireSet(string Name = "", int pageIndex = 0, int pageSize = 3);
 
         /// <summary>
         /// 反填
@@ -47,6 +47,6 @@ namespace HospitalScheds.IServerce
         /// </summary>
         /// <param name="Id"></param>
         /// <returns></returns>
-        int DelSolitaireSet(int Id);
+        int DelSolitaire(int Id);
     }
 }

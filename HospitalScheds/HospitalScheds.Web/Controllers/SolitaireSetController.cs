@@ -3,38 +3,33 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+
 using HospitalScheds.Model;
 using HospitalScheds.IServerce;
 using HospitalScheds.Serverce;
+
 namespace HospitalScheds.Web.Controllers
 {
-    public class AnnountController : Controller
+    public class SolitaireSetController : Controller
     {
-        /// <summary>
-        /// 定义私有变量
-        /// </summary>
-        private readonly IAnnouncementformServerce announcementformServerce;
-        /// <summary>
-        /// 构造函数注入
-        /// </summary>
-        /// <param name="_announcementformServerce"></param>
-        public AnnountController(IAnnouncementformServerce _announcementformServerce)
+        public ISolitaireSetServerce _solitaireSetServerce;
+        public SolitaireSetController(ISolitaireSetServerce solitaireSetServerce)
         {
-            _announcementformServerce = announcementformServerce;
+            _solitaireSetServerce = solitaireSetServerce;
         }
         public IActionResult Index()
         {
             return View();
         }
+
         public IActionResult Add()
         {
             return View();
         }
-       
+
         public IActionResult Update()
         {
             return View();
         }
-        
     }
 }
