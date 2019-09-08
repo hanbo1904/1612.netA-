@@ -9,6 +9,16 @@
 <head>
     <meta name="viewport" content="width=device-width" />
     <title>Index</title>
+    <script src="~/lib/vuE/vue.js"></script>
+
+    <script src="~/lib/vuE/vue-resource.js"></script>
+    <script src="~/lib/jquery/dist/jquery.js"></script>
+
+
+    <script src="~/lib/vuE/axios.js"></script>
+    <link href="~/lib/bootstrap/dist/css/bootstrap.css" rel="stylesheet" />
+
+    <script src="~/lib/bootstrap/dist/js/bootstrap.js"></script>
 </head>
 <body>
     <div>
@@ -111,7 +121,11 @@
                         }
                     })
                 }
-            },            
+            },
+            Upt(ID) {
+                $("#myModal").modal();
+                $("#Id").val(ID);
+            }
         },
     })
     //显示

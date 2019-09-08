@@ -35,7 +35,7 @@ namespace HospitalScheds.Controllers
         /// <param name="announcementform"></param>
         /// <returns></returns>
         [HttpPost]
-        public int Add(Announcementform announcementform)
+        public int Add([FromBody]Announcementform announcementform)
         {
             int i = _announcementformServerce.Add(announcementform);
             return i;
@@ -55,17 +55,17 @@ namespace HospitalScheds.Controllers
         }
 
 
-        ///// <summary>
-        ///// 反填数据
-        ///// </summary>
-        ///// <param name="announcementform"></param>
-        ///// <returns></returns> 
-        //[HttpGet]
-        //public Announcementform Byid(int id)
-        //{
-        //    Announcementform ann = _announcementformServerce.Byid(id);
-        //    return ann;
-        //}
+        /// <summary>
+        /// 反填数据
+        /// </summary>
+        /// <param name="announcementform"></param>
+        /// <returns></returns> 
+        [HttpGet]
+        public Announcementform Byid(int id)
+        {
+            Announcementform ann = _announcementformServerce.Byid(id);
+            return ann;
+        }
 
 
         /// <summary>
@@ -73,7 +73,7 @@ namespace HospitalScheds.Controllers
         /// </summary>
         /// <param name="announcementform"></param>
         /// <returns></returns> 
-        [HttpPost]
+        [HttpDelete]
         public int Delete(int id)
         {
             int i = _announcementformServerce.Delete(id);
@@ -86,10 +86,10 @@ namespace HospitalScheds.Controllers
         /// </summary>
         /// <param name="announcementform"></param>
         /// <returns></returns> 
-        [HttpPost]
-        public int Update(Announcementform announcementform,int id)
+        [HttpPut]
+        public int Update(Announcementform announcementform, int id)
         {
-            int i = _announcementformServerce.Update(announcementform,id);
+            int i = _announcementformServerce.Update(announcementform, id);
             return i;
         }
     }
