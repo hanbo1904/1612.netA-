@@ -3,37 +3,39 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+
 using HospitalScheds.Model;
 using HospitalScheds.IServerce;
 namespace HospitalScheds.Web.Controllers
 {
-    public class AnnountController : Controller
+    public class ShiftsSettingController : Controller
     {
         /// <summary>
         /// 定义私有变量
         /// </summary>
-        private readonly IAnnouncementformServerce announcementformServerce;
+        private readonly IAnnouncementformServerce shiftsSettingServerce;
+
         /// <summary>
         /// 构造函数注入
         /// </summary>
-        /// <param name="_announcementformServerce"></param>
-        public AnnountController(IAnnouncementformServerce _announcementformServerce)
+        /// <param name="_shiftsSettingServerce"></param>
+        public ShiftsSettingController(IAnnouncementformServerce _shiftsSettingServerce)
         {
-            _announcementformServerce = announcementformServerce;
+            _shiftsSettingServerce = shiftsSettingServerce;
         }
         public IActionResult Index()
         {
             return View();
         }
+
         public IActionResult Add()
         {
             return View();
         }
-       
+
         public IActionResult Update()
         {
             return View();
         }
-        
     }
 }
