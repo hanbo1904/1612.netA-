@@ -19,26 +19,26 @@ namespace HospitalScheds.Model
         /// <summary>
         /// 发布内容
         /// </summary>
-        public string ReleaseContent { get; set; }
+        public string releasecontent { get; set; }
 
         /// <summary>
         /// 状态
         /// </summary>
-        public int Status { get; set; }
+        public int status { get; set; }
 
         /// <summary>
         /// 发布人员
         /// </summary>
-        public string ReleasePeople { get; set; }
+        public string releasepeople { get; set; }
 
         /// <summary>
         /// 发布时间
         /// </summary>
-        public DateTime ReleaseTime { get; set; }
+        public DateTime releasetime { get; set; } 
 
         /// <summary>
         /// 读取状态
         /// </summary>
-        public int ReadStatus { get; set; }
+        public int readstatus { get; set; }
     }
 }

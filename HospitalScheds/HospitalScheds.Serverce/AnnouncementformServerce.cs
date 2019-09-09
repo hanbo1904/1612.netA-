@@ -38,9 +38,9 @@ namespace HospitalScheds.Serverce
                 Name = "";
             }
             PageModel<Announcementform> pagemodel = new PageModel<Announcementform>();
-            int totalcount = db.Announcementform.Where(m => m.ReleaseContent.Contains(Name)).ToList().Count();
+            int totalcount = db.Announcementform.Where(m => m.releasecontent.Contains(Name)).ToList().Count();
             //分页
-            var list = db.Announcementform.Where(m => m.ReleaseContent.Contains(Name)).ToList().Skip((pageIndex - 1) * pageSize).Take(pageSize).ToList();
+            var list = db.Announcementform.Where(m => m.releasecontent.Contains(Name)).ToList().Skip((pageIndex - 1) * pageSize).Take(pageSize).ToList();
             pagemodel.TotalCount = totalcount;
             pagemodel.Data = list;
             return pagemodel;

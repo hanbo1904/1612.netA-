@@ -6,6 +6,10 @@ using Microsoft.AspNetCore.Mvc;
 using HospitalScheds.Model;
 using HospitalScheds.IServerce;
 using HospitalScheds.Serverce;
+using HospitalScheds.Common;
+using System.Net.Http;
+using System.Net.Http.Headers;
+
 namespace HospitalScheds.Web.Controllers
 {
     public class AnnountController : Controller
@@ -15,6 +19,16 @@ namespace HospitalScheds.Web.Controllers
         {
             return View();
         }
+
+
+        public JsonResult Adds(Announcementform announcementform)   
+        {
+            string jsonm = Newtonsoft.Json.JsonConvert.SerializeObject(announcementform);
+            var result = HelperHttpClient.GetAll("post", "/api/annount", jsonm);
+            return Json(result);
+        }
+
+
         public IActionResult Add()
         {
             return View();

@@ -5,6 +5,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="System.Net.Http" Version="4.3.4" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\HospitalScheds.Common\HospitalScheds.Common.csproj" />
     <ProjectReference Include="..\HospitalScheds.Model\HospitalScheds.Model.csproj" />
   </ItemGroup>

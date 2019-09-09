@@ -22,7 +22,7 @@
 </head>
 <body>
     <div>
-        <h2>消息通知</h2><input id="ReleaseContent" type="text" placeholder="请输入名称" />
+        <h2>消息通知</h2><input id="releasecontent" type="text" placeholder="请输入名称" />
         <button id="Button1" class="btn btn-primary btn-2g" onclick="getContent()">查询</button>
         <button class="btn btn-primary btn-2g" data-toggle="modal" data-target="#myModal">添加</button>
     </div>
@@ -37,27 +37,24 @@
                 <div id="AccountAdd" class="modal-body">
                     <table class="table table-hover">
                         <tr>
-                            <td><input type="hidden" id="Id" /></td>
-                        </tr>
-                        <tr>
                             <td>发布内容</td>
-                            <td><input type="text" v-model="s.ReleaseContent" /></td>
+                            <td><input type="text" v-model="releasecontent" /></td>
                         </tr>
                         <tr>
                             <td>状态</td>
-                            <td><input type="text" v-model="s.Status" /></td>
+                            <td><input type="text" v-model="status" /></td>
                         </tr>
                         <tr>
                             <td>发布人员</td>
-                            <td><input type="text" v-model="s.ReleasePeople" /></td>
+                            <td><input type="text" v-model="releasepeople" /></td>
                         </tr>
                         <tr>
                             <td>发布时间</td>
-                            <td><input type="text" v-model="s.ReleaseTime" /></td>
+                            <td><input type="text" v-model="releasetime" value="2019-9-9" /></td>
                         </tr>
                         <tr>
                             <td>读取状态</td>
-                            <td><input type="text" v-model="s.ReadStatus" /></td>
+                            <td><input type="text" v-model="readstatus" /></td>
                         </tr>
                         <tr>
                             <td>
@@ -66,7 +63,6 @@
                                     关闭
                                 </button>
                             </td>
-                            <td> <button v-on:click="Save()"> 修改</button></td>
                         </tr>
                     </table>
                 </div>
@@ -85,7 +81,7 @@
             </tr>
             <tr v-for="item in Announlist" :key="item.ID">
                 <td>{{item.ID}}</td>
-                <td>{{item.ReleaseContent}}</td>
+                <td>{{item.releasecontent}}</td>
                 <td>{{item.Status}}</td>
                 <td>{{item.ReleasePeople}}</td>
                 <td>{{item.ReleaseTime}}</td>
@@ -141,35 +137,65 @@
             },
         })
     })
-    //添加和修改
+
+
+
     var vm = new Vue({
         el: "#AccountAdd",
         type: "post",
         data: {
-            //NID: "",
-            //ReleaseContent: "",
-            //Status: "",111111111
-            //ReleasePeople: "",
-            //ReleaseTime: "",
-            //ReadStatus: ""
-            s: {}
+            releasecontent: "",
+            status: "",
+            releasepeople: "",
+            releasetime: "",
+            readstatus: ""
         },
         methods: {
-            //添加
+
             AddAccount: function () {
-                axios.post('http://localhost:61163/api/Annount/Add', this.s).then((response) => { alert('添加成功'); location.reload() }).catch(function (response) { alert('失败') })
-            },
-            //修改
-            Save: function () {
-                var id = $("#Id").val();
-                vm.s.Id = id;
-                alert(id)
 
-                axios.post('http://localhost:61163/api/Annount/Update', this.s).then((response) => { alert('修改成功'); }).catch(function (response) { alert('修改失败') })
+                var params = new URLSearchParams();
+                params.append("releasecontent", this.releasecontent);
+                params.append("status", this.status);
+                params.append("releasepeople", this.releasepeople);
+                params.append("releasetime", this.releasetime);
+                params.append("readstatus", this.readstatus);
 
-                location.reload()
+                //axios.post('http://localhost:61163/api/Annount/Add', params).then((response) => { alert('添加成功'); location.reload() }).catch(function (response) { alert('失败') })
 
-            },
+                axios.post('/Annount/Adds', params).then((response) => { alert('添加成功'); location.reload() }).catch(function (response) { alert('失败') })
+            }
         }
     })
+    //添加和修改
+    //var vm = new Vue({
+    //    el: "#AccountAdd",
+    //    type: "post",
+    //    data: {
+    //        //NID: "",
+    //        //releasecontent: "",
+    //        //Status: "",111111111
+    //        //ReleasePeople: "",
+    //        //ReleaseTime: "",
+    //        //ReadStatus: ""
+    //        s: {}
+    //    },
+    //    methods: {
+    //        //添加
+    //        AddAccount: function () {
+    //            axios.post('http://localhost:61163/api/Annount/Add', this.s).then((response) => { alert('添加成功'); location.reload() }).catch(function (response) { alert('失败') })
+    //        },
+    //        //修改
+    //        Save: function () {
+    //            var id = $("#Id").val();
+    //            vm.s.Id = id;
+    //            alert(id)
+
+    //            axios.post('http://localhost:61163/api/Annount/Update', this.s).then((response) => { alert('修改成功'); }).catch(function (response) { alert('修改失败') })
+
+    //            location.reload()
+
+    //        },
+    //    }
+    //})
 </script>
