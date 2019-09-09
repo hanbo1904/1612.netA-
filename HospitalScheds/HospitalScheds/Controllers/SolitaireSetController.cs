@@ -3,31 +3,30 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+
 using HospitalScheds.Model;
 using HospitalScheds.IServerce;
 using HospitalScheds.Serverce;
+
 namespace HospitalScheds.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class AnnountController : Controller
+    public class SolitaireSetController : Controller
     {
-
         /// <summary>
         /// 定义私有变量
         /// </summary>
-        private IAnnouncementformServerce _announcementformServerce;
-
+        public ISolitaireSetServerce _solitaireSetServerce;
 
         /// <summary>
         /// 构造函数注入
         /// </summary>
         /// <param name="organization"></param>
-        public AnnountController(IAnnouncementformServerce announcementformServerce)
+        public SolitaireSetController(ISolitaireSetServerce solitaireSetServerce)
         {
-            _announcementformServerce = announcementformServerce;
+            _solitaireSetServerce = solitaireSetServerce;
         }
-
 
         /// <summary>
         /// 添加
@@ -35,9 +34,9 @@ namespace HospitalScheds.Controllers
         /// <param name="announcementform"></param>
         /// <returns></returns>
         [HttpPost]
-        public int Add([FromBody]Announcementform announcementform)
+        public int Add(SolitaireSet solitaireSet)
         {
-            int i = _announcementformServerce.Add(announcementform);
+            int i = _solitaireSetServerce.Add(solitaireSet);
             return i;
         }
 
@@ -48,9 +47,9 @@ namespace HospitalScheds.Controllers
         /// <param name="announcementform"></param> 
         /// <returns></returns>
         [HttpGet]
-        public PageModel<Announcementform> Index(string Name = "", int pageIndex = 0, int pageSize = 3)
+        public PageModel<SolitaireSet> Index(string Name = "", int pageIndex = 0, int pageSize = 3)
         {
-            var list = _announcementformServerce.announcementform(Name, pageIndex, pageSize);
+            var list = _solitaireSetServerce.GetSolitaireSet(Name, pageIndex, pageSize);
             return list;
         }
 
@@ -61,9 +60,9 @@ namespace HospitalScheds.Controllers
         /// <param name="announcementform"></param>
         /// <returns></returns> 
         [HttpGet]
-        public Announcementform Byid(int id)
+        public SolitaireSet Byid(int id)
         {
-            Announcementform ann = _announcementformServerce.Byid(id);
+            SolitaireSet ann = _solitaireSetServerce.GetSolitaireSet(id);
             return ann;
         }
 
@@ -73,10 +72,10 @@ namespace HospitalScheds.Controllers
         /// </summary>
         /// <param name="announcementform"></param>
         /// <returns></returns> 
-        [HttpDelete]
+        [HttpPost]
         public int Delete(int id)
         {
-            int i = _announcementformServerce.Delete(id);
+            int i = _solitaireSetServerce.DelSolitaire(id);
             return i;
         }
 
@@ -86,10 +85,10 @@ namespace HospitalScheds.Controllers
         /// </summary>
         /// <param name="announcementform"></param>
         /// <returns></returns> 
-        [HttpPut]
-        public int Update(Announcementform announcementform, int id)
+        [HttpPost]
+        public int Update(SolitaireSet solitaireSet, int id)
         {
-            int i = _announcementformServerce.Update(announcementform, id);
+            int i = _solitaireSetServerce.GetSolitaireSet(solitaireSet, id);
             return i;
         }
     }

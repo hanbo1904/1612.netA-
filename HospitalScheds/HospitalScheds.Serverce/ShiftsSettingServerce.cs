@@ -8,7 +8,7 @@ using HospitalScheds.Model;
 using Microsoft.EntityFrameworkCore;
 namespace HospitalScheds.Serverce
 {
-    public class ShiftsSettingServerce : IShiftsSettingServerce
+    public class ShiftsSettingServerce 
     {
         DataContext db = new DataContext();
 
