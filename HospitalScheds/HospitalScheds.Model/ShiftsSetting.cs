@@ -8,6 +8,7 @@ namespace HospitalScheds.Model
     public class ShiftsSetting 
     {
         public int Id { get; set; }              //ID
+        public string Name { get; set; }
         public string ColorShift { get; set; }      //班次颜色
         public DateTime OfficeHours { get; set; }     //班时间 D  mteimeTt
         public DateTime ClosingTime { get; set; }     //下班时间
