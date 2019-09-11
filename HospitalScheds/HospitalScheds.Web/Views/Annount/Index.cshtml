@@ -87,14 +87,15 @@
                 <td>{{item.releasepeople}}</td>
                 <td>{{item.releasetime}}</td>
                 <td>{{item.readstatus}}</td>
-                <td><a href="#" class="btn btn-primary btn-2g" v-on:click="Delete(item.id)">删除</a></td>
-                <td> <button class="btn btn-primary btn-2g" data-toggle="modal" v-on:click="Upt(item.id)">修改</button></td>
+                <td><a href="#" class="btn btn-primary btn-2g" v-on:click="Delete(id)">删除</a></td>
+                <td> <button class="btn btn-primary btn-2g" data-toggle="modal" v-on:click="Upt(id)">修改</button></td>
             </tr>
         </table>
     </div>
 </body>
 </html>
 <script>
+    //显示
     var vm = new Vue({
         el: "#myView",
         data: {
@@ -117,54 +118,40 @@
         }
     })
 
+    //删除
+    var myModel = { Announlist: [] };
+    var myViewModel = new Vue({
+        el: '#myView',
+        data: myModel,
+        methods:
+        {
+            Delete(id) {
+                if (confirm("确认删除吗？")) {
+                    alert(id)
+                    this.$http.get('http://localhost:61163/api/Annount/Delete/?ID=' + id).then(result => {
+                        var result = result.body;
+                        if (result.code == 200) {
 
+                            alert('删除失败')
+                        }
+                        else {
+                            alert('删除成功')
 
-    ////删除
-    //var myModel = { Announlist: [] };
-    //var myViewModel = new Vue({
-    //    el: '#myView',
-    //    data: myModel,
-    //    methods:
-    //    {
-    //        Delete(ID) {
-    //            if (confirm("确认删除吗？")) {
-    //                alert(ID)
-    //                this.$http.get('http://localhost:61163/api/Annount/Delete/?ID=' + ID).then(result => {
-    //                    var result = result.body;
-    //                    if (result.code == 200) {
+                            location.reload()
+                        }
+                    })
+                }
+            },
+            Upt(ID) {
+                $("#myModal").modal();
+                $("#Id").val(ID);
+            }
+        },
+    })
 
-    //                        alert('删除失败')
-    //                    }
-    //                    else {
-    //                        alert('删除成功')
-
-    //                        location.reload()
-    //                    }
-    //                })
-    //            }
-    //        },
-    //        Upt(ID) {
-    //            $("#myModal").modal();
-    //            $("#Id").val(ID);
-    //        }
-    //    },
-    //})
-    ////显示
-    //$(function () {
-    //    $.ajax({
-    //        url: "/Annount/Index",
-    //        type: "get",
-    //        dataType: 'json',
-    //        success: function (result) {
-    //            myView.Announlist = result
-    //        },
-    //        error: function () {
-    //        },
-    //    })
-    //})
     
 
-
+    //添加和修改
     var vm = new Vue({
         el: "#AccountAdd",
         type: "post",
@@ -198,7 +185,7 @@
                 params.append("releasepeople", this.releasepeople);
                 params.append("releasetime", this.releasetime);
                 params.append("readstatus", this.readstatus);
-                axios.put('/Annount/Adds', params).then((response) => { alert('添加成功'); location.reload() }).catch(function (response) { alert('失败') })
+                axios.put('/Annount/Adds', params).then((response) => { alert('修改成功'); location.reload() }).catch(function (response) { alert('失败') })
 
 
 
@@ -206,35 +193,5 @@
             }
         }
     })
-    //添加和修改
-    //var vm = new Vue({
-    //    el: "#AccountAdd",
-    //    type: "post",
-    //    data: {
-    //        //NID: "",
-    //        //releasecontent: "",
-    //        //Status: "",111111111
-    //        //ReleasePeople: "",
-    //        //ReleaseTime: "",
-    //        //ReadStatus: ""
-    //        s: {}
-    //    },
-    //    methods: {
-    //        //添加
-    //        AddAccount: function () {
-    //            axios.post('http://localhost:61163/api/Annount/Add', this.s).then((response) => { alert('添加成功'); location.reload() }).catch(function (response) { alert('失败') })
-    //        },
-    //        //修改
-    //        Save: function () {
-    //            var id = $("#Id").val();
-    //            vm.s.Id = id;
-    //            alert(id)
-
-    //            axios.post('http://localhost:61163/api/Annount/Update', this.s).then((response) => { alert('修改成功'); }).catch(function (response) { alert('修改失败') })
-
-    //            location.reload()
-
-    //        },
-    //    }
-    //})
+    
 </script>
