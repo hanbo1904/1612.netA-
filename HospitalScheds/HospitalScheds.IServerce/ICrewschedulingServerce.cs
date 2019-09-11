@@ -15,7 +15,7 @@ namespace HospitalScheds.IServerce
         /// 显示
         /// </summary>
         /// <returns></returns>
-        PageModel<Crewscheduling> GetCrewscheduling(int pageIndex = 1, int pageSize = 3);
+        PageModel<Crewscheduling> GetCrewscheduling(int pageIndex = 1, int pageSize = 3,string CrewsName="");
         /// <summary>
         /// 添加
         /// </summary>

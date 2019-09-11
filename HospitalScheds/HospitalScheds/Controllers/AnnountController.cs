@@ -74,9 +74,9 @@ namespace HospitalScheds.Controllers
         /// <param name="announcementform"></param>
         /// <returns></returns> 
         [HttpDelete]
-        public int Delete(int id)
+        public int Delete(int ids)
         {
-            int i = _announcementformServerce.Delete(id);
+            int i = _announcementformServerce.Delete(ids);
             return i;
         }
 
