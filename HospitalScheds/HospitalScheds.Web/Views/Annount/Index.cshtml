@@ -87,7 +87,13 @@
                 <td>{{item.releasepeople}}</td>
                 <td>{{item.releasetime}}</td>
                 <td>{{item.readstatus}}</td>
-                <td><a href="#" class="btn btn-primary btn-2g" v-on:click="Delete(id)">删除</a></td>
+                <td>
+                    <div v-if="item.id!=''">
+                        <a href="#" v-on:click="deleteAnnount(item.id)">删除</a>
+                    </div>
+
+
+                </td>
                 <td> <button class="btn btn-primary btn-2g" data-toggle="modal" v-on:click="Upt(id)">修改</button></td>
             </tr>
         </table>
@@ -107,47 +113,60 @@
         methods: {
             pagehandler: function () {
                 axios.get("http://localhost:61163/api/Annount").then((response) => {
-                    //console.table(response.data)
                     this.Announlist = []
                     for (var i = 0; i < response.data.length; i++) {
                         this.Announlist.push(response.data[i]);
                     }
                     console.log(this.Announlist)
                 });
-            }
-        }
-    })
-
-    //删除
-    var myModel = { Announlist: [] };
-    var myViewModel = new Vue({
-        el: '#myView',
-        data: myModel,
-        methods:
-        {
-            Delete(id) {
-                if (confirm("确认删除吗？")) {
-                    alert(id)
-                    this.$http.get('http://localhost:61163/api/Annount/Delete/?ID=' + id).then(result => {
-                        var result = result.body;
-                        if (result.code == 200) {
-
-                            alert('删除失败')
-                        }
-                        else {
-                            alert('删除成功')
-
-                            location.reload()
-                        }
-                    })
-                }
             },
-            Upt(ID) {
-                $("#myModal").modal();
-                $("#Id").val(ID);
-            }
-        },
-    })
+
+            deleteAnnount: function (id) {
+                axios.delete("/Annount/Delete?ids=" + id).then((response) => {
+                    if (response.data > 0) {
+                        this.pagehandler();
+                    }
+                },
+                    (response) => {
+                        alert(response.status)
+                    }
+                ).catch(function (response) {
+                    alert(response);
+                });
+            },
+        }
+    });
+
+    ////删除
+    //var myModel = { Announlist: [] };
+    //var myViewModel = new Vue({
+    //    el: '#myView',
+    //    data: myModel,
+    //    methods:
+    //    {
+    //        Delete(id) {
+    //            if (confirm("确认删除吗？")) {
+    //                alert(id)
+    //                this.$http.get('http://localhost:61163/api/Annount/Delete/?ID=' + id).then(result => {
+    //                    var result = result.body;
+    //                    if (result.code == 200) {
+
+    //                        alert('删除失败')
+    //                    }
+    //                    else {
+    //                        alert('删除成功')
+
+    //                        location.reload()
+    //                    }
+    //                })
+    //            }
+    //        },
+    //        Upt(ID) {
+    //            $("#myModal").modal();
+    //            $("#Id").val(ID);
+    //        }
+    //    },
+    //})
 
     
 

@@ -30,7 +30,7 @@ namespace HospitalScheds.IServerce
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
-        int Delete(int id);
+        int Delete(int ids);
 
         /// <summary>
         /// 修改
