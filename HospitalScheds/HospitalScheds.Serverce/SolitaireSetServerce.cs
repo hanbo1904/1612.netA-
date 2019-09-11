@@ -14,19 +14,11 @@ namespace HospitalScheds.Serverce
        
         DataContext db = new DataContext();
 
-        public PageModel<SolitaireSet> GetSolitaireSet(string Name = "", int pageIndex = 0,int pageSize = 3)
+        public List<SolitaireSet> GetSolitaireSet()
         {
-            if (Name == null)
-            {
-                Name = "";
-            }
-            PageModel<SolitaireSet> pagemodel = new PageModel<SolitaireSet>();
-            int totalcount = db.SolitaireSetlist.Where(m => m.SolitaireShifts.Contains(Name)).ToList().Count();
-            //分页
-            var list = db.SolitaireSetlist.Where(m => m.SolitaireShifts.Contains(Name)).ToList().Skip((pageIndex - 1) * pageSize).Take(pageSize).ToList();
-            pagemodel.TotalCount = totalcount;
-            pagemodel.Data = list;
-            return pagemodel;
+
+            List<SolitaireSet> list = db.SolitaireSet.ToList();
+            return list;
         }
         /// <summary>
         /// 添加
@@ -35,7 +27,7 @@ namespace HospitalScheds.Serverce
         /// <returns></returns>
         public int Add(SolitaireSet solitaireSet)
         {
-            db.SolitaireSetlist.Add(solitaireSet);
+            db.SolitaireSet.Add(solitaireSet);
             int i = db.SaveChanges();
             return i;
         }
@@ -46,8 +38,8 @@ namespace HospitalScheds.Serverce
         /// <returns></returns>
         public int DelSolitaire(int Id)
         {
-            var list = db.SolitaireSetlist.Find(Id);
-            db.SolitaireSetlist.Remove(list);
+            var list = db.SolitaireSet.Find(Id);
+            db.SolitaireSet.Remove(list);
             int i = db.SaveChanges();
             return i;
         }
@@ -58,7 +50,7 @@ namespace HospitalScheds.Serverce
         /// <returns></returns>
         public SolitaireSet GetSolitaireSet(int Id)
         {
-            var lsit = db.SolitaireSetlist.Find(Id);
+            var lsit = db.SolitaireSet.Find(Id);
             return lsit;
         }
         /// <summary>

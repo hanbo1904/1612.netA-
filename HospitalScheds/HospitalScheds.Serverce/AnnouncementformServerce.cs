@@ -71,9 +71,9 @@ namespace HospitalScheds.Serverce
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
-        public int Delete(int id)
+        public int Delete(int ids)
         {
-            var list = db.Announcementform.Find(id);
+            var list = db.Announcementform.Find(ids);
             db.Announcementform.Remove(list);
             int i = db.SaveChanges();
             return i;
