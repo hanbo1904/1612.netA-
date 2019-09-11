@@ -14,12 +14,19 @@ namespace HospitalScheds.Web.Controllers
 {
     public class AnnountController : Controller
     {
-        
+
+
+        //public JsonResult Indexs(string Name = "")
+        //{
+        //    //string pagelist = Newtonsoft.Json.JsonConvert.SerializeObject(Name);
+        //    var result = HelperHttpClient.GetAll("get", "/api/annount",Name);
+        //    return Json(result);
+        //} 
         public IActionResult Index()
-        {
+        {     
             return View();
         }
-
+     
 
         public JsonResult Adds(Announcementform announcementform)   
         {
@@ -33,11 +40,23 @@ namespace HospitalScheds.Web.Controllers
         {
             return View();
         }
-
+        public JsonResult Updates(int id)
+        {
+            //string jsonm = Newtonsoft.Json.JsonConvert.SerializeObject(announcementform);
+            var result = HelperHttpClient.GetAll("put", "/api/annount", id);
+            return Json(result);
+        }
         public IActionResult Update()
         {
             return View();
         }
+        //public JsonResult Indexs(string Name = "", int pageIndex = 0, int pageSize = 3)
+        //{
+        //    string jsonm = Newtonsoft.Json.JsonConvert.SerializeObject(Name, pageIndex, pageSize);
+
+        //}
+
+             
         
     }
 }

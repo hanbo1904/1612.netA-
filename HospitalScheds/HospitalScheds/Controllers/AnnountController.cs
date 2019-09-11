@@ -48,24 +48,24 @@ namespace HospitalScheds.Controllers
         /// <param name="announcementform"></param> 
         /// <returns></returns>
         [HttpGet]
-        public PageModel<Announcementform> Index(string Name = "", int pageIndex = 0, int pageSize = 3)
+        public List<Announcementform> Indexs()
         {
-            var list = _announcementformServerce.announcementform(Name, pageIndex, pageSize);
+            var list = _announcementformServerce.GetAnnount();
             return list;
         }
 
 
-        /// <summary>
-        /// 反填数据
-        /// </summary>
-        /// <param name="announcementform"></param>
-        /// <returns></returns> 
-        [HttpGet("Get")]
-        public ActionResult<Announcementform> Get(int id)
-        {
-            Announcementform ann = _announcementformServerce.Byid(id);
-            return ann;
-        }
+        ///// <summary>
+        ///// 反填数据
+        ///// </summary>
+        ///// <param name="announcementform"></param>
+        ///// <returns></returns> 
+        //[HttpGet("Get")]
+        //public ActionResult<Announcementform> Get(int id)
+        //{
+        //    Announcementform ann = _announcementformServerce.Byid(id);
+        //    return ann;
+        //}
 
 
         /// <summary>
