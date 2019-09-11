@@ -156,6 +156,36 @@
     //        }
     //    },
     //})
+
+    var vm = new Vue({
+        el: "#SolitaireSetAdd",
+        type: "post",
+        data: {
+            solitaireShifts: "",
+            solitaireDays: "",
+            solitaireOrder: "",
+            peopleGroup: "",
+            groupLeader: "",
+            solitaireOrders: ""
+        },
+        methods: {
+
+            SolitaireSetAdd: function () {
+
+                var params = new URLSearchParams();
+                params.append("solitaireShifts", this.solitaireShifts);
+                params.append("solitaireDays", this.solitaireDays);
+                params.append("solitaireOrder", this.solitaireOrder);
+                params.append("peopleGroup", this.peopleGroup);
+                params.append("groupLeader", this.groupLeader);
+                params.append("solitaireOrders", this.solitaireOrders);
+
+                //axios.post('http://localhost:61163/api/SolitaireSet', params).then((response) => { alert('添加成功'); location.reload() }).catch(function (response) { alert('失败') })
+
+                axios.post('/SolitaireSet/Add', params).then((response) => { alert('添加成功'); location.reload() }).catch(function (response) { alert('失败') })
+            }
+        }
+    })
     ////显示
     //$(function () {
     //    $.ajax({
