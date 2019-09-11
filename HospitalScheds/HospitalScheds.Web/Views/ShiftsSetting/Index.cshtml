@@ -11,5 +11,54 @@
     <title>Index</title>
 </head>
 <body>
+    <div>
+        <h2>班次设置</h2><input id="Name" type="text" placeholder="请输入名称" />
+        <button id="Button1" class="btn btn-primary btn-2g" onclick="getContent()">查询</button>
+        <button class="btn btn-primary btn-2g" data-toggle="modal" data-target="#myModal">添加</button>
+    </div>
+
+    <!-- 模态框（Modal） -->
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h4 class="modal-title" id="myModalLabel">消息添加</h4>
+                </div>
+                <div id="AccountAdd" class="modal-body">
+                    <table class="table table-hover">
+                        <tr>
+                            <td>班次名称</td>
+                            <td><input type="text" v-model="Name" /></td>
+                        </tr>
+                        <tr>
+                            <td>班次颜色</td>
+                            <td><input type="text" v-model="ColorShift" /></td>
+                        </tr>
+                        <tr>
+                            <td>班次时间</td>
+                            <td><input type="text" v-model="OfficeHours" /></td>
+                        </tr>
+                        <tr>
+                            <td>发布时间</td>
+                            <td><input type="text" v-model="releasetime" value="2019-9-9" /></td>
+                        </tr>
+                        <tr>
+                            <td>读取状态</td>
+                            <td><input type="text" v-model="readstatus" /></td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <button v-on:click="AddAccount()"> 添加</button>
+                                <button type="button" data-dismiss="modal">
+                                    关闭
+                                </button>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
 </body>
 </html>

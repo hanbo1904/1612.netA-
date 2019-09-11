@@ -2,19 +2,19 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
-using HospitalScheds.Model;
 using HospitalScheds.IServerce;
-using HospitalScheds.Serverce;
+using HospitalScheds.Model;
+
 
 namespace HospitalScheds.Controllers
 {
-    [Route("api/[Controller]")]
+    [Route("api/[controller]")]
     [ApiController]
     public class ShiftsSettingController : Controller
     {
-        
 
         /// <summary>
         /// 定义私有变量
@@ -30,25 +30,27 @@ namespace HospitalScheds.Controllers
             _shiftsSettingServerce = shiftsSettingServerce;
         }
 
-
+        [HttpGet]
         /// <summary>
         /// 显示分页
         /// </summary>
         /// <param name="announcementform"></param> 
         /// <returns></returns>
-        [HttpGet]
+
         public PageModel<ShiftsSetting> Index(string Name = "", int pageIndex = 0, int pageSize = 3)
         {
             var list = _shiftsSettingServerce.GetShiftsSetting(Name, pageIndex, pageSize);
             return list;
         }
 
+
+        [HttpPost]
         /// <summary>
         /// 添加
         /// </summary>
         /// <param name="announcementform"></param>
         /// <returns></returns>
-        [HttpPost]
+
         public int Add(ShiftsSetting shiftsSetting)
         {
             int i = _shiftsSettingServerce.Add(shiftsSetting);
@@ -60,14 +62,14 @@ namespace HospitalScheds.Controllers
         /// </summary>
         /// <param name="announcementform"></param>
         /// <returns></returns> 
-        [HttpGet]
+       
         public ShiftsSetting GetShiftsSetting(int id)
         {
             ShiftsSetting ann = _shiftsSettingServerce.GetShiftsSetting(id);
             return ann;
         }
 
-
+        [HttpPut]
         /// <summary>
         /// 修改
         /// </summary>
@@ -80,6 +82,7 @@ namespace HospitalScheds.Controllers
             return i;
         }
 
+        [HttpDelete]
         /// <summary>
         ///删除
         /// </summary>
@@ -93,6 +96,5 @@ namespace HospitalScheds.Controllers
         }
 
 
-
     }
-}
+    }
