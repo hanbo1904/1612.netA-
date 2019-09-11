@@ -40,7 +40,12 @@ namespace HospitalScheds.Web.Controllers
         {
             return View();
         }
-
+        public JsonResult Updates(int id)
+        {
+            //string jsonm = Newtonsoft.Json.JsonConvert.SerializeObject(announcementform);
+            var result = HelperHttpClient.GetAll("put", "/api/annount", id);
+            return Json(result);
+        }
         public IActionResult Update()
         {
             return View();
