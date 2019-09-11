@@ -101,7 +101,7 @@
 </body>
 </html>
 <script>
-    //显示
+    //显示和删除
     var vm = new Vue({
         el: "#myView",
         data: {
@@ -136,40 +136,6 @@
             },
         }
     });
-
-    ////删除
-    //var myModel = { Announlist: [] };
-    //var myViewModel = new Vue({
-    //    el: '#myView',
-    //    data: myModel,
-    //    methods:
-    //    {
-    //        Delete(id) {
-    //            if (confirm("确认删除吗？")) {
-    //                alert(id)
-    //                this.$http.get('http://localhost:61163/api/Annount/Delete/?ID=' + id).then(result => {
-    //                    var result = result.body;
-    //                    if (result.code == 200) {
-
-    //                        alert('删除失败')
-    //                    }
-    //                    else {
-    //                        alert('删除成功')
-
-    //                        location.reload()
-    //                    }
-    //                })
-    //            }
-    //        },
-    //        Upt(ID) {
-    //            $("#myModal").modal();
-    //            $("#Id").val(ID);
-    //        }
-    //    },
-    //})
-
-    
-
     //添加和修改
     var vm = new Vue({
         el: "#AccountAdd",
