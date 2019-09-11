@@ -68,19 +68,21 @@ namespace HospitalScheds.Serverce
         /// <param name="pageIndex"></param>
         /// <param name="pageSize"></param>
         /// <returns></returns>
-        public PageModel<ShiftsSetting> GetShiftsSetting(string Name = "", int pageIndex = 1, int pageSize = 3)
+        public List<ShiftsSetting> GetShiftsSetting()
         {
-            if (Name == null)
+            var list = db.ShiftsSettinglist.ToList();
+            return list;
+          //  if (Name == null)
             {
-                Name = "";
+               // Name = "";
             }
-            PageModel<ShiftsSetting> pagemodel = new PageModel<ShiftsSetting>();
-            int totalcount = db.ShiftsSettinglist.Where(m => m.Name.Contains(Name)).ToList().Count();
+          //  PageModel<ShiftsSetting> pagemodel = new PageModel<ShiftsSetting>();
+           // int totalcount = db.ShiftsSettinglist.Where(m => m.Name.Contains(Name)).ToList().Count();
             //分页
-            var list = db.ShiftsSettinglist.Where(m => m.Name.Contains(Name)).ToList().Skip((pageIndex - 1) * pageSize).Take(pageSize).ToList();
-            pagemodel.TotalCount = totalcount;
-            pagemodel.Data = list;
-            return pagemodel;
+           // var list = db.ShiftsSettinglist.Where(m => m.Name.Contains(Name)).ToList().Skip((pageIndex - 1) * pageSize).Take(pageSize).ToList();
+            //pagemodel.TotalCount = totalcount;
+           // pagemodel.Data = list;
+            //return pagemodel;
         }
     }
 }
