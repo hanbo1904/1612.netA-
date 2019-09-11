@@ -9,7 +9,19 @@
 <head>
     <meta name="viewport" content="width=device-width" />
     <title>Index</title>
+
+    <script src="~/lib/vuE/vue.js"></script>
+
+    <script src="~/lib/vuE/vue-resource.js"></script>
+    <script src="~/lib/jquery/dist/jquery.js"></script>
+
+
+    <script src="~/lib/vuE/axios.js"></script>
+    <link href="~/lib/bootstrap/dist/css/bootstrap.css" rel="stylesheet" />
+
+    <script src="~/lib/bootstrap/dist/js/bootstrap.js"></script>
 </head>
+
 <body>
     <div>
         <h2>班次设置</h2><input id="Name" type="text" placeholder="请输入名称" />
@@ -29,27 +41,43 @@
                     <table class="table table-hover">
                         <tr>
                             <td>班次名称</td>
-                            <td><input type="text" v-model="Name" /></td>
+                            <td><input type="text" v-model="name" /></td>
                         </tr>
                         <tr>
                             <td>班次颜色</td>
-                            <td><input type="text" v-model="ColorShift" /></td>
+                            <td><input type="text" v-model="colorShift" /></td>
                         </tr>
                         <tr>
-                            <td>班次时间</td>
-                            <td><input type="text" v-model="OfficeHours" /></td>
+                            <td>上班次时间</td>
+                            <td><input type="text" v-model="officeHours" value="2019-9-10" /></td>
                         </tr>
                         <tr>
-                            <td>发布时间</td>
-                            <td><input type="text" v-model="releasetime" value="2019-9-9" /></td>
+                            <td>下班时间</td>
+                            <td><input type="text" v-model="closingTime" value="2019-9-9" /></td>
                         </tr>
                         <tr>
-                            <td>读取状态</td>
-                            <td><input type="text" v-model="readstatus" /></td>
+                            <td>有效工作日</td>
+                            <td><input type="text" v-model="workingDay" /></td>
+                        </tr>
+                        <tr>
+                            <td>计算工时</td>
+                            <td><input type="text" v-model="designFormulas" /></td>
+                        </tr>
+                        <tr>
+                            <td>是否打卡</td>
+                            <td><input type="text" v-model="isPunch" /></td>
+                        </tr>
+                        <tr>
+                            <td>班次类型</td>
+                            <td><input type="text" v-model="shiftType" /></td>
+                        </tr>
+                        <tr>
+                            <td>班次顺序</td>
+                            <td><input type="text" v-model="hiftOrder" /></td>
                         </tr>
                         <tr>
                             <td>
-                                <button v-on:click="AddAccount()"> 添加</button>
+                                <button v-on:click="AddShiftsSetting()"> 添加</button>
                                 <button type="button" data-dismiss="modal">
                                     关闭
                                 </button>
@@ -60,5 +88,59 @@
             </div>
         </div>
     </div>
+    <div id="ShView">
+        <table class="table table-hover">
+            <tr>
+                <td>序号</td>
+                <td>班次名称</td>
+                <td>班次颜色</td>
+                <td>上班时间</td>
+                <td>下班时间</td>
+                <td>有效工作日</td>
+                <td>计算工时</td>
+                <td>是否打卡</td>
+                <td>班次类型</td>
+                <td>班次顺序</td>
+                <td>操作</td>
+            </tr>
+            <tr v-for="item in ShiftsSetting" :key="item.id">
+                <td>{{item.Id}}</td>
+                <td>{{item.Name}}</td>
+                <td>{{item.ColorShift}}</td>
+                <td>{{item.OfficeHours}}</td>
+                <td>{{item.ClosingTime}}</td>
+                <td>{{item.WorkingDay}}</td>
+                <td>{{item.DesignFormulas}}</td>
+                <td>{{item.IsPunch}}</td>
+                <td>{{item.ShiftType}}</td>
+                <td>{{item.ShiftOrder}}</td>
+                <td><a href="#" class="btn btn-primary btn-2g" v-on:click="Delete(item.Id)">删除</a></td>
+                <td> <button class="btn btn-primary btn-2g" data-toggle="modal" v-on:click="Upt(item.Id)">修改</button></td>
+            </tr>
+        </table>
+    </div>
 </body>
 </html>
+<script>
+    var vm = new Vue({
+        el: "#ShView",
+        data: {
+            ShiftsSetting: []
+        },
+        mounted() {
+            this.pagehandler();
+        },
+        methods: {
+            pagehandler: function () {
+                axios.get("http://localhost:61163/api/ShiftsSetting").then((response) => {
+                    //console.table(response.data)
+                    this.ShiftsSetting = []
+                    for (var i = 0; i < response.data.length; i++) {
+                        this.ShiftsSetting.push(response.data[i]);
+                    }
+                    console.log(this.ShiftsSetting)
+                });
+            }
+        }
+    })
+</script>
