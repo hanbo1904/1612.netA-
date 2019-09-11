@@ -23,7 +23,7 @@ namespace HospitalScheds.IServerce
         /// <param name="pageIndex"></param>
         /// <param name="pageSize"></param>
         /// <returns></returns>
-        PageModel<Announcementform> announcementform(String Name = "", int pageIndex = 0, int pageSize = 3);
+        List<Announcementform> GetAnnount();
 
         /// <summary>
         /// 删除

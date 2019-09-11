@@ -31,19 +31,26 @@ namespace HospitalScheds.Serverce
         /// <param name="pageIndex"></param>
         /// <param name="pageSize"></param>
         /// <returns></returns>
-        public PageModel<Announcementform> announcementform(string Name = "", int pageIndex = 0, int pageSize = 3)
+        public List<Announcementform> GetAnnount()
         {
-            if (Name == null)
-            {
-                Name = "";
-            }
-            PageModel<Announcementform> pagemodel = new PageModel<Announcementform>();
-            int totalcount = db.Announcementform.Where(m => m.ReleaseContent.Contains(Name)).ToList().Count();
-            //分页
-            var list = db.Announcementform.Where(m => m.ReleaseContent.Contains(Name)).ToList().Skip((pageIndex - 1) * pageSize).Take(pageSize).ToList();
-            pagemodel.TotalCount = totalcount;
-            pagemodel.Data = list;
-            return pagemodel;
+
+            var list = db.Announcementform.ToList();
+            return list;
+
+            //List<Announcementform> totalcount =db.Announcementform.Where(n => n.releasecontent.Contains(Name)).ToList();
+            //return totalcount;
+
+            //if (Name == null)
+            //{
+            //    Name = "";
+            //}
+            //// List<Announcementform> pagemodel = new List<Announcementform>();
+            //List<Announcementform> totalcount = new List<Announcementform>(db.Announcementform.Where(m => m.releasecontent.Contains(Name)).ToList().Count()); 
+            ////分页
+            ////var list = db.Announcementform.Where(m => m.releasecontent.Contains(Name)).ToList().Skip((pageIndex - 1) * pageSize).Take(pageSize).ToList();
+            ////pagemodel.TotalCount = totalcount;
+            ////pagemodel.Data = list;
+            //return totalcount;
         }
        // [Route("api/[controller]")]
       //  [ApiController]

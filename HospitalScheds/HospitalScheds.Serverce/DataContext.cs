@@ -161,9 +161,14 @@ namespace HospitalScheds.Serverce
         public DbSet<Shifthoursstatistics> Shifthoursstatisticslist { get; set; }
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
+            // if (!optionsBuilder.IsConfigured)
+            // {
+            //     optionsBuilder.UseMySQL("Data Source=169.254.139.102;Initial Catalog=hospital;User ID=hanbo;pwd=123456");
+            // }
+            //else
             if (!optionsBuilder.IsConfigured)
             {
-                optionsBuilder.UseMySQL("Data Source=169.254.139.102;Initial Catalog=hospital;User ID=hanbo;pwd=123456");
+                optionsBuilder.UseMySQL("Data Source=10.31.54.14;Initial Catalog=hospital;User ID=hanbo;pwd=123456");
             }
         }
         protected override void OnModelCreating(ModelBuilder modelBuilder)

@@ -27,27 +27,27 @@
         <table class="table table-hover">
             <tr>
                 <td>发布内容</td>
-                <td><input type="text" v-model="ReleaseContent" /></td>
+                <td><input type="text" v-model="releasecontent" /></td>
             </tr>
             <tr>
                 <td>状态</td>
-                <td><input type="text" v-model="Status" /></td>
+                <td><input type="text" v-model="status" /></td>
             </tr>
             <tr>
                 <td>发布人员</td>
-                <td><input type="text" v-model="ReleasePeople" /></td>
+                <td><input type="text" v-model="releasepeople" /></td>
             </tr>
             <tr>
                 <td>发布时间</td>
-                <td><input type="text" v-model="ReleaseTime" /></td>
+                <td><input type="text" v-model="releasetime" value="2019-9-9"/></td>
             </tr>
             <tr>
                 <td>读取状态</td>
-                <td><input type="text" v-model="ReadStatus" /></td>
+                <td><input type="text" v-model="readstatus" /></td>
             </tr>
             <tr>
                 <td>
-                    <button v-on:click="AddAccount(ReleaseContent,Status,ReleasePeople,ReleaseTime,ReadStatus)"> 添加</button>
+                    <button v-on:click="AddAccount()"> 添加</button>
                     <button type="button" data-dismiss="modal">
                         关闭
                     </button>
@@ -62,31 +62,27 @@
         el: "#AccountAdd",
         type:"post",
         data: {
-            ReleaseContent: "",
-            Status: "",
-            ReleasePeople: "",
-            ReleaseTime: "",
-            ReadStatus: ""
-           
+            releasecontent: "",
+            status: "",
+            releasepeople: "",
+            releasetime: "",
+            readstatus: ""
         },
         methods: {
            
-            AddAccount: function (ReleaseContent, Status, ReleasePeople, ReleaseTime, ReadStatus) {
+            AddAccount: function () {
+                
                 var params = new URLSearchParams();
+                params.append("releasecontent", this.releasecontent);
+                params.append("status", this.status);
+                params.append("releasepeople", this.releasepeople);
+                params.append("releasetime", this.releasetime);            
+                params.append("readstatus", this.readstatus);
 
-                params.append("ReleaseContent", ReleaseContent);
-                params.append("Status", Status);
-                params.append("ReleasePeople", ReleasePeople);
-                params.append("ReleaseTime", ReleaseTime);            
-                params.append("ReadStatus", ReadStatus);
-                alert(params)
-                axios.post('http://localhost:61163/Annount/Add', params).then((response) => { alert('添加成功'); location.reload() }).catch(function (response) { alert('失败') })
+                //axios.post('http://localhost:61163/api/Annount/Add', params).then((response) => { alert('添加成功'); location.reload() }).catch(function (response) { alert('失败') })
 
-
+                axios.post('/Annount/Adds', params).then((response) => { alert('添加成功'); location.reload() }).catch(function (response) { alert('失败') })
             }
-
-
         }
-
     })
 </script>

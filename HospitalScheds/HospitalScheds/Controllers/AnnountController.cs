@@ -2,15 +2,16 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
-using HospitalScheds.Model;
 using HospitalScheds.IServerce;
-using HospitalScheds.Serverce;
+using HospitalScheds.Model;
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
+
 namespace HospitalScheds.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class AnnountController : Controller
+    public class AnnountController : ControllerBase
     {
 
         /// <summary>
@@ -23,7 +24,7 @@ namespace HospitalScheds.Controllers
         /// 构造函数注入
         /// </summary>
         /// <param name="organization"></param>
-        public AnnountController(IAnnouncementformServerce announcementformServerce)
+        public AnnountController(IAnnouncementformServerce announcementformServerce)   
         {
             _announcementformServerce = announcementformServerce;
         }
@@ -34,13 +35,12 @@ namespace HospitalScheds.Controllers
         /// </summary>
         /// <param name="announcementform"></param>
         /// <returns></returns>
-        [HttpPost]
-        public int Add([FromBody]Announcementform announcementform)
-        {
-            int i = _announcementformServerce.Add(announcementform);
+        [HttpPost]   
+        public int Add(Announcementform announcementform)
+        {  
+            int i= _announcementformServerce.Add(announcementform);
             return i;
         }
-
 
         /// <summary>
         /// 显示分页
@@ -48,24 +48,24 @@ namespace HospitalScheds.Controllers
         /// <param name="announcementform"></param> 
         /// <returns></returns>
         [HttpGet]
-        public PageModel<Announcementform> Index(string Name = "", int pageIndex = 0, int pageSize = 3)
+        public List<Announcementform> Indexs()
         {
-            var list = _announcementformServerce.announcementform(Name, pageIndex, pageSize);
+            var list = _announcementformServerce.GetAnnount();
             return list;
         }
 
 
-        /// <summary>
-        /// 反填数据
-        /// </summary>
-        /// <param name="announcementform"></param>
-        /// <returns></returns> 
-        [HttpGet]
-        public Announcementform Byid(int id)
-        {
-            Announcementform ann = _announcementformServerce.Byid(id);
-            return ann;
-        }
+        ///// <summary>
+        ///// 反填数据
+        ///// </summary>
+        ///// <param name="announcementform"></param>
+        ///// <returns></returns> 
+        //[HttpGet("Get")]
+        //public ActionResult<Announcementform> Get(int id)
+        //{
+        //    Announcementform ann = _announcementformServerce.Byid(id);
+        //    return ann;
+        //}
 
 
         /// <summary>
