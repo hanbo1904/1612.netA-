@@ -142,7 +142,7 @@ namespace HospitalScheds.Serverce
         /// <summary>
         /// 接龙设置表
         /// </summary>
-        public DbSet<SolitaireSet> SolitaireSetlist { get; set; }
+        public DbSet<SolitaireSet> SolitaireSet { get; set; }  
         /// <summary>
         /// 班次设置表
         /// </summary>

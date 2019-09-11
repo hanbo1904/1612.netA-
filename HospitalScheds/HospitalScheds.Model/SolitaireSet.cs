@@ -5,7 +5,7 @@ using System.Text;
 namespace HospitalScheds.Model
 {
     //接龙设置表
-    public class SolitaireSet 
+        public class SolitaireSet 
     {
         public int ID { get; set; }                     //ID
         public string SolitaireShifts { get; set; }     //接龙班次

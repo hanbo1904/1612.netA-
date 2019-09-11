@@ -22,7 +22,7 @@
 </head>
 <body>
     <div>
-        <h2>消息通知</h2><input id="releasecontent" type="text" placeholder="请输入名称" />
+        <h2>消息通知</h2><input id="SolitaireShifts" type="text" placeholder="请输入名称" />
         <button id="Button1" class="btn btn-primary btn-2g" onclick="getContent()">查询</button>
         <button class="btn btn-primary btn-2g" data-toggle="modal" data-target="#myModal">添加</button>
     </div>
@@ -34,37 +34,46 @@
                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
                     <h4 class="modal-title" id="myModalLabel">消息添加</h4>
                 </div>
-                < div id = "AccountAdd" class="modal-body" >
-                <table class="table table-hover">
-                    <tr>
-                        <td>发布内容</td>
-                        <td><input type="text" v-model="releasecontent" /></td>
-                    </tr>
-                    <tr>
-                        <td>状态</td>
-                        <td><input type="text" v-model="status" /></td>
-                    </tr>
-                    <tr>
-                        <td>发布人员</td>
-                        <td><input type="text" v-model="releasepeople" /></td>
-                    </tr>
-                    <tr>
-                        <td>发布时间</td>
-                        <td><input type="text" v-model="releasetime" value="2019-9-9" /></td>
-                    </tr>
-                    <tr>
-                        <td>读取状态</td>
-                        <td><input type="text" v-model="readstatus" /></td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <button v-on: click="AddAccount()"> 添加</button>
-                            <button type="button" data-dismiss="modal">
-                                关闭
-                            </button>
-                        </td>
-                    </tr>
-                </table>
+                <div id="AccountAdd" class="modal-body">
+                    <table class="table table-hover">
+                        <tr>
+                            <td><input type="hidden" id="Id" /></td>
+                        </tr>
+                        <tr>
+                            <td>班次接龙</td>
+                            <td><input type="text" v-model="solitaireShifts" /></td>
+                        </tr>
+                        <tr>
+                            <td>接龙周期</td>
+                            <td><input type="text" v-model="solitaireDays" /></td>
+                        </tr>
+                        <tr>
+                            <td>接龙排序</td>
+                            <td><input type="text" v-model="solitaireOrder" /></td>
+                        </tr>
+                        <tr>
+                            <td>组内人员</td>
+                            <td><input type="text" v-model="peopleGroup" /></td>
+                        </tr>
+                        <tr>
+                            <td>组长</td>
+                            <td><input type="text" v-model="groupLeader" /></td>
+                        </tr>
+                        <tr>
+                            <td>顺序</td>
+                            <td><input type="text" v-model="solitaireOrders" /></td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <button v-on:click="AddAccount()"> 添加</button>
+                                <button type="button" data-dismiss="modal">关闭 </button>
+                            </td>
+                            <td>
+                            <button v-on:click="Save()"> 修改</button>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
             </div>
         </div>
     </div>
@@ -72,20 +81,21 @@
         <table class="table table-hover">
             <tr>
                 <td>序号</td>
-                <td>发布内容</td>
-                <td>状态</td>
-                <td>发布人员</td>
-                <td>发布时间</td>
-                <td>读取状态</td>
-                <td>操作</td>
+                <td>班次接龙</td>
+                <td>接龙周期</td>
+                <td>接龙排序</td>
+                <td>组内人员</td>
+                <td>组长</td>
+                <td>顺序</td>
             </tr>
-            <tr v-for="item in Announlist" :key="item.ID">
-                <td>{{item.id}}</td>
-                <td>{{item.releasecontent}}</td>
-                <td>{{item.status}}</td>
-                <td>{{item.releasepeople}}</td>
-                <td>{{item.releasetime}}</td>
-                <td>{{item.readstatus}}</td>
+            <tr v-for="item in SolitaireSetlists" :key="item.ID">
+                <td>{{item.iD}}</td>
+                <td>{{item.solitaireShifts}}</td>
+                <td>{{item.solitaireDays}}</td>
+                <td>{{item.solitaireOrder}}</td>
+                <td>{{item.peopleGroup}}</td>
+                <td>{{item.groupLeader}}</td>
+                <td>{{item.solitaireOrders}}</td>
                 <td><a href="#" class="btn btn-primary btn-2g" v-on:click="Delete(item.ID)">删除</a></td>
                 <td> <button class="btn btn-primary btn-2g" data-toggle="modal" v-on:click="Upt(item.ID)">修改</button></td>
             </tr>
@@ -97,28 +107,26 @@
     var vm = new Vue({
         el: "#myView",
         data: {
-            Announlist: []
+            SolitaireSetlists: []
         },
         mounted() {
             this.pagehandler();
         },
         methods: {
             pagehandler: function () {
-                axios.get("http://localhost:61163/api/Annount").then((response) => {
+                axios.get("http://localhost:61163/api/SolitaireSet").then((response) => {
                     //console.table(response.data)
-                    this.Announlist = []
+                    this.SolitaireSetlists = []
                     for (var i = 0; i < response.data.length; i++) {
-                        this.Announlist.push(response.data[i]);
+                        this.SolitaireSetlists.push(response.data[i]);
                     }
-                    console.log(this.Announlist)
+                    console.log(this.SolitaireSetlists)
                 });
             }
         }
     })
 
-        
-
-    ////删除
+    //删除
     //var myModel = { Announlist: [] };
     //var myViewModel = new Vue({
     //    el: '#myView',
@@ -151,7 +159,7 @@
     ////显示
     //$(function () {
     //    $.ajax({
-    //        url: "/Annount/Index",
+    //        url: "http://localhost:61163/api/values/Index",
     //        type: "get",
     //        dataType: 'json',
     //        success: function (result) {
@@ -161,43 +169,13 @@
     //        },
     //    })
     //})
-    
-
-
-    var vm = new Vue({
-        el: "#AccountAdd",
-        type: "post",
-        data: {
-            releasecontent: "",
-            status: "",
-            releasepeople: "",
-            releasetime: "",
-            readstatus: ""
-        },
-        methods: {
-
-            AddAccount: function () {
-
-                var params = new URLSearchParams();
-                params.append("releasecontent", this.releasecontent);
-                params.append("status", this.status);
-                params.append("releasepeople", this.releasepeople);
-                params.append("releasetime", this.releasetime);
-                params.append("readstatus", this.readstatus);
-
-                //axios.post('http://localhost:61163/api/Annount', params).then((response) => { alert('添加成功'); location.reload() }).catch(function (response) { alert('失败') })
-
-                axios.post('/Annount/Adds', params).then((response) => { alert('添加成功'); location.reload() }).catch(function (response) { alert('失败') })
-            }
-        }
-    })
-    //添加和修改
+    ////添加和修改
     //var vm = new Vue({
     //    el: "#AccountAdd",
     //    type: "post",
     //    data: {
     //        //NID: "",
-    //        //releasecontent: "",
+    //        //ReleaseContent: "",
     //        //Status: "",111111111
     //        //ReleasePeople: "",
     //        //ReleaseTime: "",
@@ -207,7 +185,7 @@
     //    methods: {
     //        //添加
     //        AddAccount: function () {
-    //            axios.post('http://localhost:61163/api/Annount/Add', this.s).then((response) => { alert('添加成功'); location.reload() }).catch(function (response) { alert('失败') })
+    //            axios.post('http://localhost:61163/api/values/Add', this.s).then((response) => { alert('添加成功'); location.reload() }).catch(function (response) { alert('失败') })
     //        },
     //        //修改
     //        Save: function () {
@@ -215,7 +193,7 @@
     //            vm.s.Id = id;
     //            alert(id)
 
-    //            axios.post('http://localhost:61163/api/Annount/Update', this.s).then((response) => { alert('修改成功'); }).catch(function (response) { alert('修改失败') })
+    //            axios.post('http://localhost:61163/api/values/Update', this.s).then((response) => { alert('修改成功'); }).catch(function (response) { alert('修改失败') })
 
     //            location.reload()
 
