@@ -12,6 +12,8 @@ using System.Net.Http.Headers;
 
 namespace HospitalScheds.Web.Controllers
 {
+    [Route("api/[controller]")]
+    [ApiController]
     public class AnnountController : Controller
     {
         /// <summary>
