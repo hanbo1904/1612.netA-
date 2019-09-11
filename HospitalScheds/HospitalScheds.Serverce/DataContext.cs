@@ -152,6 +152,10 @@ namespace HospitalScheds.Serverce
         /// </summary>
         public DbSet<ShiftRules> ShiftRuleslist { get; set; }
         /// <summary>
+        /// 人员排班
+        /// </summary>
+        public DbSet<Crewscheduling> Crewschedulinglist { get; set; }
+        /// <summary>
         /// 班次工时统计
         /// </summary>
         public DbSet<Shifthoursstatistics> Shifthoursstatisticslist { get; set; }
