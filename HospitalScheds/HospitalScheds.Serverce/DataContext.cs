@@ -164,7 +164,7 @@ namespace HospitalScheds.Serverce
             //else
             if (!optionsBuilder.IsConfigured)
             {
-                optionsBuilder.UseMySQL("Data Source=10.31.54.20;Initial Catalog=hospital;User ID=hanbo;pwd=123456");
+                optionsBuilder.UseMySQL("Data Source=10.31.54.14;Initial Catalog=hospital;User ID=hanbo;pwd=123456");
             }
         }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
