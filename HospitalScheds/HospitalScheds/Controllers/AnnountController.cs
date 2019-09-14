@@ -15,7 +15,7 @@ namespace HospitalScheds.Controllers
     {
 
         /// <summary>
-        /// 定义私有变量
+        /// 定义私有变量11
         /// </summary>
         private IAnnouncementformServerce _announcementformServerce;
 

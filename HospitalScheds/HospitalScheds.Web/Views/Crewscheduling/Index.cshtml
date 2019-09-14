@@ -1,0 +1,120 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+
+    <script src="~/lib/vuE/vue.js"></script>
+
+    <script src="~/lib/vuE/vue-resource.js"></script>
+    <script src="~/lib/jquery/dist/jquery.js"></script>
+
+
+    <script src="~/lib/vuE/axios.js"></script>
+    <link href="~/lib/bootstrap/dist/css/bootstrap.css" rel="stylesheet" />
+
+    <script src="~/lib/bootstrap/dist/js/bootstrap.js"></script>
+</head>
+<body>
+
+    <div>
+        <h2>消息通知</h2><input id="ReleaseContent" type="text" placeholder="请输入名称" />
+        <button id="Button1" class="btn btn-primary btn-2g" onclick="getContent()">查询</button>
+        <button class="btn btn-primary btn-2g" data-toggle="modal" data-target="#myModal">添加</button>
+    </div>
+    <!-- 模态框（Modal） -->
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h4 class="modal-title" id="myModalLabel">消息添加</h4>
+                </div>
+                <div id="AccountAdd" class="modal-body">
+                    <table class="table table-hover">
+                        <tr>
+                            <td><input type="hidden" id="Id" /></td>
+                        </tr>
+                        <tr>
+                            <td>姓名</td>
+                            <td><input type="text" v-model="s.CrewsName" /></td>
+                        </tr>
+                        <tr>
+                            <td>5-28星期一</td>
+                            <td><input type="text" v-model="s.Monday" /></td>
+                        </tr>
+                        <tr>
+                            <td>5-29星期二</td>
+                            <td><input type="text" v-model="s.Tuesday" /></td>
+                        </tr>
+                        <tr>
+                            <td>5-30星期三</td>
+                            <td><input type="text" v-model="s.Wednesday" /></td>
+                        </tr>
+                        <tr>
+                            <td>5-31星期四</td>
+                            <td><input type="text" v-model="s.Thursday" /></td>
+                        </tr>
+                        <tr>
+                            <td>6-1星期五</td>
+                            <td><input type="text" v-model="s.Friday" /></td>
+                        </tr>
+                        <tr>
+                            <td>6-2星期六</td>
+                            <td><input type="text" v-model="s.Saturday" /></td>
+                        </tr>
+                        <tr>
+                            <td>6-3星期日</td>
+                            <td><input type="text" v-model="s.Sunday" /></td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <button v-on:click="AddAccount()"> 添加</button>
+                                <button type="button" data-dismiss="modal">
+                                    关闭
+                                </button>
+                            </td>
+                            <td> <button v-on:click="Save()"> 修改</button></td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="myView">
+        <table class="table table-hover">
+            <tr>
+                <td>序号</td>
+                <td>姓名</td>
+                <td>星期一</td>
+                <td>星期二</td>
+                <td>星期三</td>
+                <td>星期四</td>
+                <td>星期五</td>
+                <td>星期六</td>
+                <td>星期日</td>
+            </tr>
+            <tr v-for="item in Announlist" :key="item.ID">
+                <td>{{item.ID}}</td>
+                <td>{{item.CrewsName}}</td>
+                <td>{{item.Monday}}</td>
+                <td>{{item.Tuesday}}</td>
+                <td>{{item.Wednesday}}</td>
+                <td>{{item.Thursday}}</td>
+                <td>{{item.Friday}}</td>
+                <td>{{item.Saturday}}</td>
+                <td>{{item.Sunday}}</td>
+                <td><a href="#" class="btn btn-primary btn-2g" v-on:click="Delete(item.ID)">删除</a></td>
+                <td> <button class="btn btn-primary btn-2g" data-toggle="modal" v-on:click="Upt(item.ID)">修改</button></td>
+            </tr>
+        </table>
+    </div>
+</body>
+</html>

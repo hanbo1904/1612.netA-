@@ -8,7 +8,7 @@ using HospitalScheds.Model;
 using Microsoft.EntityFrameworkCore;
 namespace HospitalScheds.Serverce
 {
-    public class ShiftsSettingServerce 
+    public class ShiftsSettingServerce : IShiftsSettingServerce
     {
         DataContext db = new DataContext();
 
@@ -19,7 +19,7 @@ namespace HospitalScheds.Serverce
         /// <returns></returns>
         public int Add(ShiftsSetting shiftsSetting)
         {
-            db.ShiftsSettinglist.Add(shiftsSetting);
+            db.ShiftsSetting.Add(shiftsSetting);
             int i = db.SaveChanges();
             return i;
         }
@@ -31,22 +31,22 @@ namespace HospitalScheds.Serverce
         /// <returns></returns>
         public int DelShiftsSetting(int Id)
         {
-            var list = db.ShiftsSettinglist.Find(Id);
-            db.ShiftsSettinglist.Remove(list);
+            var list = db.ShiftsSetting.Find(Id);
+            db.ShiftsSetting.Remove(list);
             int i = db.SaveChanges();
             return i;
         }
 
-        /// <summary>
-        /// 返填
-        /// </summary>
-        /// <param name="Id"></param>
-        /// <returns></returns>
-        public ShiftsSetting GetShiftsSetting(int Id)
-        {
-            var lsit = db.ShiftsSettinglist.Find(Id);
-            return lsit;
-        }
+        ///// <summary>
+        ///// 返填
+        ///// </summary>
+        ///// <param name="Id"></param>
+        ///// <returns></returns>
+        //public ShiftsSetting GetShiftsSetting(int Id)
+        //{
+        //    var lsit = db.ShiftsSettinglist.Find(Id);
+        //    return lsit;
+        //}
 
         /// <summary>
         /// 修改
@@ -54,7 +54,7 @@ namespace HospitalScheds.Serverce
         /// <param name="shiftsSetting"></param>
         /// <param name="Id"></param>
         /// <returns></returns>
-        public int GetShiftsSetting(ShiftsSetting shiftsSetting, int Id)
+        public int UptShiftsSetting(ShiftsSetting shiftsSetting, int Id)
         {
             db.Entry(shiftsSetting).State = EntityState.Modified;
             int i = db.SaveChanges();
@@ -68,19 +68,26 @@ namespace HospitalScheds.Serverce
         /// <param name="pageIndex"></param>
         /// <param name="pageSize"></param>
         /// <returns></returns>
-        public PageModel<ShiftsSetting> GetShiftsSetting(string Name = "", int pageIndex = 1, int pageSize = 3)
+        public List<ShiftsSetting> GetShiftsSetting()
         {
-            if (Name == null)
+            var list = db.ShiftsSetting.ToList();
+            return list;
+          //  if (Name == null)
             {
-                Name = "";
+               // Name = "";
             }
-            PageModel<ShiftsSetting> pagemodel = new PageModel<ShiftsSetting>();
-            int totalcount = db.ShiftsSettinglist.Where(m => m.Name.Contains(Name)).ToList().Count();
+          //  PageModel<ShiftsSetting> pagemodel = new PageModel<ShiftsSetting>();
+           // int totalcount = db.ShiftsSettinglist.Where(m => m.Name.Contains(Name)).ToList().Count();
             //分页
-            var list = db.ShiftsSettinglist.Where(m => m.Name.Contains(Name)).ToList().Skip((pageIndex - 1) * pageSize).Take(pageSize).ToList();
-            pagemodel.TotalCount = totalcount;
-            pagemodel.Data = list;
-            return pagemodel;
+           // var list = db.ShiftsSettinglist.Where(m => m.Name.Contains(Name)).ToList().Skip((pageIndex - 1) * pageSize).Take(pageSize).ToList();
+            //pagemodel.TotalCount = totalcount;
+           // pagemodel.Data = list;
+            //return pagemodel;
+        }
+
+        public ShiftsSetting PShiftsSetting(int Id)
+        {
+            throw new NotImplementedException();
         }
     }
 }

@@ -142,15 +142,19 @@ namespace HospitalScheds.Serverce
         /// <summary>
         /// 接龙设置表
         /// </summary>
-        public DbSet<SolitaireSet> SolitaireSetlist { get; set; }
+        public DbSet<SolitaireSet> SolitaireSet { get; set; }  
         /// <summary>
         /// 班次设置表
         /// </summary>
-        public DbSet<ShiftsSetting> ShiftsSettinglist { get; set; }
+        public DbSet<ShiftsSetting> ShiftsSetting { get; set; }  
         /// <summary>
         /// 班次规则表
         /// </summary>
         public DbSet<ShiftRules> ShiftRuleslist { get; set; }
+        /// <summary>
+        /// 人员排班
+        /// </summary>
+        public DbSet<Crewscheduling> Crewschedulinglist { get; set; }
         /// <summary>
         /// 班次工时统计
         /// </summary>

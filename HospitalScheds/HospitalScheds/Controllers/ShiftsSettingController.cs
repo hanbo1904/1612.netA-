@@ -2,20 +2,16 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-
-using HospitalScheds.Model;
 using HospitalScheds.IServerce;
-using HospitalScheds.Serverce;
-
+using HospitalScheds.Model;
 namespace HospitalScheds.Controllers
 {
-    [Route("api/[Controller]")]
+    [Route("api/[controller]")]
     [ApiController]
-    public class ShiftsSettingController : Controller
+    public class ShiftsSettingController : ControllerBase
     {
-        
-
         /// <summary>
         /// 定义私有变量
         /// </summary>
@@ -37,49 +33,52 @@ namespace HospitalScheds.Controllers
         /// <param name="announcementform"></param> 
         /// <returns></returns>
         [HttpGet]
-        public PageModel<ShiftsSetting> Index(string Name = "", int pageIndex = 0, int pageSize = 3)
+        public List<ShiftsSetting> Indexs()
         {
-            var list = _shiftsSettingServerce.GetShiftsSetting(Name, pageIndex, pageSize);
+            var list = _shiftsSettingServerce.GetShiftsSetting();
             return list;
         }
 
+
+        [HttpPost]
         /// <summary>
         /// 添加
         /// </summary>
         /// <param name="announcementform"></param>
         /// <returns></returns>
-        [HttpPost]
+
         public int Add(ShiftsSetting shiftsSetting)
         {
             int i = _shiftsSettingServerce.Add(shiftsSetting);
             return i;
         }
 
-        /// <summary>
-        /// 反填数据
-        /// </summary>
-        /// <param name="announcementform"></param>
-        /// <returns></returns> 
-        [HttpGet]
-        public ShiftsSetting GetShiftsSetting(int id)
-        {
-            ShiftsSetting ann = _shiftsSettingServerce.GetShiftsSetting(id);
-            return ann;
-        }
+        ///// <summary>
+        ///// 反填数据
+        ///// </summary>
+        ///// <param name="announcementform"></param>
+        ///// <returns></returns> 
 
+        //public ShiftsSetting GetShiftsSetting(int id)
+        //{
+        //    ShiftsSetting ann = _shiftsSettingServerce.GetShiftsSetting(id);
+        //    return ann;
+        //}
 
-        /// <summary>
-        /// 修改
-        /// </summary>
-        /// <param name="announcementform"></param>
-        /// <returns></returns> 
-        [HttpPost]
-        public int Update(ShiftsSetting shiftsSetting, int id)
-        {
-            int i = _shiftsSettingServerce.GetShiftsSetting(shiftsSetting, id);
-            return i;
-        }
+        //[HttpPut]
+        ///// <summary>
+        ///// 修改
+        ///// </summary>
+        ///// <param name="announcementform"></param>
+        ///// <returns></returns> 
+        //[HttpPost]
+        //public int Update(ShiftsSetting shiftsSetting, int id)
+        //{
+        //    int i = _shiftsSettingServerce.GetShiftsSetting(shiftsSetting, id);
+        //    return i;
+        //}
 
+        [HttpDelete]
         /// <summary>
         ///删除
         /// </summary>
@@ -91,8 +90,5 @@ namespace HospitalScheds.Controllers
             int i = _shiftsSettingServerce.DelShiftsSetting(id);
             return i;
         }
-
-
-
     }
 }
