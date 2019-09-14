@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using HospitalScheds.IServerce;
 using HospitalScheds.Model;
+
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -15,7 +16,7 @@ namespace HospitalScheds.Controllers
     {
 
         /// <summary>
-        /// 定义私有变量11
+        /// 定义私有变量
         /// </summary>
         private IAnnouncementformServerce _announcementformServerce;
 

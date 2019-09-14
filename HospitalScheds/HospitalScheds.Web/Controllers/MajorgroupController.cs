@@ -14,41 +14,23 @@ namespace HospitalScheds.Web.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class AnnountController : Controller
+    public class MajorgroupController : Controller
     {
-        /// <summary>
-        /// 定义私有变量
-        /// </summary>
-        private IAnnouncementformServerce _announcementformServerce;
-
-
-        /// <summary>
-        /// 构造函数注入
-        /// </summary>
-        /// <param name="organization"></param>
-        public AnnountController(IAnnouncementformServerce announcementformServerce)
+        private IMajorgroupServerce _majorgroupServerce;
+        public MajorgroupController(IMajorgroupServerce majorgroupServerce)
         {
-            _announcementformServerce = announcementformServerce;
+            _majorgroupServerce = majorgroupServerce;
         }
-
         public IActionResult Index()
-        {     
+        {
             return View();
         }
-
-        public int Delete(int ids)
+        public JsonResult Adds(Majorgrouping majorgrouping)
         {
-            int i = _announcementformServerce.Delete(ids);
-            return i;
-        }
-        public JsonResult Adds(Announcementform announcementform)   
-        {
-            string jsonm = Newtonsoft.Json.JsonConvert.SerializeObject(announcementform);
+            string jsonm = Newtonsoft.Json.JsonConvert.SerializeObject(majorgrouping);
             var result = HelperHttpClient.GetAll("post", "/api/annount", jsonm);
             return Json(result);
         }
-
-
         public IActionResult Add()
         {
             return View();
@@ -63,13 +45,5 @@ namespace HospitalScheds.Web.Controllers
         {
             return View();
         }
-        //public JsonResult Indexs(string Name = "", int pageIndex = 0, int pageSize = 3)
-        //{
-        //    string jsonm = Newtonsoft.Json.JsonConvert.SerializeObject(Name, pageIndex, pageSize);
-
-        //}
-
-             
-        
     }
 }
