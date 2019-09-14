@@ -66,10 +66,6 @@ namespace HospitalScheds.Web.Controllers
         //public JsonResult Indexs(string Name = "", int pageIndex = 0, int pageSize = 3)
         //{
         //    string jsonm = Newtonsoft.Json.JsonConvert.SerializeObject(Name, pageIndex, pageSize);
-
         //}
-
-             
-        
     }
 }

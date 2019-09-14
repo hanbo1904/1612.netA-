@@ -15,7 +15,7 @@ namespace HospitalScheds.IServerce
         /// 显示
         /// </summary>
         /// <returns></returns>
-        PageModel<Attendance> GetAttendance(int pageIndex = 1, int pageSize = 3);
+        PageModel<Attendance> GetAttendance(string Name = "", int pageIndex = 1, int pageSize = 3);
 
         /// <summary>
         /// 添加
@@ -29,7 +29,7 @@ namespace HospitalScheds.IServerce
         /// </summary>
         /// <param name="crewscheduling"></param>
         /// <returns></returns>
-        int EditAttendance(Attendance attendance);
+        int Update(Attendance attendance, int id);
 
         /// <summary>
         /// 反填

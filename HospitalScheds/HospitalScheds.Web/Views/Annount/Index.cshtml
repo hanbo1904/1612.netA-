@@ -174,10 +174,6 @@
                 params.append("releasetime", this.releasetime);
                 params.append("readstatus", this.readstatus);
                 axios.put('/Annount/Adds', params).then((response) => { alert('修改成功'); location.reload() }).catch(function (response) { alert('失败') })
-
-
-
-
             }
         }
     })
