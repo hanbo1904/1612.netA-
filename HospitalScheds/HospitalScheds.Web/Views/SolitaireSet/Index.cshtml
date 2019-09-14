@@ -69,7 +69,7 @@
                                 <button type="button" data-dismiss="modal">关闭 </button>
                             </td>
                             <td>
-                            <button v-on:click="Save()"> 修改</button>
+                                <button v-on:click="Save()"> 修改</button>
                             </td>
                         </tr>
                     </table>
@@ -96,7 +96,11 @@
                 <td>{{item.peopleGroup}}</td>
                 <td>{{item.groupLeader}}</td>
                 <td>{{item.solitaireOrders}}</td>
-                <td><a href="#" class="btn btn-primary btn-2g" v-on:click="Delete(item.ID)">删除</a></td>
+                <td>
+                    <div v-if="item.id!=''">
+                        <a href="#" v-on:click="deleteSolitaire(item.id)">删除</a>
+                    </div>
+                </td>
                 <td> <button class="btn btn-primary btn-2g" data-toggle="modal" v-on:click="Upt(item.ID)">修改</button></td>
             </tr>
         </table>
@@ -125,109 +129,80 @@
             }
         }
     })
-
-    //删除
-    //var myModel = { Announlist: [] };
-    //var myViewModel = new Vue({
-    //    el: '#myView',
-    //    data: myModel,
-    //    methods:
-    //    {
-    //        Delete(ID) {
-    //            if (confirm("确认删除吗？")) {
-    //                alert(ID)
-    //                this.$http.get('http://localhost:61163/api/Annount/Delete/?ID=' + ID).then(result => {
-    //                    var result = result.body;
-    //                    if (result.code == 200) {
-
-    //                        alert('删除失败')
-    //                    }
-    //                    else {
-    //                        alert('删除成功')
-
-    //                        location.reload()
-    //                    }
-    //                })
-    //            }
-    //        },
-    //        Upt(ID) {
-    //            $("#myModal").modal();
-    //            $("#Id").val(ID);
-    //        }
+    //显示和删除
+    //var vm = new Vue({
+    //    el: "#myView",
+    //    data: {
+    //        SolitaireSet: []
     //    },
-    //})
-
-    var vm = new Vue({
-        el: "#SolitaireSetAdd",
-        type: "post",
-        data: {
-            solitaireShifts: "",
-            solitaireDays: "",
-            solitaireOrder: "",
-            peopleGroup: "",
-            groupLeader: "",
-            solitaireOrders: ""
-        },
-        methods: {
-
-            SolitaireSetAdd: function () {
-
-                var params = new URLSearchParams();
-                params.append("solitaireShifts", this.solitaireShifts);
-                params.append("solitaireDays", this.solitaireDays);
-                params.append("solitaireOrder", this.solitaireOrder);
-                params.append("peopleGroup", this.peopleGroup);
-                params.append("groupLeader", this.groupLeader);
-                params.append("solitaireOrders", this.solitaireOrders);
-
-                //axios.post('http://localhost:61163/api/SolitaireSet', params).then((response) => { alert('添加成功'); location.reload() }).catch(function (response) { alert('失败') })
-
-                axios.post('/SolitaireSet/Add', params).then((response) => { alert('添加成功'); location.reload() }).catch(function (response) { alert('失败') })
-            }
-        }
-    })
-    ////显示
-    //$(function () {
-    //    $.ajax({
-    //        url: "http://localhost:61163/api/values/Index",
-    //        type: "get",
-    //        dataType: 'json',
-    //        success: function (result) {
-    //            myView.Announlist = result
+    //    mounted() {
+    //        this.pagehandler();
+    //    },
+    //    methods: {
+    //        pagehandler: function () {
+    //            axios.get("http://localhost:61163/api/SolitaireSet").then((response) => {
+    //                this.SolitaireSet = []
+    //                for (var i = 0; i < response.data.length; i++) {
+    //                    this.SolitaireSet.push(response.data[i]);
+    //                }
+    //                console.log(this.SolitaireSet)
+    //            });
     //        },
-    //        error: function () {
+
+    //        deleteSolitaire: function (id) {
+    //            axios.delete("/SolitaireSet/Delete?ids=" + id).then((response) => {
+    //                if (response.data > 0) {
+    //                    this.pagehandler();
+    //                }
+    //            },
+    //                (response) => {
+    //                    alert(response.status)
+    //                }
+    //            ).catch(function (response) {
+    //                alert(response);
+    //            });
     //        },
-    //    })
-    //})
+    //    }
+    //});
     ////添加和修改
     //var vm = new Vue({
     //    el: "#AccountAdd",
     //    type: "post",
     //    data: {
-    //        //NID: "",
-    //        //ReleaseContent: "",
-    //        //Status: "",111111111
-    //        //ReleasePeople: "",
-    //        //ReleaseTime: "",
-    //        //ReadStatus: ""
-    //        s: {}
+    //        solitaireShifts: "",
+    //        solitaireDays: "",
+    //        solitaireOrder: "",
+    //        peopleGroup: "",
+    //        groupLeader: "",
+    //        solitaireOrders: ""
     //    },
     //    methods: {
-    //        //添加
-    //        AddAccount: function () {
-    //            axios.post('http://localhost:61163/api/values/Add', this.s).then((response) => { alert('添加成功'); location.reload() }).catch(function (response) { alert('失败') })
+
+    //        AddSolitaireSet: function () {
+
+    //            var params = new URLSearchParams();
+    //            params.append("solitaireShifts", this.solitaireShifts);
+    //            params.append("solitaireDays", this.solitaireDays);
+    //            params.append("solitaireOrder", this.solitaireOrder);
+    //            params.append("peopleGroup", this.peopleGroup);
+    //            params.append("groupLeader", this.groupLeader);
+    //            params.append("solitaireOrders", this.solitaireOrders);
+
+    //            //axios.post('http://localhost:61163/api/SolitaireSet', params).then((response) => { alert('添加成功'); location.reload() }).catch(function (response) { alert('失败') })
+
+    //            axios.post('/SolitaireSet/Adds', params).then((response) => { alert('添加成功'); location.reload() }).catch(function (response) { alert('失败') })
     //        },
-    //        //修改
-    //        Save: function () {
-    //            var id = $("#Id").val();
-    //            vm.s.Id = id;
-    //            alert(id)
-
-    //            axios.post('http://localhost:61163/api/values/Update', this.s).then((response) => { alert('修改成功'); }).catch(function (response) { alert('修改失败') })
-
-    //            location.reload()
-
-    //        },
+    //        Upt: function (id) {
+    //            var params = new URLSearchParams();
+    //            params.append("id", this.id);
+    //            params.append("solitaireShifts", this.solitaireShifts);
+    //            params.append("solitaireDays", this.solitaireDays);
+    //            params.append("solitaireOrder", this.solitaireOrder);
+    //            params.append("peopleGroup", this.peopleGroup);
+    //            params.append("groupLeader", this.groupLeader);
+    //            params.append("solitaireOrders", this.solitaireOrders);
+    //            axios.put('/SolitaireSet/Adds', params).then((response) => { alert('修改成功'); location.reload() }).catch(function (response) { alert('失败') })
+    //        }
     //    }
     //})
 </script>
