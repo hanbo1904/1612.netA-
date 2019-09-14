@@ -32,7 +32,8 @@ namespace HospitalScheds
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
             //消息通知
             services.AddScoped<IAnnouncementformServerce, AnnouncementformServerce>();
-
+            //人员排班
+            services.AddScoped<ICrewschedulingServerce, CrewschedulingService>();  
 
             //注册跨域服务，允许所有来源
             services.AddCors(options =>

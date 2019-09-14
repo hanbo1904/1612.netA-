@@ -118,3 +118,98 @@
     </div>
 </body>
 </html>
+<script>
+    //显示
+    var vm = new Vue({
+        el: "#myView",
+        data: {
+            Announlist: []
+        },
+        mounted() {
+            this.pagehandler();
+        },
+        methods: {
+            pagehandler: function () {
+                axios.get("http://localhost:61163/api/Crewscheduling").then((response) => {
+                    this.Announlist = []
+                    for (var i = 0; i < response.data.length; i++) {
+                        this.Announlist.push(response.data[i]);
+                    }
+                    console.log(this.Announlist)
+                });
+            },
+
+            deleteAnnount: function (id) {
+                axios.delete("/Crewscheduling/Delete?ids=" + id).then((response) => {
+                    if (response.data > 0) {
+                        this.pagehandler();
+                    }
+                },
+                    (response) => {
+                        alert(response.status)
+                    }
+                ).catch(function (response) {
+                    alert(response);
+                });
+            },
+        }
+    });
+
+
+    //添加和修改
+    var vm = new Vue({
+        el: "#Add",
+        type: "post",
+        data: {
+            CrewsName: "",
+            Monday: "",
+            Tuesday: "",
+            Wednesday: "",
+            Thursday: "",
+            Friday: "",
+            Saturday: "",
+            Sunday: "",
+            classes: "",
+            Remark: ""
+        },
+        methods: {
+
+            AddAccount: function () {
+
+                var params = new URLSearchParams();
+                params.append("CrewsName", this.CrewsName);
+                params.append("Monday", this.Monday);
+                params.append("Tuesday", this.Tuesday);
+                params.append("Wednesday", this.Wednesday);
+                params.append("Thursday", this.Thursday);
+                params.append("Friday", this.Friday);
+                params.append("Saturday", this.Saturday);
+                params.append("Sunday", this.Sunday);
+                params.append("classes", this.classes);
+                params.append("Remark", this.Remark);
+
+                //axios.post('http://localhost:61163/api/Crewscheduling', params).then((response) => { alert('添加成功'); location.reload() }).catch(function (response) { alert('失败') })
+
+                axios.post('/Annount/Add', params).then((response) => { alert('添加成功'); location.reload() }).catch(function (response) { alert('失败') })
+            },
+            Upt: function (id) {
+                var params = new URLSearchParams();
+                params.append("CrewsName", this.CrewsName);
+                params.append("Monday", this.Monday);
+                params.append("Tuesday", this.Tuesday);
+                params.append("Wednesday", this.Wednesday);
+                params.append("Thursday", this.Thursday);
+                params.append("Friday", this.Friday);
+                params.append("Saturday", this.Saturday);
+                params.append("Sunday", this.Sunday);
+                params.append("classes", this.classes);
+                params.append("Remark", this.Remark);
+                axios.put('/Annount/Add', params).then((response) => { alert('修改成功'); location.reload() }).catch(function (response) { alert('失败') })
+
+
+
+
+            }
+        }
+    })
+    </script>
