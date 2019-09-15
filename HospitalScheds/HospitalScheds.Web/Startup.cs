@@ -42,6 +42,8 @@ namespace HospitalScheds.Web
 
             //专业分组设置
             services.AddScoped<IMajorgroupServerce, MajorgroupServerce>();
+            //接龙设置
+            services.AddScoped<ISolitaireSetServerce, SolitaireSetServerce>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

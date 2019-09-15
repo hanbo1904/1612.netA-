@@ -92,9 +92,22 @@
                     }
                     console.log(this.SchedulingRuleslist)
                 });
-            }
+            },
+            deleteAnnount: function (id) {
+                axios.delete("/SchedulingRules/Delete?ids=" + id).then((response) => {
+                    if (response.data > 0) {
+                        this.pagehandler();
+                    }
+                },
+                    (response) => {
+                        alert(response.status)
+                    }
+                ).catch(function (response) {
+                    alert(response);
+                });
+            },
         }
-    })
+    });
     var vm = new Vue({
         el: "#SchedulingRulesAdd",
         type: "post",
@@ -107,8 +120,17 @@
                 var params = new URLSearchParams();
                 params.append("ShiftScorise", this.ShiftScorise);
                 params.append("IsEffect", this.IsEffect);
-                axios.post('/SchedulingRules/AddR', params).then((Response) => { alert('') })
+                axios.post('/SchedulingRules/AddR', params).then((Response) => { alert('添加成功'); location.reload() }).catch(function (response) { alert('失败') })
+            },
+            Upt: function (id) {
+                var params = new URLSearchParams();
+                params.append("id", this.id);
+                params.append("ShiftScorise", this.ShiftScorise);
+                params.append("IsEffect", this.IsEffect);
+               
+                axios.put('/SchedulingRules/AddR', params).then((response) => { alert('修改成功'); location.reload() }).catch(function (response) { alert('失败') })
             }
         }
     })
+
 </script>
