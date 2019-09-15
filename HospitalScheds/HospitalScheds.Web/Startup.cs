@@ -36,6 +36,13 @@ namespace HospitalScheds.Web
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
             //消息通知
             services.AddScoped<IAnnouncementformServerce, AnnouncementformServerce>();
+            // 班次设置
+            services.AddScoped<IShiftsSettingServerce, ShiftsSettingServerce>();
+
+            //专业分组设置
+            services.AddScoped<IMajorgroupServerce, MajorgroupServerce>();
+            //接龙设置
+            services.AddScoped<ISolitaireSetServerce, SolitaireSetServerce>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -57,7 +64,7 @@ namespace HospitalScheds.Web
             {
                 routes.MapRoute(
                     name: "default",
-                    template: "{controller=Home}/{action=Index}/{id?}");
+                    template: "{controller=Annount}/{action=Index}/{id?}");
             });
         }
     }

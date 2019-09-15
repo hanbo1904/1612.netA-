@@ -34,6 +34,10 @@ namespace HospitalScheds
             services.AddScoped<IAnnouncementformServerce, AnnouncementformServerce>();
             // 班次设置
             services.AddScoped<IShiftsSettingServerce, ShiftsSettingServerce>();
+            //接龙设置
+            services.AddScoped<ISolitaireSetServerce, SolitaireSetServerce>();
+            //专业分组设置
+            services.AddScoped<IMajorgroupServerce, MajorgroupServerce>();
             //注册跨域服务，允许所有来源
             services.AddCors(options =>
                 options.AddPolicy("AllowAnyCors",

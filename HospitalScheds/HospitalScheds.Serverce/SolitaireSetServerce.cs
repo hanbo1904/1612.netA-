@@ -16,7 +16,6 @@ namespace HospitalScheds.Serverce
 
         public List<SolitaireSet> GetSolitaireSet()
         {
-
             List<SolitaireSet> list = db.SolitaireSet.ToList();
             return list;
         }

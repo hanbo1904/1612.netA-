@@ -53,17 +53,7 @@ namespace HospitalScheds.Controllers
             return i;
         }
 
-        ///// <summary>
-        ///// 反填数据
-        ///// </summary>
-        ///// <param name="announcementform"></param>
-        ///// <returns></returns> 
-
-        //public ShiftsSetting GetShiftsSetting(int id)
-        //{
-        //    ShiftsSetting ann = _shiftsSettingServerce.GetShiftsSetting(id);
-        //    return ann;
-        //}
+        
 
         //[HttpPut]
         ///// <summary>
