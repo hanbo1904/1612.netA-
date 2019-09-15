@@ -12,8 +12,6 @@ using System.Net.Http.Headers;
 
 namespace HospitalScheds.Web.Controllers
 {
-    [Route("api/[controller]")]
-    [ApiController]
     public class MajorgroupController : Controller
     {
         private IMajorgroupServerce _majorgroupServerce;

@@ -38,7 +38,10 @@
                 <table class="table table-hover">
                     <tr>
                         <td>发布内容</td>
-                        <td><input type="text" v-model="releasecontent" /></td>
+                        <td>
+                            <input type="hidden" id="id" />
+                            <input type="text" v-model="releasecontent" />
+                        </td>
                     </tr>
                     <tr>
                         <td>状态</td>
@@ -58,10 +61,11 @@
                     </tr>
                     <tr>
                         <td>
-                            <button v-on: click="AddAccount()"> 添加</button>
+                            <button v-on: click="AddAccount()">添加</button>
                             <button type="button" data-dismiss="modal">
                                 关闭
                             </button>
+                            <button v-on: click="Upt()">修改</button>
                         </td>
                     </tr>
                 </table>
@@ -137,6 +141,10 @@
                     alert(response);
                 });
             },
+            Upt(id) {
+                $("#myView").modal();
+                $("#id").val(id);
+            }
         }
     });
     //添加和修改
@@ -166,14 +174,9 @@
                 axios.post('/Annount/Adds', params).then((response) => { alert('添加成功'); location.reload() }).catch(function (response) { alert('失败') })
             },
             Upt: function (id) {
-                var params = new URLSearchParams();
-                params.append("id", this.id);
-                params.append("releasecontent", this.releasecontent);
-                params.append("status", this.status);
-                params.append("releasepeople", this.releasepeople);
-                params.append("releasetime", this.releasetime);
-                params.append("readstatus", this.readstatus);
-                axios.put('/Annount/Adds', params).then((response) => { alert('修改成功'); location.reload() }).catch(function (response) { alert('失败') })
+                var id = $("#id").val();
+                vm.this.Id = id;
+                axios.put('/Annount/Updates', this).then((response) => { alert('修改成功'); location.reload() }).catch(function (response) { alert('失败') })
             }
         }
     })

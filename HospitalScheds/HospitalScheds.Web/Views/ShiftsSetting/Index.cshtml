@@ -114,6 +114,13 @@
                 <td>{{item.isPunch}}</td>
                 <td>{{item.shiftType}}</td>
                 <td>{{item.shiftOrder}}</td>
+                <td>
+                    <div v-if="item.id!=''">
+                        <a href="#" v-on:click="Delete(item.Id)">删除</a>
+                    </div>
+
+
+                </td>
                 <td><a href="#" class="btn btn-primary btn-2g" v-on:click="Delete(item.Id)">删除</a></td>
                 <td> <button class="btn btn-primary btn-2g" data-toggle="modal" v-on:click="Upt(item.Id)">修改</button></td>
             </tr>
