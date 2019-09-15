@@ -42,7 +42,7 @@ namespace HospitalScheds.Controllers
         [HttpPut]
         public int Update(SchedulingRules schedulingRules, int id)
         {
-            int i = _schedulingRulesServerce.Update(SchedulingRules, id);
+            int i = _schedulingRulesServerce.Update(schedulingRules, id);
             return i;
         }
     }
