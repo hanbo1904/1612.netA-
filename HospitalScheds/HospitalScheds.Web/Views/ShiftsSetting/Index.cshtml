@@ -147,6 +147,67 @@
                     }
                     console.log(this.ShiftsSetting)
                 });
+            },
+
+            Delete: function (id) {
+                axios.delete("/ShiftsSetting/Delete?ids=" + id).then((response) => {
+                    if (response.data > 0) {
+                        this.pagehandler();
+                    }
+                },
+                    (response) => {
+                        alert(response.status)
+                    }
+                ).catch(function (response) {
+                    alert(response);
+                });
+            },
+            Upt(id) {
+                $("#ShView").modal();
+                $("#id").val(id);
+            }
+
+        }
+    });
+
+    //添加和修改
+    var vm = new Vue({
+        el: "#ShView",
+        type: "post",
+        data: {
+            name: "",
+            colorShift: "",
+            officeHours: "",
+            closingTime: "",
+            workingDay: "",
+            designFormulas: "",
+            isPunch: "",
+            shiftType: "",
+            hiftOrder: ""
+        },
+        methods: {
+
+            AddAccount: function () {
+
+                var params = new URLSearchParams();
+                params.append("name", this.name);
+                params.append("colorShift", this.colorShift);
+                params.append("officeHours", this.officeHours);
+                params.append("closingTime", this.closingTime);
+                params.append("workingDay", this.workingDay);
+                params.append("designFormulas", this.designFormulas);
+                params.append("isPunch", this.isPunch);
+                params.append("shiftType", this.shiftType);
+                params.append("hiftOrder", this.hiftOrder);
+
+                //axios.post('http://localhost:61163/api/Annount', params).then((response) => { alert('添加成功'); location.reload() }).catch(function (response) { alert('失败') })
+
+                axios.post('/ShiftsSetting/Adds', params).then((response) => { alert('添加成功'); location.reload() }).catch(function (response) { alert('失败') })
+            },
+            Upt: function (id) {
+                var id = $("#id").val();
+                vm.this.Id = id;
+                axios.put('/ShiftsSetting/Updates', this).then((response) => { alert('修改成功'); location.reload() }).catch(function (response) { alert('失败') })
             }
         }
     })
