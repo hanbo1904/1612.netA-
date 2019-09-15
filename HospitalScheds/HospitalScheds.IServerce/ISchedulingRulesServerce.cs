@@ -36,7 +36,7 @@ namespace HospitalScheds.IServerce
         /// <param name="schedulingRules"></param>
         /// <param name="Id"></param>
         /// <returns></returns>
-        int GetSchedulingRules(SchedulingRules schedulingRules, int Id);
+        int Update(SchedulingRules schedulingRules, int Id);
 
         /// <summary>
         /// 删除
