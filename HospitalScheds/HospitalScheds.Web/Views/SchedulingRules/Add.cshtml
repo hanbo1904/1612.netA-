@@ -1,0 +1,111 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <script src="~/lib/vuE/vue.js"></script>
+    @*<script src="~/lib/vuE/vue-resource.js"></script>*@
+    <script src="~/lib/jquery/dist/jquery.js"></script>
+    <script src="~/lib/vuE/axios.js"></script>
+
+    <link href="~/lib/bootstrap/dist/css/bootstrap.css" rel="stylesheet" />
+    <script src="~/lib/bootstrap/dist/js/bootstrap.js"></script>
+    <title>Add</title>
+</head>
+<body>
+    <div>
+        <h2>添加</h2>
+    </div>
+    <div id="AddSchedulingRules" class="modal-body">
+        <table class="table table-hover">
+            <tr>
+                <td colspan="6">固定相连班次设置（一个班次带出另一个班次的设置）</td>
+            </tr>
+            <tr>
+                <td>序号</td>
+                <td>时间1</td>
+                <td>班次1</td>
+                <td>时间2</td>
+                <td>时间3</td>
+                <td>班次2</td>
+                <td> <button v-on:click="AddAccount()"> 添加</button></td>
+            </tr>
+            <tr>
+                <td><input type="text" v-model="ID" /></td>
+                <td><input type="text" v-model="DateTimesOne" /></td>
+                <td><input type="text" v-model="ShiftsOne" /></td>
+                <td><input type="text" v-model="DateTimesTwo" /></td>
+                <td><input type="text" v-model="DateTimesThree" /></td>
+                <td><input type="text" v-model="ShiftsTwo" /></td>
+                <td>
+                    <button type="button" data-dismiss="modal">
+                        关闭
+                    </button>
+                </td>
+
+        </table>
+
+        <table class="table table-hover">
+            <tr>
+                <td colspan="6">固定不相连班次设置（判断是否符合排班规则）</td>
+            </tr>
+            <tr>
+                <td>序号</td>
+                <td>时间1</td>
+                <td>班次1</td>
+                <td>时间2</td>
+                <td>时间3</td>
+                <td>班次2</td>
+                <td> <button v-on:click="AddAccount()"> 添加</button></td>
+            </tr>
+            <tr>
+                <td><input type="text" v-model="ID" /></td>
+                <td><input type="text" v-model="DateTimesOne" /></td>
+                <td><input type="text" v-model="ShiftsOne" /></td>
+                <td><input type="text" v-model="DateTimesTwo" /></td>
+                <td><input type="text" v-model="DateTimesThree" /></td>
+                <td><input type="text" v-model="ShiftsTwo" /></td>
+                <td>
+                    <button type="button" data-dismiss="modal">
+                        关闭
+                    </button>
+                </td>
+
+        </table>
+    </div>
+</body>
+</html>
+<script>
+    var vm = new Vue({
+        el: "#SchedulingRulesAdd",
+        type: "post",
+        data: {
+            DateTimesOne: "",
+            ShiftsOne: "",
+            DateTimesTwo: "",
+            DateTimesThree: "",
+            ShiftsTwo: ""
+        },
+        methods: {
+
+            AddAccount: function () {
+
+                var params = new URLSearchParams();
+                params.append("DateTimesOne", this.DateTimesOne);
+                params.append("ShiftsOne", this.ShiftsOne);
+                params.append("DateTimesTwo", this.DateTimesTwo);
+                params.append("DateTimesThree", this.DateTimesThree);
+                params.append("ShiftsTwo", this.ShiftsTwo);
+
+                //axios.post('http://localhost:61163/api/SchedulingRules/Add', params).then((response) => { alert('添加成功'); location.reload() }).catch(function (response) { alert('失败') })
+
+                axios.post('/SchedulingRules/AddR', params).then((response) => { alert('添加成功'); location.reload() }).catch(function (response) { alert('失败') })
+            }
+        }
+    })
+</script>

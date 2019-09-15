@@ -104,16 +104,23 @@
                 <td>操作</td>
             </tr>
             <tr v-for="item in ShiftsSetting" :key="item.id">
-                <td>{{item.Id}}</td>
-                <td>{{item.Name}}</td>
-                <td>{{item.ColorShift}}</td>
-                <td>{{item.OfficeHours}}</td>
-                <td>{{item.ClosingTime}}</td>
-                <td>{{item.WorkingDay}}</td>
-                <td>{{item.DesignFormulas}}</td>
-                <td>{{item.IsPunch}}</td>
-                <td>{{item.ShiftType}}</td>
-                <td>{{item.ShiftOrder}}</td>
+                <td>{{item.id}}</td>
+                <td>{{item.name}}</td>
+                <td>{{item.colorShift}}</td>
+                <td>{{item.officeHours}}</td>
+                <td>{{item.closingTime}}</td>
+                <td>{{item.workingDay}}</td>
+                <td>{{item.designFormulas}}</td>
+                <td>{{item.isPunch}}</td>
+                <td>{{item.shiftType}}</td>
+                <td>{{item.shiftOrder}}</td>
+                <td>
+                    <div v-if="item.id!=''">
+                        <a href="#" v-on:click="Delete(item.Id)">删除</a>
+                    </div>
+
+
+                </td>
                 <td><a href="#" class="btn btn-primary btn-2g" v-on:click="Delete(item.Id)">删除</a></td>
                 <td> <button class="btn btn-primary btn-2g" data-toggle="modal" v-on:click="Upt(item.Id)">修改</button></td>
             </tr>
