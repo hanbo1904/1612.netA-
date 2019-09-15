@@ -1,24 +1,27 @@
-﻿using System;
+﻿using HospitalScheds.Model;
+using System;
 using System.Collections.Generic;
 using System.Text;
-using HospitalScheds.Model;
 using HospitalScheds.IServerce;
 using System.Linq;
 using Microsoft.EntityFrameworkCore;
 
 namespace HospitalScheds.Serverce
 {
-    public class AnnouncementformServerce:IAnnouncementformServerce
+    /// <summary>
+    /// 专业分组设置
+    /// </summary>
+    public class MajorgroupServerce: IMajorgroupServerce
     {
         DataContext db = new DataContext();
         /// <summary>
         /// 添加
         /// </summary>
-        /// <param name="announcementform"></param>
+        /// <param name="majorgrouping"></param>
         /// <returns></returns>
-        public int Add(Announcementform announcementform)
+        public int Add(Majorgrouping majorgrouping)
         {
-            db.Announcementform.Add(announcementform);
+            db.Majorgroupinglist.Add(majorgrouping);
             int i = db.SaveChanges();
             return i;
         }
@@ -31,10 +34,10 @@ namespace HospitalScheds.Serverce
         /// <param name="pageIndex"></param>
         /// <param name="pageSize"></param>
         /// <returns></returns>
-        public List<Announcementform> GetAnnount()
+        public List<Majorgrouping> GetMajor()
         {
 
-            var list = db.Announcementform.ToList();
+            var list = db.Majorgroupinglist.ToList();
             return list;
 
             //List<Announcementform> totalcount =db.Announcementform.Where(n => n.releasecontent.Contains(Name)).ToList();
@@ -52,20 +55,6 @@ namespace HospitalScheds.Serverce
             ////pagemodel.Data = list;
             //return totalcount;
         }
-       // [Route("api/[controller]")]
-      //  [ApiController]
-
-        /// <summary>
-        /// 反填
-        /// </summary>
-        /// <returns></returns>
-        public Announcementform Byid(int id)
-        {
-            var lsit = db.Announcementform.Find(id);
-            return lsit;
-        }
-
-
         /// <summary>
         /// 删除
         /// </summary>
@@ -73,22 +62,20 @@ namespace HospitalScheds.Serverce
         /// <returns></returns>
         public int Delete(int ids)
         {
-            var list = db.Announcementform.Find(ids);
-            db.Announcementform.Remove(list);
+            var list = db.Majorgroupinglist.Find(ids);
+            db.Majorgroupinglist.Remove(list);
             int i = db.SaveChanges();
             return i;
         }
-
-
         /// <summary>
         ///  修改
         /// </summary>
-        /// <param name="announcementform"></param>
+        /// <param name="majorgrouping"></param>
         /// <param name="id"></param>
         /// <returns></returns>
-        public int Update(Announcementform announcementform,int id)
+        public int Update(Majorgrouping majorgrouping, int id)
         {
-            db.Entry(announcementform).State = EntityState.Modified;
+            db.Entry(majorgrouping).State = EntityState.Modified;
             int i = db.SaveChanges();
             return i;
         }

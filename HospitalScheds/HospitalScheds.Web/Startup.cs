@@ -36,6 +36,12 @@ namespace HospitalScheds.Web
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
             //消息通知
             services.AddScoped<IAnnouncementformServerce, AnnouncementformServerce>();
+            // 班次设置
+            services.AddScoped<IShiftsSettingServerce, ShiftsSettingServerce>();
+            services.AddScoped<ISolitaireSetServerce, SolitaireSetServerce>();
+
+            //专业分组设置
+            services.AddScoped<IMajorgroupServerce, MajorgroupServerce>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

@@ -1,0 +1,208 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+    <script src="~/lib/vuE/vue.js"></script>
+
+    <script src="~/lib/vuE/vue-resource.js"></script>
+    <script src="~/lib/jquery/dist/jquery.js"></script>
+
+
+    <script src="~/lib/vuE/axios.js"></script>
+    <link href="~/lib/bootstrap/dist/css/bootstrap.css" rel="stylesheet" />
+
+    <script src="~/lib/bootstrap/dist/js/bootstrap.js"></script>
+</head>
+<body>
+    <div>
+        <h2>消息通知</h2><input id="SolitaireShifts" type="text" placeholder="请输入名称" />
+        <button id="Button1" class="btn btn-primary btn-2g" onclick="getContent()">查询</button>
+        <button class="btn btn-primary btn-2g" data-toggle="modal" data-target="#myModal">添加</button>
+    </div>
+    <!-- 模态框（Modal） -->
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h4 class="modal-title" id="myModalLabel">消息添加</h4>
+                </div>
+                <div id="AccountAdd" class="modal-body">
+                    <table class="table table-hover">
+                        <tr>
+                            <td><input type="hidden" id="Id" /></td>
+                        </tr>
+                        <tr>
+                            <td>班次接龙</td>
+                            <td><input type="text" v-model="solitaireShifts" /></td>
+                        </tr>
+                        <tr>
+                            <td>接龙周期</td>
+                            <td><input type="text" v-model="solitaireDays" /></td>
+                        </tr>
+                        <tr>
+                            <td>接龙排序</td>
+                            <td><input type="text" v-model="solitaireOrder" /></td>
+                        </tr>
+                        <tr>
+                            <td>组内人员</td>
+                            <td><input type="text" v-model="peopleGroup" /></td>
+                        </tr>
+                        <tr>
+                            <td>组长</td>
+                            <td><input type="text" v-model="groupLeader" /></td>
+                        </tr>
+                        <tr>
+                            <td>顺序</td>
+                            <td><input type="text" v-model="solitaireOrders" /></td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <button v-on:click="AddAccount()"> 添加</button>
+                                <button type="button" data-dismiss="modal">关闭 </button>
+                            </td>
+                            <td>
+                                <button v-on:click="Save()"> 修改</button>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="myView">
+        <table class="table table-hover">
+            <tr>
+                <td>序号</td>
+                <td>班次接龙</td>
+                <td>接龙周期</td>
+                <td>接龙排序</td>
+                <td>组内人员</td>
+                <td>组长</td>
+                <td>顺序</td>
+            </tr>
+            <tr v-for="item in SolitaireSetlists" :key="item.ID">
+                <td>{{item.iD}}</td>
+                <td>{{item.solitaireShifts}}</td>
+                <td>{{item.solitaireDays}}</td>
+                <td>{{item.solitaireOrder}}</td>
+                <td>{{item.peopleGroup}}</td>
+                <td>{{item.groupLeader}}</td>
+                <td>{{item.solitaireOrders}}</td>
+                <td>
+                    <div v-if="item.id!=''">
+                        <a href="#" v-on:click="deleteSolitaire(item.id)">删除</a>
+                    </div>
+                </td>
+                <td> <button class="btn btn-primary btn-2g" data-toggle="modal" v-on:click="Upt(item.ID)">修改</button></td>
+            </tr>
+        </table>
+    </div>
+</body>
+</html>
+<script>
+    var vm = new Vue({
+        el: "#myView",
+        data: {
+            SolitaireSetlists: []
+        },
+        mounted() {
+            this.pagehandler();
+        },
+        methods: {
+            pagehandler: function () {
+                axios.get("http://localhost:61163/api/SolitaireSet").then((response) => {
+                    //console.table(response.data)
+                    this.SolitaireSetlists = []
+                    for (var i = 0; i < response.data.length; i++) {
+                        this.SolitaireSetlists.push(response.data[i]);
+                    }
+                    console.log(this.SolitaireSetlists)
+                });
+            }
+        }
+    })
+    //显示和删除
+    //var vm = new Vue({
+    //    el: "#myView",
+    //    data: {
+    //        SolitaireSet: []
+    //    },
+    //    mounted() {
+    //        this.pagehandler();
+    //    },
+    //    methods: {
+    //        pagehandler: function () {
+    //            axios.get("http://localhost:61163/api/SolitaireSet").then((response) => {
+    //                this.SolitaireSet = []
+    //                for (var i = 0; i < response.data.length; i++) {
+    //                    this.SolitaireSet.push(response.data[i]);
+    //                }
+    //                console.log(this.SolitaireSet)
+    //            });
+    //        },
+
+    //        deleteSolitaire: function (id) {
+    //            axios.delete("/SolitaireSet/Delete?ids=" + id).then((response) => {
+    //                if (response.data > 0) {
+    //                    this.pagehandler();
+    //                }
+    //            },
+    //                (response) => {
+    //                    alert(response.status)
+    //                }
+    //            ).catch(function (response) {
+    //                alert(response);
+    //            });
+    //        },
+    //    }
+    //});
+    ////添加和修改
+    //var vm = new Vue({
+    //    el: "#AccountAdd",
+    //    type: "post",
+    //    data: {
+    //        solitaireShifts: "",
+    //        solitaireDays: "",
+    //        solitaireOrder: "",
+    //        peopleGroup: "",
+    //        groupLeader: "",
+    //        solitaireOrders: ""
+    //    },
+    //    methods: {
+
+    //        AddSolitaireSet: function () {
+
+    //            var params = new URLSearchParams();
+    //            params.append("solitaireShifts", this.solitaireShifts);
+    //            params.append("solitaireDays", this.solitaireDays);
+    //            params.append("solitaireOrder", this.solitaireOrder);
+    //            params.append("peopleGroup", this.peopleGroup);
+    //            params.append("groupLeader", this.groupLeader);
+    //            params.append("solitaireOrders", this.solitaireOrders);
+
+    //            //axios.post('http://localhost:61163/api/SolitaireSet', params).then((response) => { alert('添加成功'); location.reload() }).catch(function (response) { alert('失败') })
+
+    //            axios.post('/SolitaireSet/Adds', params).then((response) => { alert('添加成功'); location.reload() }).catch(function (response) { alert('失败') })
+    //        },
+    //        Upt: function (id) {
+    //            var params = new URLSearchParams();
+    //            params.append("id", this.id);
+    //            params.append("solitaireShifts", this.solitaireShifts);
+    //            params.append("solitaireDays", this.solitaireDays);
+    //            params.append("solitaireOrder", this.solitaireOrder);
+    //            params.append("peopleGroup", this.peopleGroup);
+    //            params.append("groupLeader", this.groupLeader);
+    //            params.append("solitaireOrders", this.solitaireOrders);
+    //            axios.put('/SolitaireSet/Adds', params).then((response) => { alert('修改成功'); location.reload() }).catch(function (response) { alert('失败') })
+    //        }
+    //    }
+    //})
+</script>

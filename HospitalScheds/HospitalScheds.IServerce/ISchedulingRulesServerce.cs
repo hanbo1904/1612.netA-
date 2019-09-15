@@ -21,7 +21,7 @@ namespace HospitalScheds.IServerce
         /// </summary>
         /// <param name="Name"></param>
         /// <returns></returns>
-        List<SchedulingRules> schedulingRules();
+        List<SchedulingRules> GetSchedulingRules(string Name = "");
 
         /// <summary>
         /// 反填

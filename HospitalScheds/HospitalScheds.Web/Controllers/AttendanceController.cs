@@ -13,30 +13,20 @@ using System.Net.Http.Headers;
 
 namespace HospitalScheds.Web.Controllers
 {
-    public class ShiftsSettingController : Controller
+    public class AttendanceController : Controller
     {
-        
         public IActionResult Index()
         {
             return View();
         }
 
-
-        public JsonResult Adds(ShiftsSetting shiftsSetting)
+        public JsonResult Adds(Attendance attendance)
         {
-            string jsonm = Newtonsoft.Json.JsonConvert.SerializeObject(shiftsSetting);
-            var result = HelperHttpClient.GetAll("post", "/api/annount", jsonm);
+            string jsonm = Newtonsoft.Json.JsonConvert.SerializeObject(attendance);
+            var result = HelperHttpClient.GetAll("post", "/api/attendance", jsonm);
             return Json(result);
         }
-
         public IActionResult Add()
-        {
-            return View();
-        }
-
-     
-
-        public IActionResult Update()
         {
             return View();
         }

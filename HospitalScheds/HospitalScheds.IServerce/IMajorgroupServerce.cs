@@ -1,19 +1,21 @@
-﻿using System;
+﻿using HospitalScheds.Model;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
-using HospitalScheds.Model;
-using System.Data;
 namespace HospitalScheds.IServerce
 {
-  public interface IAnnouncementformServerce
+    /// <summary>
+    /// 专业分组设置
+    /// </summary>
+    public interface IMajorgroupServerce
     {
         /// <summary>
         /// 添加
         /// </summary>
         /// <param name="announcementform"></param>
         /// <returns></returns>
-        int Add(Announcementform announcementform);
+        int Add(Majorgrouping majorgrouping);
 
         /// <summary>
         /// 显示分页
@@ -23,7 +25,7 @@ namespace HospitalScheds.IServerce
         /// <param name="pageIndex"></param>
         /// <param name="pageSize"></param>
         /// <returns></returns>
-        List<Announcementform> GetAnnount();
+        List<Majorgrouping> GetMajor();
 
         /// <summary>
         /// 删除
@@ -38,14 +40,6 @@ namespace HospitalScheds.IServerce
         /// <param name="dd"></param>
         /// <param name="id"></param>
         /// <returns></returns>
-        int Update(Announcementform announcementform, int id);
-
-        /// <summary>
-        /// 反填
-        /// </summary>
-        /// <param name="Id"></param>
-        /// <returns></returns>
-        Announcementform Byid(int id);
-
+        int Update(Majorgrouping majorgrouping, int id);
     }
 }

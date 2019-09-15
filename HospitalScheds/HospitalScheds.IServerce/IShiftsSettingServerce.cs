@@ -25,14 +25,7 @@ namespace HospitalScheds.IServerce
         /// </summary>
         /// <param name="Name"></param>
         /// <returns></returns>
-        PageModel<ShiftsSetting> GetShiftsSetting(string Name = "",int pageIndex = 1, int pageSize = 3);
-
-        /// <summary>
-        /// 反填
-        /// </summary>
-        /// <param name="Id"></param>
-        /// <returns></returns>
-        ShiftsSetting GetShiftsSetting(int Id);
+        List<ShiftsSetting> GetShiftsSetting();
 
         /// <summary>
         /// 修改
@@ -40,7 +33,17 @@ namespace HospitalScheds.IServerce
         /// <param name="shiftsSetting"></param>
         /// <param name="Id"></param>
         /// <returns></returns>
-        int GetShiftsSetting(ShiftsSetting shiftsSetting, int Id);
+        
+        ShiftsSetting PShiftsSetting(int Id);
+
+        /// <summary>
+        /// 修改
+        /// </summary>
+        /// <param name="shiftsSetting"></param>
+        /// <param name="Id"></param>
+        /// <returns></returns>
+        int UptShiftsSetting(ShiftsSetting UshiftsSetting, int Id);
+
 
         /// <summary>
         /// 删除

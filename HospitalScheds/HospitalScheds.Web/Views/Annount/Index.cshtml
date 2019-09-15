@@ -34,38 +34,41 @@
                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
                     <h4 class="modal-title" id="myModalLabel">消息添加</h4>
                 </div>
-                <div id="AccountAdd" class="modal-body">
-                    <table class="table table-hover">
-                        <tr>
-                            <td>发布内容</td>
-                            <td><input type="text" v-model="releasecontent" /></td>
-                        </tr>
-                        <tr>
-                            <td>状态</td>
-                            <td><input type="text" v-model="status" /></td>
-                        </tr>
-                        <tr>
-                            <td>发布人员</td>
-                            <td><input type="text" v-model="releasepeople" /></td>
-                        </tr>
-                        <tr>
-                            <td>发布时间</td>
-                            <td><input type="text" v-model="releasetime" value="2019-9-9" /></td>
-                        </tr>
-                        <tr>
-                            <td>读取状态</td>
-                            <td><input type="text" v-model="readstatus" /></td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <button v-on:click="AddAccount()"> 添加</button>
-                                <button type="button" data-dismiss="modal">
-                                    关闭
-                                </button>
-                            </td>
-                        </tr>
-                    </table>
+                <div id = "AccountAdd" class="modal-body" >
+                <table class="table table-hover">
+                    <tr>
+                        <td>发布内容</td>
+                        <td><input type="text" v-model="releasecontent" /></td>
+                    </tr>
+                    <tr>
+                        <td>状态</td>
+                        <td><input type="text" v-model="status" /></td>
+                    </tr>
+                    <tr>
+                        <td>发布人员</td>
+                        <td><input type="text" v-model="releasepeople" /></td>
+                    </tr>
+                    <tr>
+                        <td>发布时间</td>
+                        <td><input type="text" v-model="releasetime" value="2019-9-9" /></td>
+                    </tr>
+                    <tr>
+                        <td>读取状态</td>
+                        <td><input type="text" v-model="readstatus" /></td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <button v-on: click="AddAccount()"> 添加</button>
+                            <button type="button" data-dismiss="modal">
+                                关闭
+                            </button>
+                        </td>
+                    </tr>
+                </table>
                 </div>
+
+
+
             </div>
         </div>
     </div>
@@ -87,14 +90,21 @@
                 <td>{{item.releasepeople}}</td>
                 <td>{{item.releasetime}}</td>
                 <td>{{item.readstatus}}</td>
-                <td><a href="#" class="btn btn-primary btn-2g" v-on:click="Delete(item.id)">删除</a></td>
-                <td> <button class="btn btn-primary btn-2g" data-toggle="modal" v-on:click="Upt(item.id)">修改</button></td>
+                <td>
+                    <div v-if="item.id!=''">
+                        <a href="#" v-on:click="deleteAnnount(item.id)">删除</a>
+                    </div>
+
+
+                </td>
+                <td> <button class="btn btn-primary btn-2g" data-toggle="modal" v-on:click="Upt(id)">修改</button></td>
             </tr>
         </table>
     </div>
 </body>
 </html>
 <script>
+    //显示和删除
     var vm = new Vue({
         el: "#myView",
         data: {
@@ -106,65 +116,30 @@
         methods: {
             pagehandler: function () {
                 axios.get("http://localhost:61163/api/Annount").then((response) => {
-                    //console.table(response.data)
                     this.Announlist = []
                     for (var i = 0; i < response.data.length; i++) {
                         this.Announlist.push(response.data[i]);
                     }
                     console.log(this.Announlist)
                 });
-            }
+            },
+
+            deleteAnnount: function (id) {
+                axios.delete("/Annount/Delete?ids=" + id).then((response) => {
+                    if (response.data > 0) {
+                        this.pagehandler();
+                    }
+                },
+                    (response) => {
+                        alert(response.status)
+                    }
+                ).catch(function (response) {
+                    alert(response);
+                });
+            },
         }
-    })
-
-
-
-    ////删除
-    //var myModel = { Announlist: [] };
-    //var myViewModel = new Vue({
-    //    el: '#myView',
-    //    data: myModel,
-    //    methods:
-    //    {
-    //        Delete(ID) {
-    //            if (confirm("确认删除吗？")) {
-    //                alert(ID)
-    //                this.$http.get('http://localhost:61163/api/Annount/Delete/?ID=' + ID).then(result => {
-    //                    var result = result.body;
-    //                    if (result.code == 200) {
-
-    //                        alert('删除失败')
-    //                    }
-    //                    else {
-    //                        alert('删除成功')
-
-    //                        location.reload()
-    //                    }
-    //                })
-    //            }
-    //        },
-    //        Upt(ID) {
-    //            $("#myModal").modal();
-    //            $("#Id").val(ID);
-    //        }
-    //    },
-    //})
-    ////显示
-    //$(function () {
-    //    $.ajax({
-    //        url: "/Annount/Index",
-    //        type: "get",
-    //        dataType: 'json',
-    //        success: function (result) {
-    //            myView.Announlist = result
-    //        },
-    //        error: function () {
-    //        },
-    //    })
-    //})
-    
-
-
+    });
+    //添加和修改
     var vm = new Vue({
         el: "#AccountAdd",
         type: "post",
@@ -198,43 +173,9 @@
                 params.append("releasepeople", this.releasepeople);
                 params.append("releasetime", this.releasetime);
                 params.append("readstatus", this.readstatus);
-                axios.put('/Annount/Adds', params).then((response) => { alert('添加成功'); location.reload() }).catch(function (response) { alert('失败') })
-
-
-
-
+                axios.put('/Annount/Adds', params).then((response) => { alert('修改成功'); location.reload() }).catch(function (response) { alert('失败') })
             }
         }
     })
-    //添加和修改
-    //var vm = new Vue({
-    //    el: "#AccountAdd",
-    //    type: "post",
-    //    data: {
-    //        //NID: "",
-    //        //releasecontent: "",
-    //        //Status: "",111111111
-    //        //ReleasePeople: "",
-    //        //ReleaseTime: "",
-    //        //ReadStatus: ""
-    //        s: {}
-    //    },
-    //    methods: {
-    //        //添加
-    //        AddAccount: function () {
-    //            axios.post('http://localhost:61163/api/Annount/Add', this.s).then((response) => { alert('添加成功'); location.reload() }).catch(function (response) { alert('失败') })
-    //        },
-    //        //修改
-    //        Save: function () {
-    //            var id = $("#Id").val();
-    //            vm.s.Id = id;
-    //            alert(id)
-
-    //            axios.post('http://localhost:61163/api/Annount/Update', this.s).then((response) => { alert('修改成功'); }).catch(function (response) { alert('修改失败') })
-
-    //            location.reload()
-
-    //        },
-    //    }
-    //})
+    
 </script>

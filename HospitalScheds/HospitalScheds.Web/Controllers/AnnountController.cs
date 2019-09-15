@@ -12,22 +12,35 @@ using System.Net.Http.Headers;
 
 namespace HospitalScheds.Web.Controllers
 {
+    [Route("api/[controller]")]
+    [ApiController]
     public class AnnountController : Controller
     {
+        /// <summary>
+        /// 定义私有变量
+        /// </summary>
+        private IAnnouncementformServerce _announcementformServerce;
 
 
-        //public JsonResult Indexs(string Name = "")
-        //{
-        //    //string pagelist = Newtonsoft.Json.JsonConvert.SerializeObject(Name);
-        //    var result = HelperHttpClient.GetAll("get", "/api/annount",Name);
-        //    return Json(result);
-        //} 
+        /// <summary>
+        /// 构造函数注入
+        /// </summary>
+        /// <param name="organization"></param>
+        public AnnountController(IAnnouncementformServerce announcementformServerce)
+        {
+            _announcementformServerce = announcementformServerce;
+        }
+
         public IActionResult Index()
         {     
             return View();
         }
-     
 
+        public int Delete(int ids)
+        {
+            int i = _announcementformServerce.Delete(ids);
+            return i;
+        }
         public JsonResult Adds(Announcementform announcementform)   
         {
             string jsonm = Newtonsoft.Json.JsonConvert.SerializeObject(announcementform);
@@ -53,10 +66,6 @@ namespace HospitalScheds.Web.Controllers
         //public JsonResult Indexs(string Name = "", int pageIndex = 0, int pageSize = 3)
         //{
         //    string jsonm = Newtonsoft.Json.JsonConvert.SerializeObject(Name, pageIndex, pageSize);
-
         //}
-
-             
-        
     }
 }
