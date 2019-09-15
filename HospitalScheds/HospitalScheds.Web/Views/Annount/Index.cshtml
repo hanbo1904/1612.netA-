@@ -168,9 +168,6 @@
                 params.append("releasepeople", this.releasepeople);
                 params.append("releasetime", this.releasetime);
                 params.append("readstatus", this.readstatus);
-
-                //axios.post('http://localhost:61163/api/Annount', params).then((response) => { alert('添加成功'); location.reload() }).catch(function (response) { alert('失败') })
-
                 axios.post('/Annount/Adds', params).then((response) => { alert('添加成功'); location.reload() }).catch(function (response) { alert('失败') })
             },
             Upt: function (id) {
