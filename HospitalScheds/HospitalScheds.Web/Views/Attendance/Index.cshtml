@@ -14,76 +14,57 @@
 <link href="~/lib/bootstrap/dist/css/bootstrap.css" rel="stylesheet" />
 
 <script src="~/lib/bootstrap/dist/js/bootstrap.js"></script>
-<h2>Index</h2>
 <div>
     <h2>假期管理</h2><input id="releasecontent" type="text" placeholder="请输入名称" />
-    <button id="Button1" class="btn btn-primary btn-2g" onclick="getContent()">查询</button>
-    <button class="btn btn-primary btn-2g" data-toggle="modal" data-target="#myModal">添加</button>
+    @*<button id="Button1" class="btn btn-primary btn-2g" onclick="getContent()">查询</button>
+    <button class="btn btn-primary btn-2g" data-toggle="modal" data-target="#myModal">添加</button>*@
 </div>
 
 <!-- 模态框（Modal） -->
-<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                <h4 class="modal-title" id="myModalLabel">假期管理</h4>
-            </div>
-            <div id="AccountAdd" class="modal-body">
-                <table class="table table-hover">
-                    <tr>
-                        <td>每月</td>
-                        <td><input type="text" v-model="releasecontent" /></td>
-                    </tr>
-                    <tr>
-                        <td>状态</td>
-                        <td><input type="text" v-model="status" /></td>
-                    </tr>
-                    <tr>
-                        <td>发布人员</td>
-                        <td><input type="text" v-model="releasepeople" /></td>
-                    </tr>
-                    <tr>
-                        <td>发布时间</td>
-                        <td><input type="text" v-model="releasetime" value="2019-9-9" /></td>
-                    </tr>
-                    <tr>
-                        <td>读取状态</td>
-                        <td><input type="text" v-model="readstatus" /></td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <button v-on:click="AddAccount()"> 添加</button>
-                            <button type="button" data-dismiss="modal">
-                                关闭
-                            </button>
-                        </td>
-                    </tr>
-                </table>
+@*<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h4 class="modal-title" id="myModalLabel">假期管理</h4>
+                </div>
+                <div id="AccountAdd" class="modal-body">
+
+                </div>
             </div>
         </div>
-    </div>
-</div>
-<div id="myView">
-    <table class="table table-hover">
-        <tr>
-            <td>序号</td>
-            <td>发布内容</td>
-            <td>状态</td>
-            <td>发布人员</td>
-            <td>发布时间</td>
-            <td>读取状态</td>
-            <td>操作</td>
-        </tr>
-        <tr v-for="item in Announlist" :key="item.id">
-            <td>{{item.id}}</td>
-            <td>{{item.releasecontent}}</td>
-            <td>{{item.status}}</td>
-            <td>{{item.releasepeople}}</td>
-            <td>{{item.releasetime}}</td>
-            <td>{{item.readstatus}}</td>
-            <td><a href="#" class="btn btn-primary btn-2g" v-on:click="Delete(item.id)">删除</a></td>
-            <td> <button class="btn btn-primary btn-2g" data-toggle="modal" v-on:click="Upt(item.id)">修改</button></td>
-        </tr>
-    </table>
-</div>
+    </div>*@
+<h4 style="background-color:aqua;">1.考勤统计周期设置(排班周期设置)</h4>
+<table class="table table-hover">
+    <tr>
+        <td>
+            每月
+            <select id="Select1"><option></option></select>
+            日,至次月
+        </td>
+        <td><select id="Select1"><option></option></select>日(不包括1日)</td>
+    </tr>
+</table>
+@*<div id="myView">
+        <table class="table table-hover">
+            <tr>
+                <td>序号</td>
+                <td>发布内容</td>
+                <td>状态</td>
+                <td>发布人员</td>
+                <td>发布时间</td>
+                <td>读取状态</td>
+                <td>操作</td>
+            </tr>
+            <tr v-for="item in Announlist" :key="item.id">
+                <td>{{item.id}}</td>
+                <td>{{item.releasecontent}}</td>
+                <td>{{item.status}}</td>
+                <td>{{item.releasepeople}}</td>
+                <td>{{item.releasetime}}</td>
+                <td>{{item.readstatus}}</td>
+                <td><a href="#" class="btn btn-primary btn-2g" v-on:click="Delete(item.id)">删除</a></td>
+                <td> <button class="btn btn-primary btn-2g" data-toggle="modal" v-on:click="Upt(item.id)">修改</button></td>
+            </tr>
+        </table>
+    </div>*@
