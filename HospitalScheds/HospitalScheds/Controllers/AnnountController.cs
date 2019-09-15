@@ -54,20 +54,16 @@ namespace HospitalScheds.Controllers
             var list = _announcementformServerce.GetAnnount();
             return list;
         }
-
-
-        ///// <summary>
-        ///// 反填数据
-        ///// </summary>
-        ///// <param name="announcementform"></param>
-        ///// <returns></returns> 
-        //[HttpGet("Get")]
-        //public ActionResult<Announcementform> Get(int id)
-        //{
-        //    Announcementform ann = _announcementformServerce.Byid(id);
-        //    return ann;
-        //}
-
+        /// <summary>
+        /// 反填
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        public ActionResult<Announcementform> BackFill(int id)
+        {
+            Announcementform annount = _announcementformServerce.BackFill(id);
+            return annount;
+        }
 
         /// <summary>
         ///删除

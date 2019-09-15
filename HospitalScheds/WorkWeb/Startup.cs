@@ -2,16 +2,15 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using HospitalScheds.IServerce;
-using HospitalScheds.Serverce;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace HospitalScheds.Web
+namespace WorkWeb
 {
     public class Startup
     {
@@ -34,14 +33,6 @@ namespace HospitalScheds.Web
 
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
-            //消息通知
-            services.AddScoped<IAnnouncementformServerce, AnnouncementformServerce>();
-            // 班次设置
-            services.AddScoped<IShiftsSettingServerce, ShiftsSettingServerce>();
-            services.AddScoped<ISolitaireSetServerce, SolitaireSetServerce>();
-
-            //专业分组设置
-            services.AddScoped<IMajorgroupServerce, MajorgroupServerce>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -54,8 +45,10 @@ namespace HospitalScheds.Web
             else
             {
                 app.UseExceptionHandler("/Home/Error");
+                app.UseHsts();
             }
 
+            app.UseHttpsRedirection();
             app.UseStaticFiles();
             app.UseCookiePolicy();
 
@@ -63,7 +56,7 @@ namespace HospitalScheds.Web
             {
                 routes.MapRoute(
                     name: "default",
-                    template: "{controller=Annount}/{action=Index}/{id?}");
+                    template: "{controller=Home}/{action=Index}/{id?}");
             });
         }
     }
