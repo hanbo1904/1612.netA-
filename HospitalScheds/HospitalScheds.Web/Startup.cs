@@ -38,6 +38,8 @@ namespace HospitalScheds.Web
             services.AddScoped<IAnnouncementformServerce, AnnouncementformServerce>();
             // 班次设置
             services.AddScoped<IShiftsSettingServerce, ShiftsSettingServerce>();
+            //接龙设置
+            services.AddScoped<ISolitaireSetServerce, SolitaireSetServerce>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

@@ -129,80 +129,80 @@
             }
         }
     })
-    //显示和删除
-    //var vm = new Vue({
-    //    el: "#myView",
-    //    data: {
-    //        SolitaireSet: []
-    //    },
-    //    mounted() {
-    //        this.pagehandler();
-    //    },
-    //    methods: {
-    //        pagehandler: function () {
-    //            axios.get("http://localhost:61163/api/SolitaireSet").then((response) => {
-    //                this.SolitaireSet = []
-    //                for (var i = 0; i < response.data.length; i++) {
-    //                    this.SolitaireSet.push(response.data[i]);
-    //                }
-    //                console.log(this.SolitaireSet)
-    //            });
-    //        },
+    //显示
+    var vm = new Vue({
+        el: "#myView",
+        data: {
+            SolitaireSet: []
+        },
+        mounted() {
+            this.pagehandler();
+        },
+        methods: {
+            pagehandler: function () {
+                axios.get("http://localhost:61163/api/SolitaireSet").then((response) => {
+                    this.SolitaireSet = []
+                    for (var i = 0; i < response.data.length; i++) {
+                        this.SolitaireSet.push(response.data[i]);
+                    }
+                    console.log(this.SolitaireSet)
+                });
+            },
+            //删除
+            deleteSolitaire: function (id) {
+                axios.delete("/SolitaireSet/Delete?ids=" + id).then((response) => {
+                    if (response.data > 0) {
+                        this.pagehandler();
+                    }
+                },
+                    (response) => {
+                        alert(response.status)
+                    }
+                ).catch(function (response) {
+                    alert(response);
+                });
+            },
+        }
+    });
+    //添加和修改
+    var vm = new Vue({
+        el: "#AccountAdd",
+        type: "post",
+        data: {
+            solitaireShifts: "",
+            solitaireDays: "",
+            solitaireOrder: "",
+            peopleGroup: "",
+            groupLeader: "",
+            solitaireOrders: "",
+        },
+        methods: {
 
-    //        deleteSolitaire: function (id) {
-    //            axios.delete("/SolitaireSet/Delete?ids=" + id).then((response) => {
-    //                if (response.data > 0) {
-    //                    this.pagehandler();
-    //                }
-    //            },
-    //                (response) => {
-    //                    alert(response.status)
-    //                }
-    //            ).catch(function (response) {
-    //                alert(response);
-    //            });
-    //        },
-    //    }
-    //});
-    ////添加和修改
-    //var vm = new Vue({
-    //    el: "#AccountAdd",
-    //    type: "post",
-    //    data: {
-    //        solitaireShifts: "",
-    //        solitaireDays: "",
-    //        solitaireOrder: "",
-    //        peopleGroup: "",
-    //        groupLeader: "",
-    //        solitaireOrders: ""
-    //    },
-    //    methods: {
+            AddSolitaireSet: function () {
 
-    //        AddSolitaireSet: function () {
+                var params = new URLSearchParams();
+                params.append("solitaireShifts", this.solitaireShifts);
+                params.append("solitaireDays", this.solitaireDays);
+                params.append("solitaireOrder", this.solitaireOrder);
+                params.append("peopleGroup", this.peopleGroup);
+                params.append("groupLeader", this.groupLeader);
+                params.append("solitaireOrders", this.solitaireOrders);
 
-    //            var params = new URLSearchParams();
-    //            params.append("solitaireShifts", this.solitaireShifts);
-    //            params.append("solitaireDays", this.solitaireDays);
-    //            params.append("solitaireOrder", this.solitaireOrder);
-    //            params.append("peopleGroup", this.peopleGroup);
-    //            params.append("groupLeader", this.groupLeader);
-    //            params.append("solitaireOrders", this.solitaireOrders);
+                //axios.post('http://localhost:61163/api/SolitaireSet', params).then((response) => { alert('添加成功'); location.reload() }).catch(function (response) { alert('失败') })
 
-    //            //axios.post('http://localhost:61163/api/SolitaireSet', params).then((response) => { alert('添加成功'); location.reload() }).catch(function (response) { alert('失败') })
-
-    //            axios.post('/SolitaireSet/Adds', params).then((response) => { alert('添加成功'); location.reload() }).catch(function (response) { alert('失败') })
-    //        },
-    //        Upt: function (id) {
-    //            var params = new URLSearchParams();
-    //            params.append("id", this.id);
-    //            params.append("solitaireShifts", this.solitaireShifts);
-    //            params.append("solitaireDays", this.solitaireDays);
-    //            params.append("solitaireOrder", this.solitaireOrder);
-    //            params.append("peopleGroup", this.peopleGroup);
-    //            params.append("groupLeader", this.groupLeader);
-    //            params.append("solitaireOrders", this.solitaireOrders);
-    //            axios.put('/SolitaireSet/Adds', params).then((response) => { alert('修改成功'); location.reload() }).catch(function (response) { alert('失败') })
-    //        }
-    //    }
-    //})
+                axios.post('/SolitaireSet/Adds', params).then((response) => { alert('添加成功'); location.reload() }).catch(function (response) { alert('失败') })
+            },
+            Upt: function (id) {
+                var params = new URLSearchParams();
+                params.append("id", this.id);
+                params.append("solitaireShifts", this.solitaireShifts);
+                params.append("solitaireDays", this.solitaireDays);
+                params.append("solitaireOrder", this.solitaireOrder);
+                params.append("peopleGroup", this.peopleGroup);
+                params.append("groupLeader", this.groupLeader);
+                params.append("solitaireOrders", this.solitaireOrders);
+                axios.put('/SolitaireSet/Adds', params).then((response) => { alert('修改成功'); location.reload() }).catch(function (response) { alert('失败') })
+            }
+        }
+    })
 </script>
