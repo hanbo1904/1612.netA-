@@ -52,14 +52,21 @@ namespace HospitalScheds.Serverce
         /// <param name="schedulingRules"></param>
         /// <param name="Id"></param>
         /// <returns></returns>
-        public int GetSchedulingRules(SchedulingRules schedulingRules, int Id)
+        public int Update(SchedulingRules schedulingRules, int Id)
         {
             db.Entry(schedulingRules).State = EntityState.Modified;
             int i = db.SaveChanges();
             return i;
         }
 
-      
+        public List<SchedulingRules> GetSchedulingRules(string Name = "")
+        {
+            throw new NotImplementedException();
+        }
+
+
+
+
 
         /// <summary>
         /// 显示
@@ -74,5 +81,7 @@ namespace HospitalScheds.Serverce
             //    return list;
 
         }
+
+       
     }
 }
