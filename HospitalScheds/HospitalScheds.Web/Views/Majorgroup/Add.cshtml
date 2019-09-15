@@ -1,0 +1,96 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <script src="~/lib/vuE/vue.js"></script>
+    <script src="~/lib/jquery/dist/jquery.js"></script>
+    <script src="~/lib/vuE/axios.js"></script>
+
+    <link href="~/lib/bootstrap/dist/css/bootstrap.css" rel="stylesheet" />
+    <script src="~/lib/bootstrap/dist/js/bootstrap.js"></script>
+    <title>Add</title>
+</head>
+<body>
+    <div>
+        <h2>专业分组设置</h2>
+
+    </div>
+
+    <div id="MajorgroupAdd" class="modal-body">
+        <table class="table table-hover">
+            
+            <tr>
+                <td>专业组颜色</td>
+                <td><input type="text" v-model="professional" /></td>
+            </tr>
+            <tr>
+                <td>名称</td>
+                <td><input type="text" v-model="majorgroupingname" /></td>
+            </tr>
+            <tr>
+                <td>相关科室</td>
+                <td><input type="text" v-model="therelevant" /></td>
+            </tr>
+            <tr>
+                <td>带教</td>
+                <td><input type="text" v-model="teaching" /></td>
+            </tr>
+            <tr>
+                <td>组长</td>
+                <td><input type="text" v-model="majorgroupingleader" /></td>
+            </tr>
+            <tr>
+                <td>组员</td>
+                <td><input type="text" v-model="majorgroupingcrew" /></td>
+            </tr>
+            
+            <tr>
+                <td>
+                    <button v-on:click="AddMajorgroup()"> 添加</button>
+                    <button type="button" data-dismiss="modal">
+                        关闭
+                    </button>
+                </td>
+            </tr>
+        </table>
+    </div>
+</body>
+</html>
+<script>
+    var vm = new Vue({
+        el: "#MajorgroupAdd",
+        type: "post",
+        data: {
+            professional: "",
+            majorgroupingname: "",
+            therelevant: "",
+            teaching: "",
+            majorgroupingleader: "",
+            majorgroupingcrew:""
+        },
+        methods: {
+
+            AddMajorgroup: function () {
+
+                var params = new URLSearchParams();
+                params.append("professional", this.professional);
+                params.append("majorgroupingname", this.majorgroupingname);
+                params.append("therelevant", this.therelevant);
+                params.append("teaching", this.teaching);
+                params.append("majorgroupingleader", this.majorgroupingleader);
+                params.append("majorgroupingcrew", this.majorgroupingcrew);
+
+                //axios.post('http://localhost:61163/api/Annount/Add', params).then((response) => { alert('添加成功'); location.reload() }).catch(function (response) { alert('失败') })
+
+                axios.post('/Majorgroup/Adds', params).then((response) => { alert('添加成功'); location.reload() }).catch(function (response) { alert('失败') })
+
+            }
+        }
+    })
+</script>
