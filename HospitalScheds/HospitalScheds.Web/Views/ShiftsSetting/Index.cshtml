@@ -88,7 +88,7 @@
             </div>
         </div>
     </div>
-    <div id="ShView">
+    <div id="shView">
         <table class="table table-hover">
             <tr>
                 <td>序号</td>
@@ -114,13 +114,13 @@
                 <td>{{item.ispunch}}</td>
                 <td>{{item.shifttype}}</td>
                 <td>{{item.shiftorder}}</td>
-                <td>
+                @*<td>
                     <div v-if="item.id!=''">
                         <a href="#" v-on:click="Delete(item.Id)">删除</a>
                     </div>
 
 
-                </td>
+                </td>*@
                 <td> <button class="btn btn-primary btn-2g" data-toggle="modal" v-on:click="Upt(item.Id)">修改</button></td>
             </tr>
         </table>
@@ -129,7 +129,7 @@
 </html>
 <script>
     var vm = new Vue({
-        el: "#ShView",
+        el: "#shView",
         data: {
             ShiftsSetting: []
         },
@@ -146,28 +146,49 @@
                     }
                     console.log(this.ShiftsSetting)
                 });
-            },
-
-            Delete: function (id) {
-                axios.delete("/ShiftsSetting/Delete?ids=" + id).then((response) => {
-                    if (response.data > 0) {
-                        this.pagehandler();
-                    }
-                },
-                    (response) => {
-                        alert(response.status)
-                    }
-                ).catch(function (response) {
-                    alert(response);
-                });
-            },
-            //Upt(id) {
-            //    $("#ShView").modal();
-            //    $("#id").val(id);
-            //}
-
+            }
         }
-    });
+    })
+    //var vm = new Vue({
+    //    el: "#ShView",
+    //    data: {
+    //        ShiftsSetting: []
+    //    },
+    //    mounted() {
+    //        this.pagehandler();
+    //    },
+    //    methods: {
+    //        pagehandler: function () {
+    //            axios.get("http://localhost:61163/api/ShiftsSetting").then((response) => {
+    //                //console.table(response.data)
+    //                this.ShiftsSetting = []
+    //                for (var i = 0; i < response.data.length; i++) {
+    //                    this.ShiftsSetting.push(response.data[i]);
+    //                }
+    //                console.log(this.ShiftsSetting)
+    //            });
+    //        },
+
+    //        //Delete: function (id) {
+    //        //    axios.delete("/ShiftsSetting/Delete?ids=" + id).then((response) => {
+    //        //        if (response.data > 0) {
+    //        //            this.pagehandler();
+    //        //        }
+    //        //    },
+    //        //        (response) => {
+    //        //            alert(response.status)
+    //        //        }
+    //        //    ).catch(function (response) {
+    //        //        alert(response);
+    //        //    });
+    //        //},
+    //        //Upt(id) {
+    //        //    $("#ShView").modal();
+    //        //    $("#id").val(id);
+    //        //}
+
+    //    }
+    //});
 
     //添加和修改
     var vm = new Vue({
