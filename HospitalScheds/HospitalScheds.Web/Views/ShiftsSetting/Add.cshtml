@@ -1,0 +1,112 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <script src="~/lib/vuE/vue.js"></script>
+    <script src="~/lib/jquery/dist/jquery.js"></script>
+    <script src="~/lib/vuE/axios.js"></script>
+
+    <link href="~/lib/bootstrap/dist/css/bootstrap.css" rel="stylesheet" />
+    <script src="~/lib/bootstrap/dist/js/bootstrap.js"></script>
+    <title>Add</title>
+</head>
+<body>
+
+    <div>
+        <h2>班次设置</h2>
+
+    </div>
+    <div id="ShView" class="modal-body">
+        <table class="table table-hover">
+            <tr>
+                <td>班次名称</td>
+                <td><input type="text" v-model="name" /></td>
+            </tr>
+            <tr>
+                <td>班次颜色</td>
+                <td><input type="text" v-model="colorShift" /></td>
+            </tr>
+            <tr>
+                <td>上班次时间</td>
+                <td><input type="text" v-model="officeHours" value="2019-9-10" /></td>
+            </tr>
+            <tr>
+                <td>下班时间</td>
+                <td><input type="text" v-model="closingTime" value="2019-9-9" /></td>
+            </tr>
+            <tr>
+                <td>有效工作日</td>
+                <td><input type="text" v-model="workingDay" /></td>
+            </tr>
+            <tr>
+                <td>计算工时</td>
+                <td><input type="text" v-model="designFormulas" /></td>
+            </tr>
+            <tr>
+                <td>是否打卡</td>
+                <td><input type="text" v-model="isPunch" /></td>
+            </tr>
+            <tr>
+                <td>班次类型</td>
+                <td><input type="text" v-model="shiftType" /></td>
+            </tr>
+            <tr>
+                <td>班次顺序</td>
+                <td><input type="text" v-model="hiftOrder" /></td>
+            </tr>
+
+            <tr>
+                <td>
+                    <button v-on:click="AddShiftsSetting()"> 添加</button>
+                    <button type="button" data-dismiss="modal">
+                        关闭
+                    </button>
+                </td>
+            </tr>
+        </table>
+    </div>
+</body>
+</html>
+<script>
+    var vm = new Vue({
+        el: "#ShView",
+        type: "post",
+        data: {
+            name: "",
+            colorShift: "",
+            officeHours: "",
+            closingTime: "",
+            workingDay: "",
+            designFormulas: "",
+            isPunch: "",
+            shiftType: "",
+            hiftOrder:""
+        },
+        methods: {
+
+            AddShiftsSetting: function () {
+
+                var params = new URLSearchParams();
+                params.append("name", this.name);
+                params.append("colorShift", this.colorShift);
+                params.append("officeHours", this.officeHours);
+                params.append("closingTime", this.closingTime);
+                params.append("workingDay", this.workingDay);
+                params.append("designFormulas", this.designFormulas);
+                params.append("isPunch", this.isPunch);
+                params.append("shiftType", this.shiftType);
+                params.append("hiftOrder", this.hiftOrder);
+
+                //axios.post('http://localhost:61163/api/ShiftsSetting/Add', params).then((response) => { alert('添加成功'); location.reload() }).catch(function (response) { alert('失败') })
+
+                axios.post('/ShiftsSetting/Adds', params).then((response) => { alert('添加成功'); location.reload() }).catch(function (response) { alert('失败') })
+            }
+        }
+    })
+</script>

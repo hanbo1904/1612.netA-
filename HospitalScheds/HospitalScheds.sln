@@ -3,19 +3,19 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.28307.779
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HospitalScheds", "HospitalScheds\HospitalScheds.csproj", "{9AEEDD16-950F-48A6-A618-B50B037E62F5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HospitalScheds", "HospitalScheds\HospitalScheds.csproj", "{9AEEDD16-950F-48A6-A618-B50B037E62F5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HospitalScheds.Serverce", "HospitalScheds.Serverce\HospitalScheds.Serverce.csproj", "{B5065A5A-872C-4095-914F-97031FB10ADD}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HospitalScheds.Serverce", "HospitalScheds.Serverce\HospitalScheds.Serverce.csproj", "{B5065A5A-872C-4095-914F-97031FB10ADD}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HospitalScheds.IServerce", "HospitalScheds.IServerce\HospitalScheds.IServerce.csproj", "{09595319-ABC9-4817-BE7A-0F63F5D8159C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HospitalScheds.IServerce", "HospitalScheds.IServerce\HospitalScheds.IServerce.csproj", "{09595319-ABC9-4817-BE7A-0F63F5D8159C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HospitalScheds.Model", "HospitalScheds.Model\HospitalScheds.Model.csproj", "{355D1546-D67F-4FBC-83EA-9F36B686A274}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HospitalScheds.Model", "HospitalScheds.Model\HospitalScheds.Model.csproj", "{355D1546-D67F-4FBC-83EA-9F36B686A274}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HospitalScheds.Cache", "HospitalScheds.Cache\HospitalScheds.Cache.csproj", "{49831693-D219-456F-9463-EB849B23FF7B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HospitalScheds.Cache", "HospitalScheds.Cache\HospitalScheds.Cache.csproj", "{49831693-D219-456F-9463-EB849B23FF7B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HospitalScheds.Common", "HospitalScheds.Common\HospitalScheds.Common.csproj", "{AECB1D16-7251-4EF9-9B00-495CF0F4D232}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HospitalScheds.Common", "HospitalScheds.Common\HospitalScheds.Common.csproj", "{AECB1D16-7251-4EF9-9B00-495CF0F4D232}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HospitalScheds.Web", "HospitalScheds.Web\HospitalScheds.Web.csproj", "{12A42946-AF9F-43A2-83C1-FD94828082CA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HospitalScheds.Web", "HospitalScheds.Web\HospitalScheds.Web.csproj", "{12A42946-AF9F-43A2-83C1-FD94828082CA}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

@@ -1,0 +1,136 @@
+﻿@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+    <script src="~/lib/vuE/vue.js"></script>
+    <script src="~/lib/vuE/vue-resource.js"></script>
+    <script src="~/lib/jquery/dist/jquery.js"></script>
+    <script src="~/lib/vuE/axios.js"></script>
+    <link href="~/lib/bootstrap/dist/css/bootstrap.css" rel="stylesheet" />
+    <script src="~/lib/bootstrap/dist/js/bootstrap.js"></script>
+</head>
+<body>
+    <div>
+        <h2>显示</h2>
+        <button class="btn btn-primary btn-2g" data-toggle="modal" data-target="#myModal">添加</button>
+
+    </div>
+    <!-- 模态框（Modal） -->
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h4 class="modal-title" id="myModalLabel">排班规则设置</h4>
+                </div>
+                <div id="SchedulingRulesAdd" class="modal-body">
+                    <table class="table table-hover">
+                        <tr>
+                            <td>序号</td>
+                            <td><input type="text" v-model="ID" /></td>
+                        </tr>
+                        <tr>
+                            <td>推荐规则</td>
+                            <td><input type="text" v-model="ShiftScorise" /></td>
+                        </tr>
+                        <tr>
+                            <td>是否启用</td>
+                            <td><input type="text" v-model="IsEffect" /></td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <button v-on:click="AddSchedulingRules()"> 添加</button>
+                                <button type="button" data-dismiss="modal">
+                                    关闭
+                                </button>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+
+                </div>
+            </div>
+        </div> 
+    <div id="myView">
+        <table class="table table-hover">
+            <tr>
+                <td>序号</td>
+                <td>推荐规则</td>
+                <td>是否生效</td>
+                <td>操作</td>
+            </tr>
+            <tr v-for="item in Announlist" :key="item.id">
+                <td>{{item.ID}}</td>
+                <td>{{item.ShiftScorise}}</td>
+                <td>{{item.IsEffect}}</td>
+                <td><a href="#" class="btn btn-primary btn-2g" v-on:click="Delete(item.id)">删除</a></td>
+                <td> <button class="btn btn-primary btn-2g" data-toggle="modal" v-on:click="Upt(item.id)">修改</button></td>
+            </tr>
+        </table>
+    </div>
+</body>
+</html>
+<script>
+    var vm = new Vue({
+        el: "#myView",
+        data: {
+            SchedulingRuleslist: []
+        },
+        mounted() {
+            this.pagehandler();
+        },
+        methods: {
+            pagehandler: function () {
+                axios.get("http://localhost:61163/api/SchedulingRules").then((Response) => {
+                    this.SchedulingRuleslist = []
+                    for (var i = 0; i < Response.data.length; i++) {
+                        this.SchedulingRuleslist.push(Response.data[i]);
+                    }
+                    console.log(this.SchedulingRuleslist)
+                });
+            },
+            deleteAnnount: function (id) {
+                axios.delete("/SchedulingRules/Delete?ids=" + id).then((response) => {
+                    if (response.data > 0) {
+                        this.pagehandler();
+                    }
+                },
+                    (response) => {
+                        alert(response.status)
+                    }
+                ).catch(function (response) {
+                    alert(response);
+                });
+            },
+        }
+    });
+    var vm = new Vue({
+        el: "#SchedulingRulesAdd",
+        type: "post",
+        data: {
+            ShiftScorise: "",
+            IsEffect: "",
+        },
+        methods: {
+            AddSchedulingRules: function () {
+                var params = new URLSearchParams();
+                params.append("ShiftScorise", this.ShiftScorise);
+                params.append("IsEffect", this.IsEffect);
+                axios.post('/SchedulingRules/AddR', params).then((Response) => { alert('添加成功'); location.reload() }).catch(function (response) { alert('失败') })
+            },
+            Upt: function (id) {
+                var params = new URLSearchParams();
+                params.append("id", this.id);
+                params.append("ShiftScorise", this.ShiftScorise);
+                params.append("IsEffect", this.IsEffect);
+               
+                axios.put('/SchedulingRules/AddR', params).then((response) => { alert('修改成功'); location.reload() }).catch(function (response) { alert('失败') })
+            }
+        }
+    })
+
+</script>

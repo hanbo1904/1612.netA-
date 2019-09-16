@@ -32,6 +32,12 @@ namespace HospitalScheds
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
             //消息通知
             services.AddScoped<IAnnouncementformServerce, AnnouncementformServerce>();
+            // 班次设置
+            services.AddScoped<IShiftsSettingServerce, ShiftsSettingServerce>();
+            //接龙设置
+            services.AddScoped<ISolitaireSetServerce, SolitaireSetServerce>();
+            //专业分组设置
+            services.AddScoped<IMajorgroupServerce, MajorgroupServerce>();
             //人员排班
             services.AddScoped<ICrewschedulingServerce, CrewschedulingService>();  
 

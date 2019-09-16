@@ -1,0 +1,148 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+    <script src="~/lib/vuE/vue.js"></script>
+
+    <script src="~/lib/vuE/vue-resource.js"></script>
+    <script src="~/lib/jquery/dist/jquery.js"></script>
+
+
+    <script src="~/lib/vuE/axios.js"></script>
+    <link href="~/lib/bootstrap/dist/css/bootstrap.css" rel="stylesheet" />
+
+    <script src="~/lib/bootstrap/dist/js/bootstrap.js"></script>
+</head>
+<body>
+    <div>
+        <h2>专业分组设置</h2><input id="releasecontent" type="text" placeholder="请输入名称" />
+        <button id="Button1" class="btn btn-primary btn-2g" onclick="getContent()">查询</button>
+        <button class="btn btn-primary btn-2g" data-toggle="modal" data-target="#myModal">添加</button>
+    </div>
+    <!-- 模态框（Modal） -->
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <divid class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h4 class="modal-title" id="myModalLabel">消息添加</h4>
+                </div id = "AccountAdd" class="modal-body">
+
+            <table class="table table-hover">
+                <tr>
+                    <td>专业组颜色</td>
+                    <td><input type="text" v-model="professional" /></td>
+                </tr>
+                <tr>
+                    <td>名称</td>
+                    <td><input type="text" v-model="majorgroupingname" /></td>
+                </tr>
+                <tr>
+                    <td>相关科室</td>
+                    <td><input type="text" v-model="therelevant" /></td>
+                </tr>
+                <tr>
+                    <td>带教</td>
+                    <td><input type="text" v-model="teaching" /></td>
+                </tr>
+                <tr>
+                    <td>组长</td>
+                    <td><input type="text" v-model="majorgroupingleader" /></td>
+                </tr>
+                <tr>
+                    <td>组员</td>
+                    <td><input type="text" v-model="majorgroupingcrew" /></td>
+                </tr>
+
+                <tr>
+                    <td>
+                        <button v-on: click="AddMajorgroup()">添加</button>
+                        <button type="button" data-dismiss="modal">
+                            关闭
+                        </button>
+                        <button v-on: click="Upt()">修改</button>
+                    </td>
+                </tr>
+            </table>
+
+
+        
+        </div>
+    </div>
+    <div id="myView">
+        <table class="table table-hover">
+            <tr>
+                <td>序号</td>
+                <td>专业组颜色</td>
+                <td>名称</td>
+                <td>相关科室</td>
+                <td>带教</td>
+                <td>组长</td>
+                <td>组员</td>
+                <td>操作</td>
+            </tr>
+            <tr v-for="item in Majorlist" :key="item.id">
+                <td>{{item.id}}</td>
+                <td>{{item.professional}}</td>
+                <td>{{item.majorgroupingname}}</td>
+                <td>{{item.therelevant}}</td>
+                <td>{{item.teaching}}</td>
+                <td>{{item.majorgroupingleader}}</td>
+                <td>{{item.majorgroupingcrew}}</td>
+                <td>
+                    <div v-if="item.id!=''">
+                        <a href="#" v-on:click="deleteMajor(item.id)">删除</a>
+                    </div>
+
+
+                </td>
+                <td> <button class="btn btn-primary btn-2g" data-toggle="modal" v-on:click="Upt(id)">修改</button></td>
+            </tr>
+        </table>
+    </div>
+</body>
+</html>
+<script>
+    //显示和删除
+    var vm = new Vue({
+        el: "#myView",
+        data: {
+            Majorlist: []
+        },
+        mounted() {
+            this.pagehandler();
+        },
+        methods: {
+            pagehandler: function () {
+                axios.get("http://localhost:61163/api/Majorgroup").then((response) => {
+                    this.Majorlist = []
+                    for (var i = 0; i < response.data.length; i++) {
+                        this.Majorlist.push(response.data[i]);
+                    }
+                    console.log(this.Majorlist)
+                });
+            },
+
+            deleteMajor: function (id) {
+                axios.delete("/Majorgroup/Delete?ids=" + id).then((response) => {
+                    if (response.data > 0) {
+                        this.pagehandler();
+                    }
+                },
+                    (response) => {
+                        alert(response.status)
+                    }
+                ).catch(function (response) {
+                    alert(response);
+                });
+            },
+        }
+    });
+</script>

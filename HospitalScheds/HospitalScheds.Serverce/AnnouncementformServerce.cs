@@ -22,8 +22,6 @@ namespace HospitalScheds.Serverce
             int i = db.SaveChanges();
             return i;
         }
-
-
         /// <summary>
         /// 显示分页
         /// </summary>
@@ -36,36 +34,16 @@ namespace HospitalScheds.Serverce
 
             var list = db.Announcementform.ToList();
             return list;
-
-            //List<Announcementform> totalcount =db.Announcementform.Where(n => n.releasecontent.Contains(Name)).ToList();
-            //return totalcount;
-
-            //if (Name == null)
-            //{
-            //    Name = "";
-            //}
-            //// List<Announcementform> pagemodel = new List<Announcementform>();
-            //List<Announcementform> totalcount = new List<Announcementform>(db.Announcementform.Where(m => m.releasecontent.Contains(Name)).ToList().Count()); 
-            ////分页
-            ////var list = db.Announcementform.Where(m => m.releasecontent.Contains(Name)).ToList().Skip((pageIndex - 1) * pageSize).Take(pageSize).ToList();
-            ////pagemodel.TotalCount = totalcount;
-            ////pagemodel.Data = list;
-            //return totalcount;
         }
-       // [Route("api/[controller]")]
-      //  [ApiController]
-
         /// <summary>
         /// 反填
         /// </summary>
         /// <returns></returns>
-        public Announcementform Byid(int id)
+        public Announcementform BackFill(int id)
         {
             var lsit = db.Announcementform.Find(id);
             return lsit;
         }
-
-
         /// <summary>
         /// 删除
         /// </summary>
@@ -78,8 +56,6 @@ namespace HospitalScheds.Serverce
             int i = db.SaveChanges();
             return i;
         }
-
-
         /// <summary>
         ///  修改
         /// </summary>

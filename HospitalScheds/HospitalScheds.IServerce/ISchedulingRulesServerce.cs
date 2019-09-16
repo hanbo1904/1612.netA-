@@ -14,21 +14,21 @@ namespace HospitalScheds.IServerce
         /// </summary>
         /// <param name="schedulingRules"></param>
         /// <returns></returns>
-        int Add(ISchedulingRulesServerce schedulingRules);
+        int Add(SchedulingRules schedulingRules);
 
         /// <summary>
         /// 显示
         /// </summary>
         /// <param name="Name"></param>
         /// <returns></returns>
-        List<ISchedulingRulesServerce> GetSchedulingRules(string Name = "");
+        List<SchedulingRules> GetSchedulingRules(string Name = "");
 
         /// <summary>
         /// 反填
         /// </summary>
         /// <param name="Id"></param>
         /// <returns></returns>
-        ISchedulingRulesServerce GetSchedulingRules(int Id);
+        SchedulingRules GetSchedulingRules(int Id);
 
         /// <summary>
         /// 修改
@@ -36,7 +36,7 @@ namespace HospitalScheds.IServerce
         /// <param name="schedulingRules"></param>
         /// <param name="Id"></param>
         /// <returns></returns>
-        int GetSchedulingRules(ISchedulingRulesServerce schedulingRules, int Id);
+        int Update(SchedulingRules schedulingRules, int Id);
 
         /// <summary>
         /// 删除
