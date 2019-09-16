@@ -53,17 +53,7 @@ namespace HospitalScheds.Controllers
             return i;
         }
 
-        ///// <summary>
-        ///// 反填数据
-        ///// </summary>
-        ///// <param name="announcementform"></param>
-        ///// <returns></returns> 
-
-        //public ShiftsSetting GetShiftsSetting(int id)
-        //{
-        //    ShiftsSetting ann = _shiftsSettingServerce.GetShiftsSetting(id);
-        //    return ann;
-        //}
+        
 
         //[HttpPut]
         ///// <summary>
@@ -85,9 +75,9 @@ namespace HospitalScheds.Controllers
         /// <param name="announcementform"></param>
         /// <returns></returns> 
         [HttpPost]
-        public int Delete(int id)
+        public int Delete(int ids)
         {
-            int i = _shiftsSettingServerce.DelShiftsSetting(id);
+            int i = _shiftsSettingServerce.DelShiftsSetting(ids);
             return i;
         }
     }

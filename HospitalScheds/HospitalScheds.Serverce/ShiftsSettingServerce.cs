@@ -29,9 +29,9 @@ namespace HospitalScheds.Serverce
         /// </summary>
         /// <param name="Id"></param>
         /// <returns></returns>
-        public int DelShiftsSetting(int Id)
+        public int DelShiftsSetting(int ids)
         {
-            var list = db.ShiftsSetting.Find(Id);
+            var list = db.ShiftsSetting.Find(ids);
             db.ShiftsSetting.Remove(list);
             int i = db.SaveChanges();
             return i;

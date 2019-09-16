@@ -4,10 +4,23 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 
+
+using HospitalScheds.Model;
+using HospitalScheds.IServerce;
+using HospitalScheds.Serverce;
+using HospitalScheds.Common;
+using System.Net.Http;
+using System.Net.Http.Headers;
 namespace HospitalScheds.Web.Controllers
 {
     public class CrewschedulingController : Controller
     {
+        private ICrewschedulingServerce _crewschedulingServerce;
+
+        public CrewschedulingController(ICrewschedulingServerce crewschedulingServerce)
+        {
+            _crewschedulingServerce = crewschedulingServerce;
+        }
         public IActionResult Index()
         {
             return View();
@@ -16,10 +29,22 @@ namespace HospitalScheds.Web.Controllers
         {
             return View();
         }
-
-        public IActionResult Update()
+        public JsonResult Adds(Crewscheduling crewscheduling)
         {
-            return View();
+            string jsonm = Newtonsoft.Json.JsonConvert.SerializeObject(crewscheduling);
+            var result = HelperHttpClient.GetAll("post", "/api/Crewscheduling", jsonm);
+            return Json(result);
+        }
+
+        public JsonResult Update(int id)
+        {
+            var result = HelperHttpClient.GetAll("put", "/api/Crewscheduling", id);
+            return Json(result);
+        }
+        public int Delete(int ids)
+        {
+            int i = _crewschedulingServerce.DeleteCrewscheduling(ids);
+            return i;
         }
     }
 }

@@ -98,15 +98,14 @@
                     <div v-if="item.id!=''">
                         <a href="#" v-on:click="deleteAnnount(item.id)">删除</a>
                     </div>
-
-
                 </td>
                 <td> <button class="btn btn-primary btn-2g" data-toggle="modal" v-on:click="Upt(id)">修改</button></td>
             </tr>
         </table>
     </div>
 </body>
-</html>
+</html>0
+
 <script>
     //显示和删除
     var vm = new Vue({
@@ -168,9 +167,6 @@
                 params.append("releasepeople", this.releasepeople);
                 params.append("releasetime", this.releasetime);
                 params.append("readstatus", this.readstatus);
-
-                //axios.post('http://localhost:61163/api/Annount', params).then((response) => { alert('添加成功'); location.reload() }).catch(function (response) { alert('失败') })
-
                 axios.post('/Annount/Adds', params).then((response) => { alert('添加成功'); location.reload() }).catch(function (response) { alert('失败') })
             },
             Upt: function (id) {
