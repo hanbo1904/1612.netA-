@@ -28,7 +28,7 @@ namespace HospitalScheds.Controllers
             return i;
         }
         [HttpGet]
-        public List<SchedulingRules> Indexs()
+        public List<SchedulingRules> Index()
         {
             var list = _schedulingRulesServerce.GetSchedulingRules();
             return list;

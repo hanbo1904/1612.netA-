@@ -35,6 +35,7 @@ namespace HospitalScheds
             // 班次设置
             services.AddScoped<IShiftsSettingServerce, ShiftsSettingServerce>();
 
+            services.AddScoped<ISchedulingRulesServerce, SchedulingRulesServerce>();
             services.AddScoped<ISolitaireSetServerce, SolitaireSetServerce>();
 
             //专业分组设置

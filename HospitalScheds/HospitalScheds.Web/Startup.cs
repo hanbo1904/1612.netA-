@@ -40,6 +40,8 @@ namespace HospitalScheds.Web
             services.AddScoped<IShiftsSettingServerce, ShiftsSettingServerce>();
             services.AddScoped<ISolitaireSetServerce, SolitaireSetServerce>();
 
+            services.AddScoped<ISchedulingRulesServerce, SchedulingRulesServerce>();
+
             //专业分组设置
             services.AddScoped<IMajorgroupServerce, MajorgroupServerce>();
         }
