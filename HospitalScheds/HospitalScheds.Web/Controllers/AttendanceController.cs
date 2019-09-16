@@ -26,6 +26,13 @@ namespace HospitalScheds.Web.Controllers
             var result = HelperHttpClient.GetAll("post", "/api/attendance", jsonm);
             return Json(result);
         }
+        public JsonResult Adds(Attendance attendance)
+        {
+            string jsonm = Newtonsoft.Json.JsonConvert.SerializeObject(attendance);
+            var result = HelperHttpClient.GetAll("post", "/api/attendance", jsonm);
+            return Json(result);
+        }
+
         public IActionResult Add()
         {
             return View();

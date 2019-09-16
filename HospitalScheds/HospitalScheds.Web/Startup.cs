@@ -38,7 +38,6 @@ namespace HospitalScheds.Web
             services.AddScoped<IAnnouncementformServerce, AnnouncementformServerce>();
             // 班次设置
             services.AddScoped<IShiftsSettingServerce, ShiftsSettingServerce>();
-            services.AddScoped<ISolitaireSetServerce, SolitaireSetServerce>();
 
             //专业分组设置
             services.AddScoped<IMajorgroupServerce, MajorgroupServerce>();
