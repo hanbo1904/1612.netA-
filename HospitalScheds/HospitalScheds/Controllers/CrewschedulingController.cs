@@ -31,7 +31,6 @@ namespace HospitalScheds.Controllers
             _crewschedulingServerce = crewschedulingServerce;
         }
 
-        [HttpGet]
         /// <summary>
         /// 显示
         /// </summary>
@@ -39,9 +38,10 @@ namespace HospitalScheds.Controllers
         [HttpGet]
         public List<Crewscheduling> Indexs()
         {
-            var list = _crewschedulingServerce.GetCrewscheduling();
+            var list = _crewschedulingServerce.GetCrewschedulings();
             return list;
         }
+
         /// <summary>
         /// 添加
         /// </summary>
@@ -53,7 +53,7 @@ namespace HospitalScheds.Controllers
             int i = _crewschedulingServerce.AddCrewscheduling(crewscheduling);
             return i;
         }
-        /// <summary>
+        /// <summary>.
         /// 修改
         /// </summary>
         /// <param name="crewscheduling"></param>

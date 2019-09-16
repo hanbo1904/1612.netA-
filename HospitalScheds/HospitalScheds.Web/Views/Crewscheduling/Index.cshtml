@@ -46,36 +46,36 @@
                             <td><input type="text" v-model="s.CrewsName" /></td>
                         </tr>
                         <tr>
-                            <td>5-28星期一</td>
+                            <td>星期一</td>
                             <td><input type="text" v-model="s.Monday" /></td>
                         </tr>
                         <tr>
-                            <td>5-29星期二</td>
+                            <td>星期二</td>
                             <td><input type="text" v-model="s.Tuesday" /></td>
                         </tr>
                         <tr>
-                            <td>5-30星期三</td>
+                            <td>星期三</td>
                             <td><input type="text" v-model="s.Wednesday" /></td>
                         </tr>
                         <tr>
-                            <td>5-31星期四</td>
+                            <td>星期四</td>
                             <td><input type="text" v-model="s.Thursday" /></td>
                         </tr>
                         <tr>
-                            <td>6-1星期五</td>
+                            <td>星期五</td>
                             <td><input type="text" v-model="s.Friday" /></td>
                         </tr>
                         <tr>
-                            <td>6-2星期六</td>
+                            <td>星期六</td>
                             <td><input type="text" v-model="s.Saturday" /></td>
                         </tr>
                         <tr>
-                            <td>6-3星期日</td>
+                            <td>星期日</td>
                             <td><input type="text" v-model="s.Sunday" /></td>
                         </tr>
                         <tr>
                             <td>
-                                <button v-on:click="AddAccount()"> 添加</button>
+                                <button v-on:click="AccountAdd()"> 添加</button>
                                 <button type="button" data-dismiss="modal">
                                     关闭
                                 </button>
@@ -93,13 +93,13 @@
             <tr>
                 <td>序号</td>
                 <td>姓名</td>
-                <td>星期一</td>
-                <td>星期二</td>
-                <td>星期三</td>
-                <td>星期四</td>
-                <td>星期五</td>
-                <td>星期六</td>
-                <td>星期日</td>
+                <td>5-28星期一</td>
+                <td>5-29星期二</td>
+                <td>5-30星期三</td>
+                <td>5-31星期四</td>
+                <td>6-1星期五</td>
+                <td>6-2星期六</td>
+                <td>6-3星期日</td>
             </tr>
             <tr v-for="item in Announlist" :key="item.ID">
                 <td>{{item.ID}}</td>
@@ -130,7 +130,7 @@
         },
         methods: {
             pagehandler: function () {
-                axios.get("http://localhost:61163/api/Crewscheduling").then((response) => {
+                axios.get("http://localhost:61162/api/Crewscheduling").then((response) => {
                     this.Announlist = []
                     for (var i = 0; i < response.data.length; i++) {
                         this.Announlist.push(response.data[i]);
