@@ -65,7 +65,7 @@
                         </tr>
                         <tr>
                             <td>
-                                <button v-on:click="AddAccount()"> 添加</button>
+                                <button v-on:click="AddSolitaireSet()"> 添加</button>
                                 <button type="button" data-dismiss="modal">关闭 </button>
                             </td>
                             <td>
@@ -87,9 +87,11 @@
                 <td>组内人员</td>
                 <td>组长</td>
                 <td>顺序</td>
+                <td>删除</td>
+                <td>编辑</td>
             </tr>
-            <tr v-for="item in SolitaireSetlists" :key="item.ID">
-                <td>{{item.iD}}</td>
+            <tr v-for="item in SolitaireSetlists">
+                <td>{{item.id}}</td>
                 <td>{{item.solitaireShifts}}</td>
                 <td>{{item.solitaireDays}}</td>
                 <td>{{item.solitaireOrder}}</td>
@@ -169,7 +171,7 @@
 
                 //axios.post('http://localhost:61163/api/SolitaireSet', params).then((response) => { alert('添加成功'); location.reload() }).catch(function (response) { alert('失败') })
 
-                axios.post('/SolitaireSet/Adds', params).then((response) => { alert('添加成功'); location.reload() }).catch(function (response) { alert('失败') })
+                axios.post('/SolitaireSet/Add', params).then((response) => { alert('添加成功'); location.reload() }).catch(function (response) { alert('失败') })
             },
             Upt: function (id) {
                 var params = new URLSearchParams();
@@ -180,7 +182,7 @@
                 params.append("peopleGroup", this.peopleGroup);
                 params.append("groupLeader", this.groupLeader);
                 params.append("solitaireOrders", this.solitaireOrders);
-                axios.put('/SolitaireSet/Adds', params).then((response) => { alert('修改成功'); location.reload() }).catch(function (response) { alert('失败') })
+                axios.put('/SolitaireSet/Update', params).then((response) => { alert('修改成功'); location.reload() }).catch(function (response) { alert('失败') })
             }
         }
     })
