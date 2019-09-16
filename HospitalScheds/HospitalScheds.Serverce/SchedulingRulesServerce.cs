@@ -58,12 +58,6 @@ namespace HospitalScheds.Serverce
             int i = db.SaveChanges();
             return i;
         }
-
-
-
-
-
-
         /// <summary>
         /// 显示
         /// </summary>

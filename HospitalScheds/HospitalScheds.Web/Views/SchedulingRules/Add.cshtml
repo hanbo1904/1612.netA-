@@ -37,11 +37,11 @@
             </tr>
             <tr>
                 <td><input type="text" v-model="ID" /></td>
-                <td><input type="text" v-model="DateTimesOne" /></td>
-                <td><input type="text" v-model="ShiftsOne" /></td>
-                <td><input type="text" v-model="DateTimesTwo" /></td>
-                <td><input type="text" v-model="DateTimesThree" /></td>
-                <td><input type="text" v-model="ShiftsTwo" /></td>
+                <td><input type="text" v-model="datetimesone" /></td>
+                <td><input type="text" v-model="shiftsone" /></td>
+                <td><input type="text" v-model="datetimestwo" /></td>
+                <td><input type="text" v-model="datetimesthree" /></td>
+                <td><input type="text" v-model="shiftstwo" /></td>
                 <td>
                     <button type="button" data-dismiss="modal">
                         关闭
@@ -85,22 +85,22 @@
         el: "#SchedulingRulesAdd",
         type: "post",
         data: {
-            DateTimesOne: "",
-            ShiftsOne: "",
-            DateTimesTwo: "",
-            DateTimesThree: "",
-            ShiftsTwo: ""
+            datetimesone: "",
+            shiftsone: "",
+            datetimestwo: "",
+            datetimesthree: "",
+            shiftstwo: ""
         },
         methods: {
 
             AddAccount: function () {
 
                 var params = new URLSearchParams();
-                params.append("DateTimesOne", this.DateTimesOne);
-                params.append("ShiftsOne", this.ShiftsOne);
-                params.append("DateTimesTwo", this.DateTimesTwo);
-                params.append("DateTimesThree", this.DateTimesThree);
-                params.append("ShiftsTwo", this.ShiftsTwo);
+                params.append("datetimesone", this.datetimesone);
+                params.append("shiftsone", this.shiftsone);
+                params.append("datetimestwo", this.datetimestwo);
+                params.append("datetimesthree", this.datetimesthree);
+                params.append("shiftstwo", this.shiftstwo);
 
                 //axios.post('http://localhost:61163/api/SchedulingRules/Add', params).then((response) => { alert('添加成功'); location.reload() }).catch(function (response) { alert('失败') })
 

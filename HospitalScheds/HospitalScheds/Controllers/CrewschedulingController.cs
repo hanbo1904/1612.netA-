@@ -31,29 +31,28 @@ namespace HospitalScheds.Controllers
             _crewschedulingServerce = crewschedulingServerce;
         }
 
+        [HttpGet]
         /// <summary>
         /// 显示
         /// </summary>
         /// <returns></returns>
-        [HttpGet]
-        public List<Crewscheduling> Indexs()
+        PageModel<Crewscheduling> GetCrewscheduling(int pageIndex = 1, int pageSize = 3, string CrewsName = "")
         {
-            var list = _crewschedulingServerce.GetCrewschedulings();
+            var list = _crewschedulingServerce.GetCrewscheduling( pageIndex, pageSize,CrewsName);
             return list;
         }
-
         /// <summary>
         /// 添加
         /// </summary>
         /// <param name="crewscheduling"></param>
         /// <returns></returns>
         [HttpPost]
-        public int AddCrewscheduling(Crewscheduling crewscheduling)
+        int AddCrewscheduling(Crewscheduling crewscheduling)
         {
             int i = _crewschedulingServerce.AddCrewscheduling(crewscheduling);
             return i;
         }
-        /// <summary>.
+        /// <summary>
         /// 修改
         /// </summary>
         /// <param name="crewscheduling"></param>

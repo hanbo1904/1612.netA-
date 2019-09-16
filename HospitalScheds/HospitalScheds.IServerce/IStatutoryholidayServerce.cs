@@ -15,7 +15,7 @@ namespace HospitalScheds.IServerce
         /// 显示
         /// </summary>
         /// <returns></returns>
-        PageModel<Statutoryholiday> GetStatutoryholiday(string Name = "", int pageIndex = 1, int pageSize = 3);
+        PageModel<Statutoryholiday> GetStatutoryholiday(int pageIndex = 1, int pageSize = 3);
 
         /// <summary>
         /// 添加
@@ -44,6 +44,5 @@ namespace HospitalScheds.IServerce
         /// <param name="id"></param>
         /// <returns></returns>
         int DeleteStatutoryholiday(int id);
-
     }
 }

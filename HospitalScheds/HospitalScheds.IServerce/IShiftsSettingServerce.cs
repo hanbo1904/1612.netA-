@@ -50,6 +50,6 @@ namespace HospitalScheds.IServerce
         /// </summary>
         /// <param name="Id"></param>
         /// <returns></returns>
-        int DelShiftsSetting(int ids);
+        int DelShiftsSetting(int Id);
     }
 }

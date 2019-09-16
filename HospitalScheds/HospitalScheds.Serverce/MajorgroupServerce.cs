@@ -21,7 +21,7 @@ namespace HospitalScheds.Serverce
         /// <returns></returns>
         public int Add(Majorgrouping majorgrouping)
         {
-            db.Majorgroupinglist.Add(majorgrouping);
+            db.Majorgrouping.Add(majorgrouping);
             int i = db.SaveChanges();
             return i;
         }
@@ -37,7 +37,7 @@ namespace HospitalScheds.Serverce
         public List<Majorgrouping> GetMajor()
         {
 
-            var list = db.Majorgroupinglist.ToList();
+            var list = db.Majorgrouping.ToList();
             return list;
 
             //List<Announcementform> totalcount =db.Announcementform.Where(n => n.releasecontent.Contains(Name)).ToList();
@@ -62,8 +62,8 @@ namespace HospitalScheds.Serverce
         /// <returns></returns>
         public int Delete(int ids)
         {
-            var list = db.Majorgroupinglist.Find(ids);
-            db.Majorgroupinglist.Remove(list);
+            var list = db.Majorgrouping.Find(ids);
+            db.Majorgrouping.Remove(list);
             int i = db.SaveChanges();
             return i;
         }

@@ -25,7 +25,7 @@ namespace HospitalScheds.Web.Controllers
         public JsonResult Adds(ShiftsSetting shiftsSetting)
         {
             string jsonm = Newtonsoft.Json.JsonConvert.SerializeObject(shiftsSetting);
-            var result = HelperHttpClient.GetAll("post", "/api/shiftssetting", jsonm);
+            var result = HelperHttpClient.GetAll("post", "/api/annount", jsonm);
             return Json(result);
         }
 

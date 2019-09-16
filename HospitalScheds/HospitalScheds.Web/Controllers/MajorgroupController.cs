@@ -23,10 +23,15 @@ namespace HospitalScheds.Web.Controllers
         {
             return View();
         }
+        public int Delete(int ids)
+        {
+            int i = _majorgroupServerce.Delete(ids);
+            return i;
+        }
         public JsonResult Adds(Majorgrouping majorgrouping)
         {
             string jsonm = Newtonsoft.Json.JsonConvert.SerializeObject(majorgrouping);
-            var result = HelperHttpClient.GetAll("post", "/api/annount", jsonm);
+            var result = HelperHttpClient.GetAll("post", "/api/majorgroup", jsonm);
             return Json(result);
         }
         public IActionResult Add()
@@ -36,7 +41,7 @@ namespace HospitalScheds.Web.Controllers
         public JsonResult Updates(int id)
         {
             //string jsonm = Newtonsoft.Json.JsonConvert.SerializeObject(announcementform);
-            var result = HelperHttpClient.GetAll("put", "/api/annount", id);
+            var result = HelperHttpClient.GetAll("put", "/api/majorgroup", id);
             return Json(result);
         }
         public IActionResult Update()
