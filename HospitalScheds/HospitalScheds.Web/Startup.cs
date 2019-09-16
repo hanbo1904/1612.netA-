@@ -39,10 +39,15 @@ namespace HospitalScheds.Web
             // 班次设置
             services.AddScoped<IShiftsSettingServerce, ShiftsSettingServerce>();
 
+            services.AddScoped<ISchedulingRulesServerce, SchedulingRulesServerce>();
+
             //专业分组设置
             services.AddScoped<IMajorgroupServerce, MajorgroupServerce>();
             //接龙设置
             services.AddScoped<ISolitaireSetServerce, SolitaireSetServerce>();
+
+            //人员排班
+            services.AddScoped<ICrewschedulingServerce, CrewschedulingService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

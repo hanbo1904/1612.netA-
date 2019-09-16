@@ -1,0 +1,116 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Add</title>
+
+    <script src="~/lib/vuE/vue.js"></script>
+    @*<script src="~/lib/vuE/vue-resource.js"></script>*@
+    <script src="~/lib/jquery/dist/jquery.js"></script>
+    <script src="~/lib/vuE/axios.js"></script>
+
+    <link href="~/lib/bootstrap/dist/css/bootstrap.css" rel="stylesheet" />
+    <script src="~/lib/bootstrap/dist/js/bootstrap.js"></script>
+</head>
+<body>
+    <div id="Add" class="modal-body">
+        <table class="table table-hover">
+            <tr>
+                <td>姓名</td>
+                <td><input type="text" v-model="CrewsName" /></td>
+            </tr>
+            <tr>
+                <td>星期一</td>
+                <td><input type="text" v-model="Monday" /></td>
+            </tr>
+            <tr>
+                <td>星期二</td>
+                <td><input type="text" v-model="Tuesday" /></td>
+            </tr>
+            <tr>
+                <td>星期三</td>
+                <td><input type="text" v-model="Wednesday" value="2019-9-9" /></td>
+            </tr>
+            <tr>
+                <td>星期四</td>
+                <td><input type="text" v-model="Thursday" /></td>
+            </tr>
+            <tr>
+                <td>星期五</td>
+                <td><input type="text" v-model="Friday" /></td>
+            </tr>
+            <tr>
+                <td>星期六</td>
+                <td><input type="text" v-model="Saturday" /></td>
+            </tr>
+            <tr>
+                <td>星期日</td>
+                <td><input type="text" v-model="Sunday" /></td>
+            </tr>
+            <tr>
+                <td>班次</td>
+                <td><input type="text" v-model="classes" /></td>
+            </tr>
+            <tr>
+                <td>备注</td>
+                <td><input type="text" v-model="Remark" /></td>
+            </tr>
+            <tr>
+                <td>
+                    <button v-on:click="AddAccount()"> 添加</button>
+                    <button type="button" data-dismiss="modal">
+                        关闭
+                    </button>
+                </td>
+            </tr>
+        </table>
+    </div>
+</body>
+</html>
+
+<script>
+    var vm = new Vue({
+        el: "#Add",
+        type: "post",
+        data: {
+            CrewsName: "",
+            Monday: "",
+            Tuesday: "",
+            Wednesday: "",
+            Thursday: "",
+            Friday: "",
+            Saturday: "",
+            Sunday: "",
+            classes: "",
+            Remark: ""
+        },
+        methods: {
+
+            AddAccount: function () {
+
+                var params = new URLSearchParams();
+                params.append("CrewsName", this.CrewsName);
+                params.append("Monday", this.Monday);
+                params.append("Tuesday", this.Tuesday);
+                params.append("Wednesday", this.Wednesday);
+                params.append("Thursday", this.Thursday);
+                params.append("Friday", this.Friday);
+                params.append("Saturday", this.Saturday);
+                params.append("Sunday", this.Sunday);
+                params.append("classes", this.classes);
+                params.append("Remark", this.Remark);
+
+                //axios.post('http://localhost:61162/api/Crewscheduling/Add', params).then((response) => { alert('添加成功'); location.reload() }).catch(function (response) { alert('失败') })
+
+                axios.post('/Crewscheduling/Add', params).then((response) => { alert('添加成功'); location.reload() }).catch(function (response) { alert('失败') })
+            }
+        }
+    })
+</script>
+

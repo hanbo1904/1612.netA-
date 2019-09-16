@@ -46,36 +46,36 @@
                             <td><input type="text" v-model="s.CrewsName" /></td>
                         </tr>
                         <tr>
-                            <td>5-28星期一</td>
+                            <td>星期一</td>
                             <td><input type="text" v-model="s.Monday" /></td>
                         </tr>
                         <tr>
-                            <td>5-29星期二</td>
+                            <td>星期二</td>
                             <td><input type="text" v-model="s.Tuesday" /></td>
                         </tr>
                         <tr>
-                            <td>5-30星期三</td>
+                            <td>星期三</td>
                             <td><input type="text" v-model="s.Wednesday" /></td>
                         </tr>
                         <tr>
-                            <td>5-31星期四</td>
+                            <td>星期四</td>
                             <td><input type="text" v-model="s.Thursday" /></td>
                         </tr>
                         <tr>
-                            <td>6-1星期五</td>
+                            <td>星期五</td>
                             <td><input type="text" v-model="s.Friday" /></td>
                         </tr>
                         <tr>
-                            <td>6-2星期六</td>
+                            <td>星期六</td>
                             <td><input type="text" v-model="s.Saturday" /></td>
                         </tr>
                         <tr>
-                            <td>6-3星期日</td>
+                            <td>星期日</td>
                             <td><input type="text" v-model="s.Sunday" /></td>
                         </tr>
                         <tr>
                             <td>
-                                <button v-on:click="AddAccount()"> 添加</button>
+                                <button v-on:click="AccountAdd()"> 添加</button>
                                 <button type="button" data-dismiss="modal">
                                     关闭
                                 </button>
@@ -93,13 +93,13 @@
             <tr>
                 <td>序号</td>
                 <td>姓名</td>
-                <td>星期一</td>
-                <td>星期二</td>
-                <td>星期三</td>
-                <td>星期四</td>
-                <td>星期五</td>
-                <td>星期六</td>
-                <td>星期日</td>
+                <td>5-28星期一</td>
+                <td>5-29星期二</td>
+                <td>5-30星期三</td>
+                <td>5-31星期四</td>
+                <td>6-1星期五</td>
+                <td>6-2星期六</td>
+                <td>6-3星期日</td>
             </tr>
             <tr v-for="item in Announlist" :key="item.ID">
                 <td>{{item.ID}}</td>
@@ -118,3 +118,98 @@
     </div>
 </body>
 </html>
+<script>
+    //显示
+    var vm = new Vue({
+        el: "#myView",
+        data: {
+            Announlist: []
+        },
+        mounted() {
+            this.pagehandler();
+        },
+        methods: {
+            pagehandler: function () {
+                axios.get("http://localhost:61162/api/Crewscheduling").then((response) => {
+                    this.Announlist = []
+                    for (var i = 0; i < response.data.length; i++) {
+                        this.Announlist.push(response.data[i]);
+                    }
+                    console.log(this.Announlist)
+                });
+            },
+
+            deleteAnnount: function (id) {
+                axios.delete("/Crewscheduling/Delete?ids=" + id).then((response) => {
+                    if (response.data > 0) {
+                        this.pagehandler();
+                    }
+                },
+                    (response) => {
+                        alert(response.status)
+                    }
+                ).catch(function (response) {
+                    alert(response);
+                });
+            },
+        }
+    });
+
+
+    //添加和修改
+    var vm = new Vue({
+        el: "#Add",
+        type: "post",
+        data: {
+            CrewsName: "",
+            Monday: "",
+            Tuesday: "",
+            Wednesday: "",
+            Thursday: "",
+            Friday: "",
+            Saturday: "",
+            Sunday: "",
+            classes: "",
+            Remark: ""
+        },
+        methods: {
+
+            AddAccount: function () {
+
+                var params = new URLSearchParams();
+                params.append("CrewsName", this.CrewsName);
+                params.append("Monday", this.Monday);
+                params.append("Tuesday", this.Tuesday);
+                params.append("Wednesday", this.Wednesday);
+                params.append("Thursday", this.Thursday);
+                params.append("Friday", this.Friday);
+                params.append("Saturday", this.Saturday);
+                params.append("Sunday", this.Sunday);
+                params.append("classes", this.classes);
+                params.append("Remark", this.Remark);
+
+                //axios.post('http://localhost:61163/api/Crewscheduling', params).then((response) => { alert('添加成功'); location.reload() }).catch(function (response) { alert('失败') })
+
+                axios.post('/Annount/Add', params).then((response) => { alert('添加成功'); location.reload() }).catch(function (response) { alert('失败') })
+            },
+            Upt: function (id) {
+                var params = new URLSearchParams();
+                params.append("CrewsName", this.CrewsName);
+                params.append("Monday", this.Monday);
+                params.append("Tuesday", this.Tuesday);
+                params.append("Wednesday", this.Wednesday);
+                params.append("Thursday", this.Thursday);
+                params.append("Friday", this.Friday);
+                params.append("Saturday", this.Saturday);
+                params.append("Sunday", this.Sunday);
+                params.append("classes", this.classes);
+                params.append("Remark", this.Remark);
+                axios.put('/Annount/Add', params).then((response) => { alert('修改成功'); location.reload() }).catch(function (response) { alert('失败') })
+
+
+
+
+            }
+        }
+    })
+    </script>

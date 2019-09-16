@@ -31,15 +31,15 @@
                     <table class="table table-hover">
                         <tr>
                             <td>序号</td>
-                            <td><input type="text" v-model="ID" /></td>
+                            <td><input type="text" v-model="id" /></td>
                         </tr>
                         <tr>
                             <td>推荐规则</td>
-                            <td><input type="text" v-model="ShiftScorise" /></td>
+                            <td><input type="text" v-model="shiftScorise" /></td>
                         </tr>
                         <tr>
                             <td>是否启用</td>
-                            <td><input type="text" v-model="IsEffect" /></td>
+                            <td><input type="text" v-model="isEffect" /></td>
                         </tr>
                         <tr>
                             <td>
@@ -63,10 +63,10 @@
                 <td>是否生效</td>
                 <td>操作</td>
             </tr>
-            <tr v-for="item in Announlist" :key="item.id">
-                <td>{{item.ID}}</td>
-                <td>{{item.ShiftScorise}}</td>
-                <td>{{item.IsEffect}}</td>
+            <tr v-for="item in SchedulingRuleslist" :key="item.id">
+                <td>{{item.id}}</td>
+                <td>{{item.shiftscorise}}</td>
+                <td>{{item.iseffect}}</td>
                 <td><a href="#" class="btn btn-primary btn-2g" v-on:click="Delete(item.id)">删除</a></td>
                 <td> <button class="btn btn-primary btn-2g" data-toggle="modal" v-on:click="Upt(item.id)">修改</button></td>
             </tr>
@@ -106,6 +106,10 @@
                     alert(response);
                 });
             },
+            //Upt(id) {
+            //    $("#myView").modal();
+            //    $("#id").val(id);
+            //}
         }
     });
     var vm = new Vue({
@@ -118,16 +122,13 @@
         methods: {
             AddSchedulingRules: function () {
                 var params = new URLSearchParams();
-                params.append("ShiftScorise", this.ShiftScorise);
-                params.append("IsEffect", this.IsEffect);
+                params.append("shiftscorise", this.shiftscorise);
+                params.append("iseffect", this.iseffect);
                 axios.post('/SchedulingRules/AddR', params).then((Response) => { alert('添加成功'); location.reload() }).catch(function (response) { alert('失败') })
             },
             Upt: function (id) {
-                var params = new URLSearchParams();
-                params.append("id", this.id);
-                params.append("ShiftScorise", this.ShiftScorise);
-                params.append("IsEffect", this.IsEffect);
-               
+                var id = $("#id").val();
+                vm.this.Id = id;
                 axios.put('/SchedulingRules/AddR', params).then((response) => { alert('修改成功'); location.reload() }).catch(function (response) { alert('失败') })
             }
         }

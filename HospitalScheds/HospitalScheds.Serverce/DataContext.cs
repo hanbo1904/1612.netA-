@@ -138,7 +138,7 @@ namespace HospitalScheds.Serverce
         /// <summary>
         /// 排班规则设置表
         /// </summary>
-        public DbSet<SchedulingRules> SchedulingRuleslist { get; set; }
+        public DbSet<SchedulingRules> SchedulingRules { get; set; }
         /// <summary>
         /// 接龙设置表
         /// </summary>
