@@ -75,9 +75,9 @@ namespace HospitalScheds.Controllers
         /// <param name="announcementform"></param>
         /// <returns></returns> 
         [HttpPost]
-        public int Delete(int id)
+        public int Delete(int ids)
         {
-            int i = _shiftsSettingServerce.DelShiftsSetting(id);
+            int i = _shiftsSettingServerce.DelShiftsSetting(ids);
             return i;
         }
     }
