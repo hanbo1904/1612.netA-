@@ -34,41 +34,37 @@
                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
                     <h4 class="modal-title" id="myModalLabel">消息添加</h4>
                 </div>
-                <div id = "AccountAdd" class="modal-body" >
-                <table class="table table-hover">
-                    <tr>
-                        <td>发布内容</td>
-                        <td>
-                            <input type="hidden" id="id" />
-                            <input type="text" v-model="releasecontent" />
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>状态</td>
-                        <td><input type="text" v-model="status" /></td>
-                    </tr>
-                    <tr>
-                        <td>发布人员</td>
-                        <td><input type="text" v-model="releasepeople" /></td>
-                    </tr>
-                    <tr>
-                        <td>发布时间</td>
-                        <td><input type="text" v-model="releasetime" value="2019-9-9" /></td>
-                    </tr>
-                    <tr>
-                        <td>读取状态</td>
-                        <td><input type="text" v-model="readstatus" /></td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <button v-on: click="AddAccount()">添加</button>
-                            <button type="button" data-dismiss="modal">
-                                关闭
-                            </button>
-                            <button v-on: click="Upt()">修改</button>
-                        </td>
-                    </tr>
-                </table>
+                <div id="AccountAdd" class="modal-body">
+                    <table class="table table-hover">
+                        <tr>
+                            <td>发布内容</td>
+                            <td><input type="text" v-model="releasecontent" /></td>
+                        </tr>
+                        <tr>
+                            <td>状态</td>
+                            <td><input type="text" v-model="status" /></td>
+                        </tr>
+                        <tr>
+                            <td>发布人员</td>
+                            <td><input type="text" v-model="releasepeople" /></td>
+                        </tr>
+                        <tr>
+                            <td>发布时间</td>
+                            <td><input type="text" v-model="releasetime" value="2019-9-9" /></td>
+                        </tr>
+                        <tr>
+                            <td>读取状态</td>
+                            <td><input type="text" v-model="readstatus" /></td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <button v-on:click="AddAccount()"> 添加</button>
+                                <button type="button" data-dismiss="modal">
+                                    关闭
+                                </button>
+                            </td>
+                        </tr>
+                    </table>
                 </div>
 
 
@@ -104,7 +100,7 @@
         </table>
     </div>
 </body>
-</html>0
+</html>
 
 <script>
     //显示和删除
