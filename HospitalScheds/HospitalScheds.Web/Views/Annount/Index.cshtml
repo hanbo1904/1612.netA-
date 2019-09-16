@@ -86,10 +86,10 @@
             <tr v-for="item in Announlist" :key="item.id">
                 <td>{{item.id}}</td>
                 <td>{{item.releasecontent}}</td>
-                <td>{{item.status}}</td>
+                <td>{{item.status==1?"已发布":"未发布"}}</td>
                 <td>{{item.releasepeople}}</td>
                 <td>{{item.releasetime}}</td>
-                <td>{{item.readstatus}}</td>
+                <td>{{item.readstatus==1?"10/54":"无状态"}}</td>
                 <td>
                     <div v-if="item.id!=''">
                         <a href="#" v-on:click="deleteAnnount(item.id)">删除</a>
