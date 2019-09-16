@@ -111,8 +111,8 @@
                 <td>{{item.closingtime}}</td>
                 <td>{{item.workingday}}</td>
                 <td>{{item.designformulas}}</td>
-                <td>{{item.ispunch}}</td>
-                <td>{{item.shifttype}}</td>
+                <td>{{item.ispunch==1?"是":"否"}}</td>
+                <td>{{item.shifttype==1?"白班":"夜班"}}</td>
                 <td>{{item.shiftorder}}</td>
                 @*<td>
                     <div v-if="item.id!=''">
