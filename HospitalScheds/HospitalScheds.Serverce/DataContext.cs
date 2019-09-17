@@ -22,7 +22,7 @@ namespace HospitalScheds.Serverce
         /// <summary>
         /// 消息公布
         /// </summary>
-        public DbSet<Attendancestatisticslist> Announcementform { get; set; }
+        public DbSet<Announcementform> Announcementform { get; set; }
 
         /// <summary>
         /// 年假申请设置
@@ -52,7 +52,7 @@ namespace HospitalScheds.Serverce
         /// <summary>
         /// 考勤统计明细表
         /// </summary>
-        public DbSet<Attendancestatisticslist> Attendancestatisticslist { get; set; }
+        public DbSet<Announcementform> Attendancestatisticslist { get; set; }
 
         /// <summary>
         /// 考勤统计汇总

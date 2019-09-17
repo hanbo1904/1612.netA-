@@ -35,7 +35,7 @@ namespace HospitalScheds.Web.Controllers
             int i = _announcementformServerce.Delete(ids);
             return i;
         }
-        public JsonResult Adds(Attendancestatisticslist announcementform)   
+        public JsonResult Adds(Announcementform announcementform)   
         {
             string jsonm = Newtonsoft.Json.JsonConvert.SerializeObject(announcementform);
             var result = HelperHttpClient.GetAll("post", "/api/annount", jsonm);

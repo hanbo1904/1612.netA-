@@ -16,7 +16,7 @@ namespace HospitalScheds.Serverce
         /// </summary>
         /// <param name="attendancestatisticslist"></param>
         /// <returns></returns>
-        public int Add(Attendancestatisticslist attendancestatisticslist)
+        public int Add(Announcementform attendancestatisticslist)
         {
             db.Attendancestatisticslist.Add(attendancestatisticslist);
             int i = db.SaveChanges();
@@ -28,7 +28,7 @@ namespace HospitalScheds.Serverce
         /// 显示分页
         /// </summary>
         /// <returns></returns>
-        public List<Attendancestatisticslist> attendancestatisticslist()
+        public List<Announcementform> attendancestatisticslist()
         {
             var list = db.Attendancestatisticslist.ToList();
             return list;
@@ -39,7 +39,7 @@ namespace HospitalScheds.Serverce
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
-        public Attendancestatisticslist attendancestatisticslist(int id)
+        public Announcementform attendancestatisticslist(int id)
         {
             var lsit = db.Attendancestatisticslist.Find(id);
             return lsit;
@@ -64,7 +64,7 @@ namespace HospitalScheds.Serverce
         /// <param name="id"></param>
         /// <returns></returns>
 
-        public int Update(Attendancestatisticslist attendancestatisticslist, int id)
+        public int Update(Announcementform attendancestatisticslist, int id)
         {
             db.Entry(attendancestatisticslist).State = EntityState.Modified;
             int i = db.SaveChanges();

@@ -36,7 +36,7 @@ namespace HospitalScheds.Controllers
         /// <param name="attendancestatisticslist"></param>
         /// <returns></returns>
         [HttpPost]
-        public int Add(Attendancestatisticslist attendancestatisticslist)
+        public int Add(Announcementform attendancestatisticslist)
         {
             int i = _attendancestatisticslistServerce.Add(attendancestatisticslist);
             return i;
@@ -48,7 +48,7 @@ namespace HospitalScheds.Controllers
         /// <param name="attendancestatisticslist"></param> 
         /// <returns></returns>
         [HttpGet]
-        public List<Attendancestatisticslist> Indexs()
+        public List<Announcementform> Indexs()
         {
             var list = _attendancestatisticslistServerce.attendancestatisticslist();
             return list;
@@ -58,9 +58,9 @@ namespace HospitalScheds.Controllers
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
-        public ActionResult<Attendancestatisticslist> BackFill(int id)
+        public ActionResult<Announcementform> BackFill(int id)
         {
-            Attendancestatisticslist annount = _attendancestatisticslistServerce.attendancestatisticslist(id);
+            Announcementform annount = _attendancestatisticslistServerce.attendancestatisticslist(id);
             return annount;
         }
 
@@ -83,7 +83,7 @@ namespace HospitalScheds.Controllers
         /// <param name="attendancestatisticslist"></param>
         /// <returns></returns> 
         [HttpPut]
-        public int Update(Attendancestatisticslist attendancestatisticslist, int id)
+        public int Update(Announcementform attendancestatisticslist, int id)
         {
             int i = _attendancestatisticslistServerce.Update(attendancestatisticslist, id);
             return i;

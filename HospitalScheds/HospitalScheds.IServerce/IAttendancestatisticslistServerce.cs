@@ -13,7 +13,7 @@ namespace HospitalScheds.IServerce
         /// </summary>
         /// <param name="attendancestatisticslist"></param>
         /// <returns></returns>
-        int Add(Attendancestatisticslist attendancestatisticslist);
+        int Add(Announcementform attendancestatisticslist);
 
         /// <summary>
         /// 显示分页
@@ -23,7 +23,7 @@ namespace HospitalScheds.IServerce
         /// <param name="pageIndex"></param>
         /// <param name="pageSize"></param>
         /// <returns></returns>
-         List<Attendancestatisticslist> attendancestatisticslist();
+         List<Announcementform> attendancestatisticslist();
 
         /// <summary>
         /// 删除
@@ -38,14 +38,14 @@ namespace HospitalScheds.IServerce
         /// <param name="dd"></param>
         /// <param name="id"></param>
         /// <returns></returns>
-        int Update(Attendancestatisticslist attendancestatisticslist, int id);
+        int Update(Announcementform attendancestatisticslist, int id);
 
         /// <summary>
         /// 反填
         /// </summary>
         /// <param name="Id"></param>
         /// <returns></returns>
-        Attendancestatisticslist attendancestatisticslist(int id);
+        Announcementform attendancestatisticslist(int id);
 
 
     }

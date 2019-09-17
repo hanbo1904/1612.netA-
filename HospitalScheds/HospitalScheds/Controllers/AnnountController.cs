@@ -37,7 +37,7 @@ namespace HospitalScheds.Controllers
         /// <param name="announcementform"></param>
         /// <returns></returns>
         [HttpPost]   
-        public int Add(Attendancestatisticslist announcementform)
+        public int Add(Announcementform announcementform)
         {  
             int i= _announcementformServerce.Add(announcementform);
             return i;
@@ -49,7 +49,7 @@ namespace HospitalScheds.Controllers
         /// <param name="announcementform"></param> 
         /// <returns></returns>
         [HttpGet]
-        public List<Attendancestatisticslist> Indexs()
+        public List<Announcementform> Indexs()
         {
             var list = _announcementformServerce.GetAnnount();
             return list;
@@ -59,9 +59,9 @@ namespace HospitalScheds.Controllers
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
-        public ActionResult<Attendancestatisticslist> BackFill(int id)
+        public ActionResult<Announcementform> BackFill(int id)
         {
-            Attendancestatisticslist annount = _announcementformServerce.BackFill(id);
+            Announcementform annount = _announcementformServerce.BackFill(id);
             return annount;
         }
 
@@ -84,21 +84,21 @@ namespace HospitalScheds.Controllers
         /// <param name="announcementform"></param>
         /// <returns></returns> 
         [HttpPut]
-        public int Update(Attendancestatisticslist announcementform, int id)
+        public int Update(Announcementform announcementform, int id)
         {
             int i = _announcementformServerce.Update(announcementform, id);
             return i;
         }
-        /// <summary>
-        /// 反填
-        /// </summary>
-        /// <param name="id"></param>
-        /// <returns></returns>
-        //[HttpGet]
-        public ActionResult<Announcementform> BackFill(int id)
-        {
-            Announcementform annount = _announcementformServerce.BackFill(id);
-            return annount;
-        }
+        ///// <summary>
+        ///// 反填
+        ///// </summary>
+        ///// <param name="id"></param>
+        ///// <returns></returns>
+        ////[HttpGet]
+        //public ActionResult<Announcementform> BackFill(int id)
+        //{
+        //    Announcementform annount = _announcementformServerce.BackFill(id);
+        //    return annount;
+        //}
     }
 }

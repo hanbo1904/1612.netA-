@@ -16,7 +16,7 @@ namespace HospitalScheds.Serverce
         /// </summary>
         /// <param name="announcementform"></param>
         /// <returns></returns>
-        public int Add(Attendancestatisticslist announcementform)
+        public int Add(Announcementform announcementform)
         {
             db.Announcementform.Add(announcementform);
             int i = db.SaveChanges();
@@ -29,7 +29,7 @@ namespace HospitalScheds.Serverce
         /// <param name="pageIndex"></param>
         /// <param name="pageSize"></param>
         /// <returns></returns>
-        public List<Attendancestatisticslist> GetAnnount()
+        public List<Announcementform> GetAnnount()
         {
 
             var list = db.Announcementform.ToList();
@@ -39,7 +39,7 @@ namespace HospitalScheds.Serverce
         /// 反填
         /// </summary>
         /// <returns></returns>
-        public Attendancestatisticslist BackFill(int id)
+        public Announcementform BackFill(int id)
         {
             var lsit = db.Announcementform.Find(id);
             return lsit;
@@ -62,20 +62,11 @@ namespace HospitalScheds.Serverce
         /// <param name="announcementform"></param>
         /// <param name="id"></param>
         /// <returns></returns>
-        public int Update(Attendancestatisticslist announcementform,int id)
+        public int Update(Announcementform announcementform,int id)
         {
             db.Entry(announcementform).State = EntityState.Modified;
             int i = db.SaveChanges();
             return i;
-        }
-        /// <summary>
-        /// 反填
-        /// </summary>
-        /// <returns></returns>
-        public Announcementform BackFill(int id)
-        {
-            var lsit = db.Announcementform.Find(id);
-            return lsit;
         }
     }
 }
