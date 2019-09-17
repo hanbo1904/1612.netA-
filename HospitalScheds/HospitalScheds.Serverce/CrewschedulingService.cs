@@ -31,9 +31,9 @@ namespace HospitalScheds.Serverce
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
-        public int DeleteCrewscheduling(int id)
+        public int DeleteCrewscheduling(int ids)
         {
-            var list = db.Crewschedulinglist.Find(id);
+            var list = db.Crewschedulinglist.Find(ids);
             db.Crewschedulinglist.Remove(list);
             int i = db.SaveChanges();
             return i;
@@ -58,24 +58,20 @@ namespace HospitalScheds.Serverce
         /// <param name="pageSize"></param>
         /// <param name="CrewsName"></param>
         /// <returns></returns>
-        //public PageModel<Crewscheduling> GetCrewscheduling(int pageIndex = 1, int pageSize = 3,string CrewsName="")
-        //{
-        //    if (CrewsName == null)
-        //    {
-        //        CrewsName = "";
-        //    }
-        //    PageModel<Crewscheduling> pagemodel = new PageModel<Crewscheduling>();
-        //    int totalcount = db.Crewschedulinglist.Where(m => m.CrewsName.Contains(CrewsName)).ToList().Count();
-        //    //分页
-        //    var list = db.Crewschedulinglist.Where(m => m.CrewsName.Contains(CrewsName)).ToList().Skip((pageIndex - 1) * pageSize).Take(pageSize).ToList();
-        //    pagemodel.TotalCount = totalcount;
-        //    pagemodel.Data = list;
-        //    return pagemodel;
-        //}
-        public List<Crewscheduling> GetCrewschedulings()
+        public List<Crewscheduling> GetCrewscheduling()
         {
-
-            var list = db.Crewschedulinglist.ToList();
+            //if (CrewsName == null)
+            //{
+            //    CrewsName = "";
+            //}
+            //PageModel<Crewscheduling> pagemodel = new PageModel<Crewscheduling>();
+            //int totalcount = db.Crewschedulinglist.Where(m => m.crewsname.Contains(CrewsName)).ToList().Count();
+            ////分页
+            //var list = db.Crewschedulinglist.Where(m => m.crewsname.Contains(CrewsName)).ToList().Skip((pageIndex - 1) * pageSize).Take(pageSize).ToList();
+            //pagemodel.TotalCount = totalcount;
+            //pagemodel.Data = list;
+            //return pagemodel;
+            var list = db.Crewscheduling.ToList();
             return list;
         }
 

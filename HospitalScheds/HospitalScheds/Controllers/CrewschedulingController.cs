@@ -64,7 +64,6 @@ namespace HospitalScheds.Controllers
             return i;
         }
 
-        [HttpGet]
         /// <summary>
         /// 反填
         /// </summary>
@@ -81,9 +80,9 @@ namespace HospitalScheds.Controllers
         /// <param name="id"></param>
         /// <returns></returns>
         [HttpDelete]
-       public int DeleteCrewscheduling(int id)
+       public int DeleteCrewscheduling(int ids)
         {
-            int i = _crewschedulingServerce.DeleteCrewscheduling(id);
+            int i = _crewschedulingServerce.DeleteCrewscheduling(ids);
             return i;
         }
     }
