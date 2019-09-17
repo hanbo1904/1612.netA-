@@ -36,11 +36,11 @@ namespace HospitalScheds.Controllers
         /// 显示
         /// </summary>
         /// <returns></returns>
-        public List<Crewscheduling> Indexs()
-        {
-            var list = _crewschedulingServerce.GetCrewschedulings();
-            return list;
-        }
+        //public List<Crewscheduling> Indexs()
+        //{
+        //    var list = _crewschedulingServerce.GetCrewschedulings();
+        //    return list;
+        //}
         /// <summary>
         /// 添加
         /// </summary>
