@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using HospitalScheds.IServerce;
+
 using HospitalScheds.Model;
 
 using Microsoft.AspNetCore.Http;
@@ -54,6 +54,16 @@ namespace HospitalScheds.Controllers
             var list = _announcementformServerce.GetAnnount();
             return list;
         }
+        /// <summary>
+        /// 反填
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        public ActionResult<Announcementform> BackFill(int id)
+        {
+            Announcementform annount = _announcementformServerce.BackFill(id);
+            return annount;
+        }
 
         /// <summary>
         ///删除
@@ -79,16 +89,16 @@ namespace HospitalScheds.Controllers
             int i = _announcementformServerce.Update(announcementform, id);
             return i;
         }
-        /// <summary>
-        /// 反填
-        /// </summary>
-        /// <param name="id"></param>
-        /// <returns></returns>
-        //[HttpGet]
-        public ActionResult<Announcementform> BackFill(int id)
-        {
-            Announcementform annount = _announcementformServerce.BackFill(id);
-            return annount;
-        }
+        ///// <summary>
+        ///// 反填
+        ///// </summary>
+        ///// <param name="id"></param>
+        ///// <returns></returns>
+        ////[HttpGet]
+        //public ActionResult<Announcementform> BackFill(int id)
+        //{
+        //    Announcementform annount = _announcementformServerce.BackFill(id);
+        //    return annount;
+        //}
     }
 }

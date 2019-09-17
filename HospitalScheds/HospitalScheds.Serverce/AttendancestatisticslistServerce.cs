@@ -8,63 +8,65 @@ using Microsoft.EntityFrameworkCore;
 
 namespace HospitalScheds.Serverce
 {
-    public class AnnouncementformServerce:IAnnouncementformServerce
+    public class AttendancestatisticslistServerce : IAttendancestatisticslistServerce
     {
         DataContext db = new DataContext();
         /// <summary>
         /// 添加
         /// </summary>
-        /// <param name="announcementform"></param>
+        /// <param name="attendancestatisticslist"></param>
         /// <returns></returns>
-        public int Add(Announcementform announcementform)
+        public int Add(Announcementform attendancestatisticslist)
         {
-            db.Announcementform.Add(announcementform);
+            db.Attendancestatisticslist.Add(attendancestatisticslist);
             int i = db.SaveChanges();
             return i;
         }
+
+       
         /// <summary>
         /// 显示分页
         /// </summary>
-        /// <param name="Name"></param>
-        /// <param name="pageIndex"></param>
-        /// <param name="pageSize"></param>
         /// <returns></returns>
-        public List<Announcementform> GetAnnount()
+        public List<Announcementform> attendancestatisticslist()
         {
-
-            var list = db.Announcementform.ToList();
+            var list = db.Attendancestatisticslist.ToList();
             return list;
         }
+
         /// <summary>
-        /// 反填
+        /// 返填
         /// </summary>
+        /// <param name="id"></param>
         /// <returns></returns>
-        public Announcementform BackFill(int id)
+        public Announcementform attendancestatisticslist(int id)
         {
-            var lsit = db.Announcementform.Find(id);
+            var lsit = db.Attendancestatisticslist.Find(id);
             return lsit;
         }
+
         /// <summary>
         /// 删除
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
-        public int Delete(int ids)
+        public int Delete(int id)
         {
-            var list = db.Announcementform.Find(ids);
-            db.Announcementform.Remove(list);
+            var list = db.Attendancestatisticslist.Find(id);
+            db.Attendancestatisticslist.Remove(list);
             int i = db.SaveChanges();
             return i;
         }
         /// <summary>
-        ///  修改
+        /// 修改
         /// </summary>
-        /// <param name="announcementform"></param>
+        /// <param name="attendancestatisticslist"></param>
         /// <param name="id"></param>
         /// <returns></returns>
-        public int Update(Announcementform announcementform,int id)
+
+        public int Update(Announcementform attendancestatisticslist, int id)
         {
-            db.Entry(announcementform).State = EntityState.Modified;
+            db.Entry(attendancestatisticslist).State = EntityState.Modified;
             int i = db.SaveChanges();
             return i;
         }
