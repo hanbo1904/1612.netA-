@@ -1,0 +1,69 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <script src="~/lib/vuE/vue.js"></script>
+    @*<script src="~/lib/vuE/vue-resource.js"></script>*@
+    <script src="~/lib/jquery/dist/jquery.js"></script>
+    <script src="~/lib/vuE/axios.js"></script>
+
+    <link href="~/lib/bootstrap/dist/css/bootstrap.css" rel="stylesheet" />
+    <script src="~/lib/bootstrap/dist/js/bootstrap.js"></script>
+    <title>Update</title>
+</head>
+<body>
+    <div id="AccountAdd" class="modal-body">
+        <table class="table table-hover">
+            <tr>
+                <td><input type="hidden" id="Id" /></td>
+            </tr>
+            <tr>
+                <td>姓名</td>
+                <td><input type="text" v-model="CrewsName" /></td>
+            </tr>
+            <tr>
+                <td>星期一</td>
+                <td><input type="text" v-model="Monday" /></td>
+            </tr>
+            <tr>
+                <td>星期二</td>
+                <td><input type="text" v-model="Tuesday" /></td>
+            </tr>
+            <tr>
+                <td>星期三</td>
+                <td><input type="text" v-model="Wednesday" /></td>
+            </tr>
+            <tr>
+                <td>星期四</td>
+                <td><input type="text" v-model="Thursday" /></td>
+            </tr>
+            <tr>
+                <td>星期五</td>
+                <td><input type="text" v-model="Friday" /></td>
+            </tr>
+            <tr>
+                <td>星期六</td>
+                <td><input type="text" v-model="Saturday" /></td>
+            </tr>
+            <tr>
+                <td>星期日</td>
+                <td><input type="text" v-model="Sunday" /></td>
+            </tr>
+            <tr>
+                <td>
+                    <button v-on:click="UptAccount()">修改</button>
+                    <button type="button" data-dismiss="modal">
+                        关闭
+                    </button>
+                </td>
+            </tr>
+        </table>
+    </div>
+</body>
+</html>

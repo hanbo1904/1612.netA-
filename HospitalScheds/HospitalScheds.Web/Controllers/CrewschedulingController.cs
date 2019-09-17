@@ -19,7 +19,13 @@ namespace HospitalScheds.Web.Controllers
 
         public IActionResult Update()
         {
-            return View();
+            var result = HelperHttpClient.GetAll("put", "/api/Crewscheduling", id);
+            return Json(result);
+        }
+        public int Delete(int ids)
+        {
+            int i = _crewschedulingServerce.DeleteCrewscheduling(ids);
+            return i;
         }
     }
 }

@@ -81,7 +81,7 @@ namespace HospitalScheds.Controllers
         /// <param name="id"></param>
         /// <returns></returns>
         [HttpDelete]
-        int DeleteCrewscheduling(int id)
+       public int DeleteCrewscheduling(int id)
         {
             int i = _crewschedulingServerce.DeleteCrewscheduling(id);
             return i;
