@@ -127,6 +127,7 @@
             this.pagehandler();
         },
         methods: {
+            //显示
             pagehandler: function () {
                 axios.get("http://localhost:61163/api/Annount").then((response) => {
 
@@ -137,6 +138,7 @@
                     console.log(this.Announlist)
                 });
             },
+            //删除
             deleteAnnount: function (id) {
                 axios.delete("/Annount/Delete?ids=" + id).then((response) => {
                     if (response.data > 0) {
@@ -154,7 +156,7 @@
                 //反填数据
                 $("#id").val(id);
                 $.ajax({
-                    url: 'http://localhost:61163/api/Annount/BackFill=' + id,
+                    url: 'http://localhost:61163/api/Annount/BackFill?id=' + id,
                     type: 'get',
                     dataType: 'json',
                     success: function (data) {
@@ -165,8 +167,7 @@
                         $("#readstatus").val(data[0].readstatus);
                     }
                 })
-                $("#myView").modal();
-               
+                $("#myView").modal(); 
             }
         }
     });

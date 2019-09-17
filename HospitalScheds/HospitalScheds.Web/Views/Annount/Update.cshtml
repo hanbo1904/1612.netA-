@@ -28,30 +28,31 @@
         <table class="table table-hover">
             <tr>
                 <td>发布内容</td>
-                <td><input type="text" v-model="releasecontent" /></td>
+                <td><input type="text" v-model="releasecontent" id="releasecontent" /></td>
             </tr>
             <tr>
                 <td>状态</td>
-                <td><input type="text" v-model="status" /></td>
+                <td><input type="text" v-model="status" id="status" /></td>
             </tr>
             <tr>
                 <td>发布人员</td>
-                <td><input type="text" v-model="releasepeople" /></td>
+                <td><input type="text" v-model="releasepeople" id="releasepeople" /></td>
             </tr>
             <tr>
                 <td>发布时间</td>
-                <td><input type="text" v-model="releasetime" value="2019-9-9" /></td>
+                <td><input type="text" v-model="releasetime" value="2019-9-9" id="releasetime" /></td>
             </tr>
             <tr>
                 <td>读取状态</td>
-                <td><input type="text" v-model="readstatus" /></td>
+                <td><input type="text" v-model="readstatus" id="readstatus" /></td>
             </tr>
             <tr>
                 <td>
-                    <button v-on:click="UptAccount()">修改</button>
+                    <button v-on:click="Upt()">修改</button>
                     <button type="button" data-dismiss="modal">
                         关闭
                     </button>
+                    
                 </td>
             </tr>
         </table>
@@ -59,11 +60,38 @@
 </body>
 </html>
 <script>
+    //添加和修改
     var vm = new Vue({
+        el: "#AccountAdd",
+        type: "post",
+        data: {
+            releasecontent: "",
+            status: "",
+            releasepeople: "",
+            releasetime: "",
+            readstatus: ""
+        },
+        methods: {
+            //修改
+            Upt: function (id) {
+                $.ajax({
+                    url: '',
+                    type: 'get',
+                    data: { id: id },
+                    dataType: "json",
+                    success: function (data) {
+
+                    }
+                })
 
 
 
 
-
-    })
+                //var id = $("#id").val();
+                //vm.this.Id = id;
+                //alert(id)
+                //axios.put('/Annount/Updates', this).then((response) => { alert('修改成功'); location.reload() }).catch(function (response) { alert('失败') })
+            }
+        }
+    })   
 </script>
