@@ -40,6 +40,8 @@ namespace HospitalScheds
 
             //专业分组设置
             services.AddScoped<IMajorgroupServerce, MajorgroupServerce>();
+
+            services.AddScoped<ICrewschedulingServerce, CrewschedulingService>();
             //注册跨域服务，允许所有来源
             services.AddCors(options =>
                 options.AddPolicy("AllowAnyCors",

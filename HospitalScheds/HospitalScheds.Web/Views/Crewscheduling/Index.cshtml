@@ -144,19 +144,19 @@
                 });
             },
 
-           deleteAnnount: function (id) {
-               axios.delete("/Crewscheduling/Delete?id=" + id).then((response) => {
-                   if (response.data > 0) {
-                       this.pagehandler();
-                   }
-               },
-                   (response) => {
-                       alert(response.status)
-                   }
-               ).catch(function (response) {
-                   alert(response);
-               });
-           },
+           //deleteAnnount: function (id) {
+           //    axios.delete("/Crewscheduling/Delete?id=" + id).then((response) => {
+           //        if (response.data > 0) {
+           //            this.pagehandler();
+           //        }
+           //    },
+           //        (response) => {
+           //            alert(response.status)
+           //        }
+           //    ).catch(function (response) {
+           //        alert(response);
+           //    });
+           //},
         }
     });
 
