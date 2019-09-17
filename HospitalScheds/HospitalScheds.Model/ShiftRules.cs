@@ -7,8 +7,8 @@ namespace HospitalScheds.Model
     //班次规则表
     public class ShiftRules 
     {
-        public int ID { get; set; }                  //ID
-        public string ShiftScorise { get; set; }     //班次规则
-        public int IsEffect { get; set; }            //是否生效
+        public int id { get; set; }                  //ID
+        public string shiftScorise { get; set; }     //班次规则
+        public int isEffect { get; set; }             //是否生效
     }
 }

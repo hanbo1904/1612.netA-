@@ -75,7 +75,7 @@
                         </tr>
                         <tr>
                             <td>
-                                <button v-on:click="AccountAdd()"> 添加</button>
+                                <button v-on:click="AddAccount()"> 添加</button>
                                 <button type="button" data-dismiss="modal">
                                     关闭
                                 </button>
@@ -94,13 +94,13 @@
             <tr>
                 <td>序号</td>
                 <td>姓名</td>
-                <td>5-28星期一</td>
-                <td>5-29星期二</td>
-                <td>5-30星期三</td>
-                <td>5-31星期四</td>
-                <td>6-1星期五</td>
-                <td>6-2星期六</td>
-                <td>6-3星期日</td>
+                <td>星期一</td>
+                <td>星期二</td>
+                <td>星期三</td>
+                <td>星期四</td>
+                <td>星期五</td>
+                <td>星期六</td>
+                <td>星期日</td>
             </tr>
             <tr v-for="item in Announlist" :key="item.ID">
                 <td>{{item.id}}</td>

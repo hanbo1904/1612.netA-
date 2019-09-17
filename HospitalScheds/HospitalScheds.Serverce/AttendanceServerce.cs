@@ -1,11 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-
 using HospitalScheds.Model;
 using HospitalScheds.IServerce;
+
 using System.Linq;
 using Microsoft.EntityFrameworkCore;
+
 
 namespace HospitalScheds.Serverce
 {

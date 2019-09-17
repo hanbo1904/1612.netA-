@@ -30,50 +30,53 @@
     <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
-                <divid class="modal-header">
+                <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
                     <h4 class="modal-title" id="myModalLabel">消息添加</h4>
-                </div id = "AccountAdd" class="modal-body">
+                </div>
+                <div id="MajorgroupAdd" class="modal-body">
+                    <table class="table table-hover">
+                     
 
-            <table class="table table-hover">
-                <tr>
-                    <td>专业组颜色</td>
-                    <td><input type="text" v-model="professional" /></td>
-                </tr>
-                <tr>
-                    <td>名称</td>
-                    <td><input type="text" v-model="majorgroupingname" /></td>
-                </tr>
-                <tr>
-                    <td>相关科室</td>
-                    <td><input type="text" v-model="therelevant" /></td>
-                </tr>
-                <tr>
-                    <td>带教</td>
-                    <td><input type="text" v-model="teaching" /></td>
-                </tr>
-                <tr>
-                    <td>组长</td>
-                    <td><input type="text" v-model="majorgroupingleader" /></td>
-                </tr>
-                <tr>
-                    <td>组员</td>
-                    <td><input type="text" v-model="majorgroupingcrew" /></td>
-                </tr>
+                        <tr>
+                            <td>专业颜色 </td>
+                            <td><input type="text" v-model="professional" /></td>
+                        </tr>
+                        <tr>
+                            <td>专业组名称</td>
+                            <td><input type="text" v-model="majorgroupingname" /></td>
+                        </tr>
+                        <tr>
+                            <td>关联科室</td>
+                            <td><input type="text" v-model="therelevant" /></td>
+                        </tr>
+                        <tr>
+                            <td>是否带教</td>
 
-                <tr>
-                    <td>
-                        <button v-on: click="AddMajorgroup()">添加</button>
-                        <button type="button" data-dismiss="modal">
-                            关闭
-                        </button>
-                        <button v-on: click="Upt()">修改</button>
-                    </td>
-                </tr>
-            </table>
+                            <td><input type="text" v-model="teaching" /></td></td>
+                        </tr>
+                        <tr>
+                            <td>组员设置</td>
+                            <td><input type="text" v-model="majorgroupingcrew" /></td>
+                        </tr>
 
+                        <tr>
+                            <td>是否组长</td>
+                            <td><input type="text" v-model="majorgroupingleader" /></td>
+                        </tr>
+                        <tr>
+                            <td>操作</td>
+                            <td>
+                                <button v-on:click="AddMajorgroup()"> 添加</button>
+                                <button type="button" data-dismiss="modal">
+                                    关闭
+                                </button>
+                            </td>
+                        </tr>
+                    </table>
 
-        
+                </div>
+            </div>
         </div>
     </div>
     <div id="myView">
@@ -88,13 +91,13 @@
                 <td>组员</td>
                 <td>操作</td>
             </tr>
-            <tr v-for="item in Majorlist" :key="item.id">
+            <tr v-for="item in Majorgroupinglist" :key="item.id">
                 <td>{{item.id}}</td>
                 <td>{{item.professional}}</td>
                 <td>{{item.majorgroupingname}}</td>
                 <td>{{item.therelevant}}</td>
-                <td>{{item.teaching}}</td>
-                <td>{{item.majorgroupingleader}}</td>
+                <td>{{item.teaching==true?"是":"否"}}</td>
+                <td>{{item.majorgroupingleader==true?"是":"否"}}</td>
                 <td>{{item.majorgroupingcrew}}</td>
                 <td>
                     <div v-if="item.id!=''">
@@ -114,7 +117,7 @@
     var vm = new Vue({
         el: "#myView",
         data: {
-            Majorlist: []
+            Majorgroupinglist: []
         },
         mounted() {
             this.pagehandler();
@@ -122,11 +125,11 @@
         methods: {
             pagehandler: function () {
                 axios.get("http://localhost:61163/api/Majorgroup").then((response) => {
-                    this.Majorlist = []
+                    this.Majorgroupinglist = []
                     for (var i = 0; i < response.data.length; i++) {
-                        this.Majorlist.push(response.data[i]);
+                        this.Majorgroupinglist.push(response.data[i]);
                     }
-                    console.log(this.Majorlist)
+                    console.log(this.Majorgroupinglist)
                 });
             },
 
@@ -143,6 +146,48 @@
                     alert(response);
                 });
             },
+            Upt(id) {
+                $("#myView").modal();
+                $("#id").val(id);
+            }
         }
     });
+    //添加和修改
+    var vm = new Vue({
+        el: "#MajorgroupAdd",
+        type: "post",
+        data: {
+            professional: "",
+            majorgroupingname: "",
+            therelevant: "",
+            teaching: "",
+            majorgroupingleader: "",
+            majorgroupingcrew: ""
+        },
+        methods: {
+
+            AddMajorgroup: function () {
+
+                var params = new URLSearchParams();
+                params.append("professional", this.professional);
+                params.append("majorgroupingname", this.majorgroupingname);
+                params.append("therelevant", this.therelevant);
+                params.append("teaching", this.teaching);
+                params.append("majorgroupingleader", this.majorgroupingleader);
+                params.append("majorgroupingcrew", this.majorgroupingcrew);
+
+                //axios.post('http://localhost:61163/api/Annount', params).then((response) => { alert('添加成功'); location.reload() }).catch(function (response) { alert('失败') })
+
+                axios.post('/Majorgroup/Adds', params).then((response) => { alert('添加成功'); location.reload() }).catch(function (response) { alert('失败') })
+
+            },
+            Upt: function (id) {
+                var id = $("#id").val();
+                vm.this.Id = id;
+                axios.put('/Majorgroup/Updates', this).then((response) => { alert('修改成功'); location.reload() }).catch(function (response) { alert('失败') })
+            }
+        }
+    })
+
 </script>
+

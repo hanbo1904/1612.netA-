@@ -27,7 +27,7 @@
                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
                     <h4 class="modal-title" id="myModalLabel">排班规则设置</h4>
                 </div>
-                <div id="SchedulingRulesAdd" class="modal-body">
+                <div id="ShiftRulesAdd" class="modal-body">
                     <table class="table table-hover">
                         <tr>
                             <td>序号</td>
@@ -39,11 +39,11 @@
                         </tr>
                         <tr>
                             <td>是否启用</td>
-                            <td><input type="text" v-model="isEffect" /></td>
+                            <td><input type="text" v-model="iseffect" /></td>
                         </tr>
                         <tr>
                             <td>
-                                <button v-on:click="AddSchedulingRules()"> 添加</button>
+                                <button v-on:click="AddShiftRules()"> 添加</button>
                                 <button type="button" data-dismiss="modal">
                                     关闭
                                 </button>
@@ -52,18 +52,18 @@
                     </table>
                 </div>
 
-                </div>
             </div>
-        </div> 
+        </div>
+    </div>
     <div id="myView">
         <table class="table table-hover">
             <tr>
                 <td>序号</td>
                 <td>推荐规则</td>
-                <td>是否生效</td>
+                <td>是否生效</td>  
                 <td>操作</td>
             </tr>
-            <tr v-for="item in SchedulingRuleslist" :key="item.id">
+            <tr v-for="item in ShiftRuleslist" :key="item.id">
                 <td>{{item.id}}</td>
                 <td>{{item.shiftscorise}}</td>
                 <td>{{item.iseffect}}</td>
@@ -78,23 +78,23 @@
     var vm = new Vue({
         el: "#myView",
         data: {
-            SchedulingRuleslist: []
+            ShiftRules: []
         },
         mounted() {
             this.pagehandler();
         },
         methods: {
             pagehandler: function () {
-                axios.get("http://localhost:61163/api/SchedulingRules").then((Response) => {
-                    this.SchedulingRuleslist = []
+                axios.get("http://localhost:61163/api/ShiftRules").then((Response) => {
+                    this.ShiftRuleslist = []
                     for (var i = 0; i < Response.data.length; i++) {
-                        this.SchedulingRuleslist.push(Response.data[i]);
+                        this.ShiftRuleslist.push(Response.data[i]);
                     }
-                    console.log(this.SchedulingRuleslist)
+                    console.log(this.ShiftRuleslist)
                 });
             },
             deleteAnnount: function (id) {
-                axios.delete("/SchedulingRules/Delete?ids=" + id).then((response) => {
+                axios.delete("/ShiftRules/Delete?ids=" + id).then((response) => {
                     if (response.data > 0) {
                         this.pagehandler();
                     }
@@ -113,23 +113,23 @@
         }
     });
     var vm = new Vue({
-        el: "#SchedulingRulesAdd",
+        el: "#ShiftRulesAdd",
         type: "post",
         data: {
-            ShiftScorise: "",
-            IsEffect: "",
+            shiftscorise: "",
+            iseffect: "",
         },
         methods: {
-            AddSchedulingRules: function () {
+            AddShiftRules: function () {
                 var params = new URLSearchParams();
                 params.append("shiftscorise", this.shiftscorise);
                 params.append("iseffect", this.iseffect);
-                axios.post('/SchedulingRules/AddR', params).then((Response) => { alert('添加成功'); location.reload() }).catch(function (response) { alert('失败') })
+                axios.post('/ShiftRules/AddR', params).then((Response) => { alert('添加成功'); location.reload() }).catch(function (response) { alert('失败') })
             },
             Upt: function (id) {
                 var id = $("#id").val();
                 vm.this.Id = id;
-                axios.put('/SchedulingRules/AddR', params).then((response) => { alert('修改成功'); location.reload() }).catch(function (response) { alert('失败') })
+                axios.put('/ShiftRules/AddR', params).then((response) => { alert('修改成功'); location.reload() }).catch(function (response) { alert('失败') })
             }
         }
     })

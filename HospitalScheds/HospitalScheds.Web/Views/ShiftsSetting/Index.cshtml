@@ -45,35 +45,35 @@
                         </tr>
                         <tr>
                             <td>班次颜色</td>
-                            <td><input type="text" v-model="colorshift" /></td>
+                            <td><input type="text" v-model="colorShift" /></td>
                         </tr>
                         <tr>
                             <td>上班次时间</td>
-                            <td><input type="text" v-model="officehours" value="2019-9-10" /></td>
+                            <td><input type="text" v-model="officeHours" value="2019-9-10" /></td>
                         </tr>
                         <tr>
                             <td>下班时间</td>
-                            <td><input type="text" v-model="closingtime" value="2019-9-9" /></td>
+                            <td><input type="text" v-model="closingTime" value="2019-9-9" /></td>
                         </tr>
                         <tr>
                             <td>有效工作日</td>
-                            <td><input type="text" v-model="workingday" /></td>
+                            <td><input type="text" v-model="workingDay" /></td>
                         </tr>
                         <tr>
                             <td>计算工时</td>
-                            <td><input type="text" v-model="designformulas" /></td>
+                            <td><input type="text" v-model="designFormulas" /></td>
                         </tr>
                         <tr>
                             <td>是否打卡</td>
-                            <td><input type="text" v-model="ispunch" /></td>
+                            <td><input type="text" v-model="isPunch" /></td>
                         </tr>
                         <tr>
                             <td>班次类型</td>
-                            <td><input type="text" v-model="shifttype" /></td>
+                            <td><input type="text" v-model="shiftType" /></td>
                         </tr>
                         <tr>
                             <td>班次顺序</td>
-                            <td><input type="text" v-model="hiftorder" /></td>
+                            <td><input type="text" v-model="hiftOrder" /></td>
                         </tr>
                         <tr>
                             <td>
@@ -88,7 +88,7 @@
             </div>
         </div>
     </div>
-    <div id="shView">
+    <div id="ShView">
         <table class="table table-hover">
             <tr>
                 <td>序号</td>
@@ -106,21 +106,22 @@
             <tr v-for="item in ShiftsSetting" :key="item.id">
                 <td>{{item.id}}</td>
                 <td>{{item.name}}</td>
-                <td>{{item.colorshift}}</td>
-                <td>{{item.officehours}}</td>
-                <td>{{item.closingtime}}</td>
-                <td>{{item.workingday}}</td>
-                <td>{{item.designformulas}}</td>
-                <td>{{item.ispunch}}</td>
-                <td>{{item.shifttype}}</td>
-                <td>{{item.shiftorder}}</td>
-                @*<td>
+                <td>{{item.colorShift}}</td>
+                <td>{{item.officeHours}}</td>
+                <td>{{item.closingTime}}</td>
+                <td>{{item.workingDay}}</td>
+                <td>{{item.designFormulas}}</td>
+                <td>{{item.isPunch}}</td>
+                <td>{{item.shiftType}}</td>
+                <td>{{item.shiftOrder}}</td>
+                <td>
                     <div v-if="item.id!=''">
                         <a href="#" v-on:click="Delete(item.Id)">删除</a>
                     </div>
 
 
-                </td>*@
+                </td>
+                <td><a href="#" class="btn btn-primary btn-2g" v-on:click="Delete(item.Id)">删除</a></td>
                 <td> <button class="btn btn-primary btn-2g" data-toggle="modal" v-on:click="Upt(item.Id)">修改</button></td>
             </tr>
         </table>
@@ -129,7 +130,7 @@
 </html>
 <script>
     var vm = new Vue({
-        el: "#shView",
+        el: "#ShView",
         data: {
             ShiftsSetting: []
         },
@@ -146,88 +147,6 @@
                     }
                     console.log(this.ShiftsSetting)
                 });
-            }
-        }
-    })
-    //var vm = new Vue({
-    //    el: "#ShView",
-    //    data: {
-    //        ShiftsSetting: []
-    //    },
-    //    mounted() {
-    //        this.pagehandler();
-    //    },
-    //    methods: {
-    //        pagehandler: function () {
-    //            axios.get("http://localhost:61163/api/ShiftsSetting").then((response) => {
-    //                //console.table(response.data)
-    //                this.ShiftsSetting = []
-    //                for (var i = 0; i < response.data.length; i++) {
-    //                    this.ShiftsSetting.push(response.data[i]);
-    //                }
-    //                console.log(this.ShiftsSetting)
-    //            });
-    //        },
-
-    //        //Delete: function (id) {
-    //        //    axios.delete("/ShiftsSetting/Delete?ids=" + id).then((response) => {
-    //        //        if (response.data > 0) {
-    //        //            this.pagehandler();
-    //        //        }
-    //        //    },
-    //        //        (response) => {
-    //        //            alert(response.status)
-    //        //        }
-    //        //    ).catch(function (response) {
-    //        //        alert(response);
-    //        //    });
-    //        //},
-    //        //Upt(id) {
-    //        //    $("#ShView").modal();
-    //        //    $("#id").val(id);
-    //        //}
-
-    //    }
-    //});
-
-    //添加和修改
-    var vm = new Vue({
-        el: "#ShView",
-        type: "post",
-        data: {
-            name: "",
-            colorShift: "",
-            officeHours: "",
-            closingTime: "",
-            workingDay: "",
-            designFormulas: "",
-            isPunch: "",
-            shiftType: "",
-            hiftOrder: ""
-        },
-        methods: {
-
-            AddShiftsSetting: function () {
-
-                var params = new URLSearchParams();
-                params.append("name", this.name);
-                params.append("colorShift", this.colorShift);
-                params.append("officeHours", this.officeHours);
-                params.append("closingTime", this.closingTime);
-                params.append("workingDay", this.workingDay);
-                params.append("designFormulas", this.designFormulas);
-                params.append("isPunch", this.isPunch);
-                params.append("shiftType", this.shiftType);
-                params.append("hiftOrder", this.hiftOrder);
-
-                //axios.post('http://localhost:61163/api/Annount', params).then((response) => { alert('添加成功'); location.reload() }).catch(function (response) { alert('失败') })
-
-                axios.post('/ShiftsSetting/Adds', params).then((response) => { alert('添加成功'); location.reload() }).catch(function (response) { alert('失败') })
-            },
-            Upt: function (id) {
-                var id = $("#id").val();
-                vm.this.Id = id;
-                axios.put('/ShiftsSetting/Updates', this).then((response) => { alert('修改成功'); location.reload() }).catch(function (response) { alert('失败') })
             }
         }
     })

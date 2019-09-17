@@ -58,34 +58,27 @@ namespace HospitalScheds.Serverce
         /// <param name="pageSize"></param>
         /// <param name="CrewsName"></param>
         /// <returns></returns>
-        //public PageModel<Crewscheduling> GetCrewscheduling(int pageIndex = 1, int pageSize = 3,string CrewsName="")
-        //{
-        //    if (CrewsName == null)
-        //    {
-        //        CrewsName = "";
-        //    }
-        //    PageModel<Crewscheduling> pagemodel = new PageModel<Crewscheduling>();
-        //    int totalcount = db.Crewschedulinglist.Where(m => m.CrewsName.Contains(CrewsName)).ToList().Count();
-        //    //分页
-        //    var list = db.Crewschedulinglist.Where(m => m.CrewsName.Contains(CrewsName)).ToList().Skip((pageIndex - 1) * pageSize).Take(pageSize).ToList();
-        //    pagemodel.TotalCount = totalcount;
-        //    pagemodel.Data = list;
-        //    return pagemodel;
-        //}
-
-        public List<Crewscheduling> GetCrewschedulings()
+        public PageModel<Crewscheduling> GetCrewscheduling(int pageIndex = 1, int pageSize = 3,string CrewsName="")
         {
-
-            var list = db.Crewscheduling.ToList();
-            return list;
+            if (CrewsName == null)
+            {
+                CrewsName = "";
+            }
+            PageModel<Crewscheduling> pagemodel = new PageModel<Crewscheduling>();
+            int totalcount = db.Crewschedulinglist.Where(m => m.CrewsName.Contains(CrewsName)).ToList().Count();
+            //分页
+            var list = db.Crewschedulinglist.Where(m => m.CrewsName.Contains(CrewsName)).ToList().Skip((pageIndex - 1) * pageSize).Take(pageSize).ToList();
+            pagemodel.TotalCount = totalcount;
+            pagemodel.Data = list;
+            return pagemodel;
         }
 
-            /// <summary>
-            /// 反填
-            /// </summary>
-            /// <param name="id"></param>
-            /// <returns></returns>
-            public Crewscheduling GetModel(int id)
+        /// <summary>
+        /// 反填
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        public Crewscheduling GetModel(int id)
         {
             var lsit = db.Crewschedulinglist.Find(id);
             return lsit;
