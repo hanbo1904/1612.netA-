@@ -23,7 +23,7 @@ namespace HospitalScheds.IServerce
         /// <param name="pageIndex"></param>
         /// <param name="pageSize"></param>
         /// <returns></returns>
-         PageModel<Attendancestatisticslist> attendancestatisticslist(String Name = "", int pageIndex = 0, int pageSize = 3);
+         List<Attendancestatisticslist> attendancestatisticslist();
 
         /// <summary>
         /// 删除
@@ -45,7 +45,7 @@ namespace HospitalScheds.IServerce
         /// </summary>
         /// <param name="Id"></param>
         /// <returns></returns>
-        List<Attendancestatisticslist> attendancestatisticslist();
+        Attendancestatisticslist attendancestatisticslist(int id);
 
 
     }

@@ -12,33 +12,35 @@ using System.Net.Http.Headers;
 
 namespace HospitalScheds.Web.Controllers
 {
-    public class AnnountController : Controller
+    public class AttendancestatisticslistController : Controller
     {
         /// <summary>
         /// 定义私有变量
         /// </summary>
-        private IAnnouncementformServerce _announcementformServerce;
+        private IAttendancestatisticslistServerce _attendancestatisticslistServerce;
         /// <summary>
         /// 构造函数注入
         /// </summary>
         /// <param name="organization"></param>
-        public AnnountController(IAnnouncementformServerce announcementformServerce)
+        public AttendancestatisticslistController(IAttendancestatisticslistServerce attendancestatisticslistServerce)
         {
-            _announcementformServerce = announcementformServerce;
+            _attendancestatisticslistServerce = attendancestatisticslistServerce;
         }
         public IActionResult Index()
-        {     
+        {
             return View();
         }
+
         public int Delete(int ids)
         {
-            int i = _announcementformServerce.Delete(ids);
+            int i = _attendancestatisticslistServerce.Delete(ids);
             return i;
         }
-        public JsonResult Adds(Attendancestatisticslist announcementform)   
+
+        public JsonResult Adds(Attendancestatisticslist attendancestatisticslist)
         {
-            string jsonm = Newtonsoft.Json.JsonConvert.SerializeObject(announcementform);
-            var result = HelperHttpClient.GetAll("post", "/api/annount", jsonm);
+            string jsonm = Newtonsoft.Json.JsonConvert.SerializeObject(attendancestatisticslist);
+            var result = HelperHttpClient.GetAll("post", "/api/attendancestatisticslist", jsonm);
             return Json(result);
         }
         public IActionResult Add()
@@ -47,7 +49,7 @@ namespace HospitalScheds.Web.Controllers
         }
         public JsonResult Updates(int id)
         {
-            var result = HelperHttpClient.GetAll("put", "/api/annount", id);
+            var result = HelperHttpClient.GetAll("put", "/api/attendancestatisticslist", id);
             return Json(result);
         }
         public IActionResult Update()

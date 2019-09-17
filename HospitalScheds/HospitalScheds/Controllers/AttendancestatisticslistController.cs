@@ -2,56 +2,55 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
+
 using HospitalScheds.IServerce;
 using HospitalScheds.Model;
 
-using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
 
 namespace HospitalScheds.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class AnnountController : ControllerBase
+    public class AttendancestatisticslistController : ControllerBase
     {
-
         /// <summary>
         /// 定义私有变量
         /// </summary>
-        private IAnnouncementformServerce _announcementformServerce;
+        private IAttendancestatisticslistServerce _attendancestatisticslistServerce;
 
 
         /// <summary>
         /// 构造函数注入
         /// </summary>
         /// <param name="organization"></param>
-        public AnnountController(IAnnouncementformServerce announcementformServerce)   
+        public AttendancestatisticslistController(IAttendancestatisticslistServerce attendancestatisticslistServerce)
         {
-            _announcementformServerce = announcementformServerce;
+            _attendancestatisticslistServerce = attendancestatisticslistServerce;
         }
-
 
         /// <summary>
         /// 添加
         /// </summary>
-        /// <param name="announcementform"></param>
+        /// <param name="attendancestatisticslist"></param>
         /// <returns></returns>
-        [HttpPost]   
-        public int Add(Attendancestatisticslist announcementform)
-        {  
-            int i= _announcementformServerce.Add(announcementform);
+        [HttpPost]
+        public int Add(Attendancestatisticslist attendancestatisticslist)
+        {
+            int i = _attendancestatisticslistServerce.Add(attendancestatisticslist);
             return i;
         }
 
         /// <summary>
         /// 显示分页
         /// </summary>
-        /// <param name="announcementform"></param> 
+        /// <param name="attendancestatisticslist"></param> 
         /// <returns></returns>
         [HttpGet]
         public List<Attendancestatisticslist> Indexs()
         {
-            var list = _announcementformServerce.GetAnnount();
+            var list = _attendancestatisticslistServerce.attendancestatisticslist();
             return list;
         }
         /// <summary>
@@ -61,19 +60,19 @@ namespace HospitalScheds.Controllers
         /// <returns></returns>
         public ActionResult<Attendancestatisticslist> BackFill(int id)
         {
-            Attendancestatisticslist annount = _announcementformServerce.BackFill(id);
+            Attendancestatisticslist annount = _attendancestatisticslistServerce.attendancestatisticslist(id);
             return annount;
         }
 
         /// <summary>
         ///删除
         /// </summary>
-        /// <param name="announcementform"></param>
+        /// <param name="attendancestatisticslist"></param>
         /// <returns></returns> 
         [HttpDelete]
         public int Delete(int id)
         {
-            int i = _announcementformServerce.Delete(id);
+            int i = _attendancestatisticslistServerce.Delete(id);
             return i;
         }
 
@@ -81,12 +80,12 @@ namespace HospitalScheds.Controllers
         /// <summary>
         /// 修改
         /// </summary>
-        /// <param name="announcementform"></param>
+        /// <param name="attendancestatisticslist"></param>
         /// <returns></returns> 
         [HttpPut]
-        public int Update(Attendancestatisticslist announcementform, int id)
+        public int Update(Attendancestatisticslist attendancestatisticslist, int id)
         {
-            int i = _announcementformServerce.Update(announcementform, id);
+            int i = _attendancestatisticslistServerce.Update(attendancestatisticslist, id);
             return i;
         }
     }

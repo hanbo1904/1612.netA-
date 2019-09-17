@@ -8,7 +8,7 @@ namespace HospitalScheds.Model
     /// <summary>
     /// 消息公布
     /// </summary>
-  public   class Announcementform
+  public   class Attendancestatisticslist
     {
         [Key]
         /// <summary>

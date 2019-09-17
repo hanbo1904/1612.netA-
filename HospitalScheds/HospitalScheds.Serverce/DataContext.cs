@@ -22,7 +22,7 @@ namespace HospitalScheds.Serverce
         /// <summary>
         /// 消息公布
         /// </summary>
-        public DbSet<Announcementform> Announcementform { get; set; }
+        public DbSet<Attendancestatisticslist> Announcementform { get; set; }
 
         /// <summary>
         /// 年假申请设置
