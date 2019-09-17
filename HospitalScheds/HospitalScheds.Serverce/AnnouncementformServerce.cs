@@ -36,15 +36,6 @@ namespace HospitalScheds.Serverce
             return list;
         }
         /// <summary>
-        /// 反填
-        /// </summary>
-        /// <returns></returns>
-        public Announcementform BackFill(int id)
-        {
-            var lsit = db.Announcementform.Find(id);
-            return lsit;
-        }
-        /// <summary>
         /// 删除
         /// </summary>
         /// <param name="id"></param>
@@ -67,6 +58,15 @@ namespace HospitalScheds.Serverce
             db.Entry(announcementform).State = EntityState.Modified;
             int i = db.SaveChanges();
             return i;
+        }
+        /// <summary>
+        /// 反填
+        /// </summary>
+        /// <returns></returns>
+        public Announcementform BackFill(int id)
+        {
+            var lsit = db.Announcementform.Find(id);
+            return lsit;
         }
     }
 }
