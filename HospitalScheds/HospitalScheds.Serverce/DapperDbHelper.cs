@@ -59,7 +59,7 @@ namespace Services
                     return conn.Execute(sqlOrProc, obj);
                 }
             }
-            catch (Exception ex)
+            catch (Exception )
             {
                 //如果执行失败则返回0
                 return 0;

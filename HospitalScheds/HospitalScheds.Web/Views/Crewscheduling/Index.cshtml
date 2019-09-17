@@ -43,35 +43,35 @@
                         </tr>
                         <tr>
                             <td>姓名</td>
-                            <td><input type="text" v-model="s.CrewsName" /></td>
+                            <td><input type="text" v-model="CrewsName" /></td>
                         </tr>
                         <tr>
                             <td>星期一</td>
-                            <td><input type="text" v-model="s.Monday" /></td>
+                            <td><input type="text" v-model="Monday" /></td>
                         </tr>
                         <tr>
                             <td>星期二</td>
-                            <td><input type="text" v-model="s.Tuesday" /></td>
+                            <td><input type="text" v-model="Tuesday" /></td>
                         </tr>
                         <tr>
                             <td>星期三</td>
-                            <td><input type="text" v-model="s.Wednesday" /></td>
+                            <td><input type="text" v-model="Wednesday" /></td>
                         </tr>
                         <tr>
                             <td>星期四</td>
-                            <td><input type="text" v-model="s.Thursday" /></td>
+                            <td><input type="text" v-model="Thursday" /></td>
                         </tr>
                         <tr>
                             <td>星期五</td>
-                            <td><input type="text" v-model="s.Friday" /></td>
+                            <td><input type="text" v-model="Friday" /></td>
                         </tr>
                         <tr>
                             <td>星期六</td>
-                            <td><input type="text" v-model="s.Saturday" /></td>
+                            <td><input type="text" v-model="Saturday" /></td>
                         </tr>
                         <tr>
                             <td>星期日</td>
-                            <td><input type="text" v-model="s.Sunday" /></td>
+                            <td><input type="text" v-model="Sunday" /></td>
                         </tr>
                         <tr>
                             <td>
@@ -79,8 +79,9 @@
                                 <button type="button" data-dismiss="modal">
                                     关闭
                                 </button>
+                                <button v-on: click="Upt()">修改</button>
                             </td>
-                            <td> <button v-on:click="Save()"> 修改</button></td>
+                            
                         </tr>
                     </table>
                 </div>
@@ -102,24 +103,28 @@
                 <td>6-3星期日</td>
             </tr>
             <tr v-for="item in Announlist" :key="item.ID">
-                <td>{{item.ID}}</td>
-                <td>{{item.CrewsName}}</td>
-                <td>{{item.Monday}}</td>
-                <td>{{item.Tuesday}}</td>
-                <td>{{item.Wednesday}}</td>
-                <td>{{item.Thursday}}</td>
-                <td>{{item.Friday}}</td>
-                <td>{{item.Saturday}}</td>
-                <td>{{item.Sunday}}</td>
-                <td><a href="#" class="btn btn-primary btn-2g" v-on:click="Delete(item.ID)">删除</a></td>
-                <td> <button class="btn btn-primary btn-2g" data-toggle="modal" v-on:click="Upt(item.ID)">修改</button></td>
+                <td>{{item.id}}</td>
+                <td>{{item.crewsname}}</td>
+                <td>{{item.monday}}</td>
+                <td>{{item.tuesday}}</td>
+                <td>{{item.wednesday}}</td>
+                <td>{{item.thursday}}</td>
+                <td>{{item.friday}}</td>
+                <td>{{item.saturday}}</td>
+                <td>{{item.sunday}}</td>
+                <td>
+                    <div v-if="item.id!=''">
+                        <a href="#" v-on:click="deleteAnnount(item.id)">删除</a>
+                    </div>
+                </td>
+                <td> <button class="btn btn-primary btn-2g" data-toggle="modal" v-on:click="Upt(item.id)">修改</button></td>
             </tr>
         </table>
     </div>
 </body>
 </html>
 <script>
-    //显示
+    //显示+q
     var vm = new Vue({
         el: "#myView",
         data: {
@@ -130,7 +135,7 @@
         },
         methods: {
             pagehandler: function () {
-                axios.get("http://localhost:61162/api/Crewscheduling").then((response) => {
+                axios.get("http://localhost:61163/api/Crewscheduling").then((response) => {
                     this.Announlist = []
                     for (var i = 0; i < response.data.length; i++) {
                         this.Announlist.push(response.data[i]);
@@ -139,26 +144,26 @@
                 });
             },
 
-            deleteAnnount: function (id) {
-                axios.delete("/Crewscheduling/Delete?ids=" + id).then((response) => {
-                    if (response.data > 0) {
-                        this.pagehandler();
-                    }
-                },
-                    (response) => {
-                        alert(response.status)
-                    }
-                ).catch(function (response) {
-                    alert(response);
-                });
-            },
+           deleteAnnount: function (id) {
+               axios.delete("/Crewscheduling/Delete?id=" + id).then((response) => {
+                   if (response.data > 0) {
+                       this.pagehandler();
+                   }
+               },
+                   (response) => {
+                       alert(response.status)
+                   }
+               ).catch(function (response) {
+                   alert(response);
+               });
+           },
         }
     });
 
 
-    //添加和修改
+    //添加和修改+
     var vm = new Vue({
-        el: "#Add",
+        el: "#AccountAdd",
         type: "post",
         data: {
             CrewsName: "",
@@ -190,7 +195,7 @@
 
                 //axios.post('http://localhost:61163/api/Crewscheduling', params).then((response) => { alert('添加成功'); location.reload() }).catch(function (response) { alert('失败') })
 
-                axios.post('/Annount/Add', params).then((response) => { alert('添加成功'); location.reload() }).catch(function (response) { alert('失败') })
+                axios.post('/Crewscheduling/Adds', params).then((response) => { alert('添加成功'); location.reload() }).catch(function (response) { alert('失败') })
             },
             Upt: function (id) {
                 var params = new URLSearchParams();
@@ -204,7 +209,7 @@
                 params.append("Sunday", this.Sunday);
                 params.append("classes", this.classes);
                 params.append("Remark", this.Remark);
-                axios.put('/Annount/Add', params).then((response) => { alert('修改成功'); location.reload() }).catch(function (response) { alert('失败') })
+                axios.put('/Crewscheduling/Updtes', params).then((response) => { alert('修改成功'); location.reload() }).catch(function (response) { alert('失败') })
 
 
 

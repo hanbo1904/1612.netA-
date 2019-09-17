@@ -9,7 +9,7 @@
 <head>
     <meta name="viewport" content="width=device-width" />
     <title>Add</title>
-
+    0
     <script src="~/lib/vuE/vue.js"></script>
     @*<script src="~/lib/vuE/vue-resource.js"></script>*@
     <script src="~/lib/jquery/dist/jquery.js"></script>
@@ -106,9 +106,9 @@
                 params.append("classes", this.classes);
                 params.append("Remark", this.Remark);
 
-                //axios.post('http://localhost:61162/api/Crewscheduling/Add', params).then((response) => { alert('添加成功'); location.reload() }).catch(function (response) { alert('失败') })
+                //axios.post('http://localhost:61163/api/Crewscheduling/Add', params).then((response) => { alert('添加成功'); location.reload() }).catch(function (response) { alert('失败') })
 
-                axios.post('/Crewscheduling/Add', params).then((response) => { alert('添加成功'); location.reload() }).catch(function (response) { alert('失败') })
+                axios.post('/Crewscheduling/Adds', params).then((response) => { alert('添加成功'); location.reload() }).catch(function (response) { alert('失败') })
             }
         }
     })
