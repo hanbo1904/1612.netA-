@@ -6,8 +6,19 @@ using HospitalScheds.Common;
 using HospitalScheds.IServerce;
 using Microsoft.AspNetCore.Mvc;
 
+
+using HospitalScheds.Model;
+using HospitalScheds.IServerce;
+using HospitalScheds.Serverce;
+using HospitalScheds.Common;
+using System.Net.Http;
+using System.Net.Http.Headers;
+
+
+
 namespace HospitalScheds.Web.Controllers
 {
+
     public class CrewschedulingController : Controller
     {
 
@@ -29,19 +40,25 @@ namespace HospitalScheds.Web.Controllers
         {
             return View();
         }
+        public JsonResult Adds(Crewscheduling crewscheduling)
+        {
+            string jsonm = Newtonsoft.Json.JsonConvert.SerializeObject(crewscheduling);
+            var result = HelperHttpClient.GetAll("post", "/api/Crewscheduling", jsonm);
+            return Json(result);
+        }
         public IActionResult Add()
         {
             return View();
         }
 
-        public IActionResult Update()
+        public IActionResult Update(int id)
         {
             var result = HelperHttpClient.GetAll("put", "/api/Crewscheduling","");
             return Json(result);
         }
-        public int Delete(int ids)
+        public int Delete(int id)
         {
-            int i = _crewschedulingServerce.DeleteCrewscheduling(ids);
+            int i = _crewschedulingServerce.DeleteCrewscheduling(id);
             return i;
         }
     }
