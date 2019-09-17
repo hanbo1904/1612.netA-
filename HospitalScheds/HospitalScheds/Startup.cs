@@ -36,6 +36,8 @@ namespace HospitalScheds
             services.AddScoped<IShiftsSettingServerce, ShiftsSettingServerce>();
             //接龙设置
             services.AddScoped<ISolitaireSetServerce, SolitaireSetServerce>();
+            //考勤统计汇总
+            services.AddScoped<IAttendancestatisticssummaryServerce, AttendancestatisticssummaryServerce>();
             //专业分组设置
             services.AddScoped<IMajorgroupServerce, MajorgroupServerce>();
             //注册跨域服务，允许所有来源

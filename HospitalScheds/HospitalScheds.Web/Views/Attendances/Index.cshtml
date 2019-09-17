@@ -22,7 +22,7 @@
 </head>
 <body>
     <div>
-        <h2>接龙设置</h2><input id="SolitaireShifts" type="text" placeholder="请输入名称" />
+        <h2>考勤统计汇总</h2><input id="SolitaireShifts" type="text" placeholder="请输入名称" />
         <button id="Button1" class="btn btn-primary btn-2g" onclick="getContent()">查询</button>
         <button class="btn btn-primary btn-2g" data-toggle="modal" data-target="#myModal">添加</button>
     </div>
@@ -40,28 +40,60 @@
                             <td><input type="hidden" id="Id" /></td>
                         </tr>
                         <tr>
-                            <td>班次接龙</td>
-                            <td><input type="text" v-model="solitaireShifts" /></td>
+                            <td>人员</td>
+                            <td><input type="text" v-model="personnel" /></td>
                         </tr>
                         <tr>
-                            <td>接龙周期</td>
-                            <td><input type="text" v-model="solitaireDays" /></td>
+                            <td>出勤天数</td>
+                            <td><input type="text" v-model="attendanceDays" /></td>
                         </tr>
                         <tr>
-                            <td>接龙排序</td>
-                            <td><input type="text" v-model="solitaireOrder" /></td>
+                            <td>缺勤天数</td>
+                            <td><input type="text" v-model="absenteeismDays" /></td>
                         </tr>
                         <tr>
-                            <td>组内人员</td>
-                            <td><input type="text" v-model="peopleGroup" /></td>
+                            <td>迟到天数</td>
+                            <td><input type="text" v-model="belate" /></td>
                         </tr>
                         <tr>
-                            <td>组长</td>
-                            <td><input type="text" v-model="groupLeader" /></td>
+                            <td>早退天数</td>
+                            <td><input type="text" v-model="leaveearly" /></td>
                         </tr>
                         <tr>
-                            <td>顺序</td>
-                            <td><input type="text" v-model="solitaireOrders" /></td>
+                            <td>缺卡</td>
+                            <td><input type="text" v-model="lackcark" /></td>
+                        </tr>
+                        <tr>
+                            <td>旷工</td>
+                            <td><input type="text" v-model="absenteeism" /></td>
+                        </tr>
+                        <tr>
+                            <td>年假</td>
+                            <td><input type="text" v-model="annualleave" /></td>
+                        </tr>
+                        <tr>
+                            <td>病假</td>
+                            <td><input type="text" v-model="sickleave" /></td>
+                        </tr>
+                        <tr>
+                            <td>事假</td>
+                            <td><input type="text" v-model="casualleave" /></td>
+                        </tr>
+                        <tr>
+                            <td>产假</td>
+                            <td><input type="text" v-model="maternityleave" /></td>
+                        </tr>
+                        <tr>
+                            <td>婚假</td>
+                            <td><input type="text" v-model="marriageleave" /></td>
+                        </tr>
+                        <tr>
+                            <td>丧假</td>
+                            <td><input type="text" v-model="funeralleave" /></td>
+                        </tr>
+                        <tr>
+                            <td>探亲假</td>
+                            <td><input type="text" v-model="homeleave" /></td>
                         </tr>
                         <tr>
                             <td>
@@ -82,23 +114,39 @@
         <table class="table table-hover">
             <tr>
                 <td>序号</td>
-                <td>班次接龙</td>
-                <td>接龙周期</td>
-                <td>接龙排序</td>
-                <td>组内人员</td>
-                <td>组长</td>
-                <td>顺序</td>
+                <td>人员</td>
+                <td>出勤天数</td>
+                <td>缺勤天数</td>
+                <td>迟到天数</td>
+                <td>早退天数</td>
+                <td>缺卡</td>
+                <td>矿工</td>
+                <td>年假</td>
+                <td>病假</td>
+                <td>事假</td>
+                <td>产假</td>
+                <td>婚嫁</td>
+                <td>丧假</td>
+                <td>探亲假</td>
                 <td>删除</td>
                 <td>编辑</td>
             </tr>
-            <tr v-for="item in SolitaireSetlists">
+            <tr v-for="item in Attendancestatisticssummary">
                 <td>{{item.id}}</td>
-                <td>{{item.solitaireShifts}}</td>
-                <td>{{item.solitaireDays}}</td>
-                <td>{{item.solitaireOrder}}</td>
-                <td>{{item.peopleGroup}}</td>
-                <td>{{item.groupLeader}}</td>
-                <td>{{item.solitaireOrders}}</td>
+                <td>{{item.personnel}}</td>
+                <td>{{item.attendanceDays}}</td>
+                <td>{{item.absenteeismDays}}</td>
+                <td>{{item.belate}}</td>
+                <td>{{item.leaveearly}}</td>
+                <td>{{item.lackcark}}</td>
+                <td>{{item.absenteeism}}</td>
+                <td>{{item.annualleave}}</td>
+                <td>{{item.sickleave}}</td>
+                <td>{{item.casualleave}}</td>
+                <td>{{item.maternityleave}}</td>
+                <td>{{item.marriageleave}}</td>
+                <td>{{item.funeralleave}}</td>
+                <td>{{item.homeleave}}</td>
                 <td>
                     <div v-if="item.id!=''">
                         <a href="#" v-on:click="deleteSolitaireSet(item.id)">删除</a>
@@ -121,7 +169,7 @@
         },
         methods: {
             pagehandler: function () {
-                axios.get("http://localhost:61163/api/SolitaireSet").then((response) => {
+                axios.get("http://localhost:61163/api/Attendances").then((response) => {
                     //console.table(response.data)
                     this.SolitaireSetlists = []
                     for (var i = 0; i < response.data.length; i++) {
@@ -132,7 +180,7 @@
             },
             //删除
             deleteSolitaireSet: function (id) {
-                axios.delete("/SolitaireSet/Delete?ids=" + id).then((response) => {
+                axios.delete("/Attendances/Delete?ids=" + id).then((response) => {
                     if (response.data > 0) {
                         this.pagehandler();
                     }
@@ -176,7 +224,7 @@
 
                 //axios.post('http://localhost:61163/api/SolitaireSet', params).then((response) => { alert('添加成功'); location.reload() }).catch(function (response) { alert('失败') })
 
-                axios.post('/SolitaireSet/Adds', params).then((response) => { alert('添加成功'); location.reload() }).catch(function (response) { alert('失败') })
+                axios.post('/Attendances/Adds', params).then((response) => { alert('添加成功'); location.reload() }).catch(function (response) { alert('失败') })
             },
             Upt: function (id) {
                 var params = new URLSearchParams();
@@ -187,7 +235,7 @@
                 params.append("peopleGroup", this.peopleGroup);
                 params.append("groupLeader", this.groupLeader);
                 params.append("solitaireOrders", this.solitaireOrders);
-                axios.put('/SolitaireSet/Updates', params).then((response) => { alert('修改成功'); location.reload() }).catch(function (response) { alert('失败') })
+                axios.put('/Attendances/Updates', params).then((response) => { alert('修改成功'); location.reload() }).catch(function (response) { alert('失败') })
             }
         }
     })

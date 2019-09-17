@@ -11,21 +11,21 @@ using HospitalScheds.Common;
 
 namespace HospitalScheds.Web.Controllers
 {
-    public class SolitaireSetController : Controller
+    public class AttendancesController : Controller
     {
-        public ISolitaireSetServerce _solitaireSetServerce;
-        public SolitaireSetController(ISolitaireSetServerce solitaireSetServerce)
+        public IAttendancestatisticssummaryServerce _attendancestatisticssummaryServerce; 
+        public AttendancesController(IAttendancestatisticssummaryServerce attendancestatisticssummaryServerce)
         {
-            _solitaireSetServerce = solitaireSetServerce;
+            _attendancestatisticssummaryServerce = attendancestatisticssummaryServerce;
         }
         public IActionResult Index()
         {
             return View();
         }
 
-        public IActionResult Adds(SolitaireSet solitaireSet)
+        public IActionResult Adds(Attendancestatisticssummary attendancestatisticssummary)
         {
-            string jsonm = Newtonsoft.Json.JsonConvert.SerializeObject(solitaireSet);
+            string jsonm = Newtonsoft.Json.JsonConvert.SerializeObject(attendancestatisticssummary);
             var result = HelperHttpClient.GetAll("post", "/api/solitaireSet", jsonm);
             return Json(result);
         }
@@ -37,11 +37,11 @@ namespace HospitalScheds.Web.Controllers
 
         public int Delete(int ids)
         {
-            int i = _solitaireSetServerce.DelSolitaire(ids);
+            int i = _attendancestatisticssummaryServerce.Delete(ids);
             return i;
         }
 
-        public IActionResult Updates(int id) 
+        public IActionResult Updates(int id)
         {
             var result = HelperHttpClient.GetAll("put", "/api/solitaireSet", id);
             return Json(result);
