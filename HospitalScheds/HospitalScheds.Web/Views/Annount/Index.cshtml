@@ -1,22 +1,16 @@
-﻿
-@{
+﻿@{
     Layout = null;
 }
-
 <!DOCTYPE html>
-
 <html>
 <head>
-    <meta name="viewport" content="width=device-width" />
+    <meta name="viewport" content="width=device-width"/>
     <title>Index</title>
     <script src="~/lib/vuE/vue.js"></script>
-
     <script src="~/lib/vuE/vue-resource.js"></script>
     <script src="~/lib/jquery/dist/jquery.js"></script>
-
-
     <script src="~/lib/vuE/axios.js"></script>
-    <link href="~/lib/bootstrap/dist/css/bootstrap.css" rel="stylesheet" />
+    <link href="~/lib/bootstrap/dist/css/bootstrap.css" rel="stylesheet"/>
 
     <script src="~/lib/bootstrap/dist/js/bootstrap.js"></script>
 </head>
@@ -34,45 +28,39 @@
                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
                     <h4 class="modal-title" id="myModalLabel">消息添加</h4>
                 </div>
-                <div id = "AccountAdd" class="modal-body" >
-                <table class="table table-hover">
-                    <tr>
-                        <td>发布内容</td>
-                        <td>
-                            <input type="hidden" id="id" />
-                            <input type="text" v-model="releasecontent" />
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>状态</td>
-                        <td><input type="text" v-model="status" /></td>
-                    </tr>
-                    <tr>
-                        <td>发布人员</td>
-                        <td><input type="text" v-model="releasepeople" /></td>
-                    </tr>
-                    <tr>
-                        <td>发布时间</td>
-                        <td><input type="text" v-model="releasetime" value="2019-9-9" /></td>
-                    </tr>
-                    <tr>
-                        <td>读取状态</td>
-                        <td><input type="text" v-model="readstatus" /></td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <button v-on: click="AddAccount()">添加</button>
-                            <button type="button" data-dismiss="modal">
-                                关闭
-                            </button>
-                            <button v-on: click="Upt()">修改</button>
-                        </td>
-                    </tr>
-                </table>
+                <div id="AccountAdd" class="modal-body">
+                    <table class="table table-hover">
+                        <tr>
+                            <td>发布内容</td>
+                            <td><input type="text" v-model="releasecontent" id="releasecontent" /></td>
+                        </tr>
+                        <tr>
+                            <td>状态</td>
+                            <td><input type="text" v-model="status" id="status" /></td>
+                        </tr>
+                        <tr>
+                            <td>发布人员</td>
+                            <td><input type="text" v-model="releasepeople" id="releasepeople" /></td>
+                        </tr>
+                        <tr>
+                            <td>发布时间</td>
+                            <td><input type="text" v-model="releasetime" value="2019-9-9" id="releasetime" /></td>
+                        </tr>
+                        <tr>
+                            <td>读取状态</td>
+                            <td><input type="text" v-model="readstatus" id="readstatus" /></td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <button v-on:click="AddAccount()"> 添加</button>
+                                <button type="button" data-dismiss="modal">
+                                    关闭
+                                </button>
+                                <button v-on:click="Upt()">修改</button>
+                            </td>
+                        </tr>
+                    </table>
                 </div>
-
-
-
             </div>
         </div>
     </div>
@@ -90,28 +78,50 @@
             <tr v-for="item in Announlist" :key="item.id">
                 <td>{{item.id}}</td>
                 <td>{{item.releasecontent}}</td>
-                <td>{{item.status}}</td>
+                <td>{{item.status==1?"已发布":"未发布"}}</td>
                 <td>{{item.releasepeople}}</td>
                 <td>{{item.releasetime}}</td>
-                <td>{{item.readstatus}}</td>
+                <td>{{item.readstatus==1?"10/54":"无状态"}}</td>
                 <td>
                     <div v-if="item.id!=''">
                         <a href="#" v-on:click="deleteAnnount(item.id)">删除</a>
                     </div>
                 </td>
-                <td> <button class="btn btn-primary btn-2g" data-toggle="modal" v-on:click="Upt(id)">修改</button></td>
+                <td> <button class="btn btn-primary btn-2g" data-toggle="modal" v-on:click="Upt(item.id)">修改</button></td>
             </tr>
         </table>
+        
+        <div class="pager">
+            <template v-if="pageindex===1">
+                <input id="bt1" v-on:click="pageindex=1;show();" disabled="disabled" style="color:darkgray" type="button" value="首页" />
+                <input id="bt2" v-on:click="pageindex--;show();" disabled="disabled" style="color:darkgray" type="button" value="上一页" />
+            </template>
+            <template v-else-if="pageindex!=1">
+                <input id="bt1" v-on:click="pageindex=1;show();" type="button" value="首页" />
+                <input id="bt2" v-on:click="pageindex--;show();" type="button" value="上一页" />
+            </template>
+            <template v-if="pageindex===pagecount">
+                <input id="bt3" v-on:click="pageindex++;show();" disabled="disabled" style="color:darkgray" type="button" value="下一页" />
+                <input id="bt4" v-on:click="pageindex=pagecount;show();" disabled="disabled" style="color:darkgray" type="button" value="尾页" />
+            </template>
+            <template v-if="pageindex!=pagecount">
+                <input id="bt3" v-on:click="pageindex++;show();" type="button" value="下一页" />
+                <input id="bt4" v-on:click="pageindex=pagecount;show();" type="button" value="尾页" />
+            </template>
+        </div>
     </div>
+    
 </body>
-</html>0
-
+</html>
 <script>
     //显示和删除
     var vm = new Vue({
         el: "#myView",
         data: {
-            Announlist: []
+            Announlist: [],
+            pageindex: 1,
+            pagesize: 5,
+            pagecount: 0,
         },
         mounted() {
             this.pagehandler();
@@ -119,6 +129,7 @@
         methods: {
             pagehandler: function () {
                 axios.get("http://localhost:61163/api/Annount").then((response) => {
+
                     this.Announlist = []
                     for (var i = 0; i < response.data.length; i++) {
                         this.Announlist.push(response.data[i]);
@@ -126,7 +137,6 @@
                     console.log(this.Announlist)
                 });
             },
-
             deleteAnnount: function (id) {
                 axios.delete("/Annount/Delete?ids=" + id).then((response) => {
                     if (response.data > 0) {
@@ -141,8 +151,22 @@
                 });
             },
             Upt(id) {
-                $("#myView").modal();
+                //反填数据
                 $("#id").val(id);
+                $.ajax({
+                    url: 'http://localhost:61163/api/Annount/BackFill=' + id,
+                    type: 'get',
+                    dataType: 'json',
+                    success: function (data) {
+                        $("#releasecontent").val(data[0].releasecontent);
+                        $("#status").val(data[0].status);
+                        $("#releasepeople").val(data[0].releasepeople);
+                        $("#releasetime").val(data[0].releasetime);
+                        $("#readstatus").val(data[0].readstatus);
+                    }
+                })
+                $("#myView").modal();
+               
             }
         }
     });
@@ -158,9 +182,7 @@
             readstatus: ""
         },
         methods: {
-
             AddAccount: function () {
-
                 var params = new URLSearchParams();
                 params.append("releasecontent", this.releasecontent);
                 params.append("status", this.status);
@@ -169,12 +191,13 @@
                 params.append("readstatus", this.readstatus);
                 axios.post('/Annount/Adds', params).then((response) => { alert('添加成功'); location.reload() }).catch(function (response) { alert('失败') })
             },
+            //修改
             Upt: function (id) {
                 var id = $("#id").val();
                 vm.this.Id = id;
+                alert(id)
                 axios.put('/Annount/Updates', this).then((response) => { alert('修改成功'); location.reload() }).catch(function (response) { alert('失败') })
             }
         }
-    })
-    
+    })    
 </script>

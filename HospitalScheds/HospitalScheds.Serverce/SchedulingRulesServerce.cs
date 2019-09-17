@@ -20,7 +20,7 @@ namespace HospitalScheds.Serverce
         /// <returns></returns>
         public int Add(SchedulingRules schedulingRules)
         {
-            db.SchedulingRuleslist.Add(schedulingRules);
+            db.SchedulingRules.Add(schedulingRules);
             int i = db.SaveChanges();
             return i;
         }
@@ -31,8 +31,8 @@ namespace HospitalScheds.Serverce
         /// <returns></returns>
         public int DelSchedulingRules(int Id)
         {
-            var list = db.SchedulingRuleslist.Find(Id);
-            db.SchedulingRuleslist.Remove(list);
+            var list = db.SchedulingRules.Find(Id);
+            db.SchedulingRules.Remove(list);
             int i = db.SaveChanges();
             return i;
         }
@@ -43,7 +43,7 @@ namespace HospitalScheds.Serverce
         /// <returns></returns>
         public SchedulingRules GetSchedulingRules(int Id)
         {
-            var list = db.SchedulingRuleslist.Find(Id);
+            var list = db.SchedulingRules.Find(Id);
             return list;
         }
         /// <summary>
@@ -58,24 +58,14 @@ namespace HospitalScheds.Serverce
             int i = db.SaveChanges();
             return i;
         }
-
-        public List<SchedulingRules> GetSchedulingRules(string Name = "")
-        {
-            throw new NotImplementedException();
-        }
-
-
-
-
-
         /// <summary>
         /// 显示
         /// </summary>
         /// <returns></returns>
-        public List<SchedulingRules> schedulingRules()
+        public List<SchedulingRules> GetSchedulingRules(string Name = "")
         {
             //var list = db.SchedulingRuleslist.Find();
-            var list = db.SchedulingRuleslist.ToList();
+            var list = db.SchedulingRules.ToList();
             return list;
             //    var list = db.SchedulingRuleslist.Find();
             //    return list;

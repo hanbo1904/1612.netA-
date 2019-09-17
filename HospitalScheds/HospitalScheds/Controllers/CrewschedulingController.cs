@@ -36,9 +36,9 @@ namespace HospitalScheds.Controllers
         /// 显示
         /// </summary>
         /// <returns></returns>
-        PageModel<Crewscheduling> GetCrewscheduling(int pageIndex = 1, int pageSize = 3, string CrewsName = "")
+        public List<Crewscheduling> Indexs()
         {
-            var list = _crewschedulingServerce.GetCrewscheduling( pageIndex, pageSize,CrewsName);
+            var list = _crewschedulingServerce.GetCrewschedulings();
             return list;
         }
         /// <summary>
@@ -47,7 +47,7 @@ namespace HospitalScheds.Controllers
         /// <param name="crewscheduling"></param>
         /// <returns></returns>
         [HttpPost]
-        int AddCrewscheduling(Crewscheduling crewscheduling)
+       public  int AddCrewscheduling(Crewscheduling crewscheduling)
         {
             int i = _crewschedulingServerce.AddCrewscheduling(crewscheduling);
             return i;
@@ -58,19 +58,18 @@ namespace HospitalScheds.Controllers
         /// <param name="crewscheduling"></param>
         /// <returns></returns>
         [HttpPut]
-        int EditCrewscheduling(Crewscheduling crewscheduling)
+        public  int EditCrewscheduling(Crewscheduling crewscheduling)
         {
             int i = _crewschedulingServerce.EditCrewscheduling(crewscheduling);
             return i;
         }
 
-        [HttpGet]
         /// <summary>
         /// 反填
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
-        Crewscheduling GetModel(int id)
+        public Crewscheduling GetModel(int id)
         {
             Crewscheduling crewscheduling = _crewschedulingServerce.GetModel(id);
             return crewscheduling;
@@ -81,9 +80,9 @@ namespace HospitalScheds.Controllers
         /// <param name="id"></param>
         /// <returns></returns>
         [HttpDelete]
-        int DeleteCrewscheduling(int id)
+       public int DeleteCrewscheduling(int ids)
         {
-            int i = _crewschedulingServerce.DeleteCrewscheduling(id);
+            int i = _crewschedulingServerce.DeleteCrewscheduling(ids);
             return i;
         }
     }

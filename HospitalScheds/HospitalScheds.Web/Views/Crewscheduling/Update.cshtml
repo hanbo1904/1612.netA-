@@ -16,35 +16,44 @@
     <link href="~/lib/bootstrap/dist/css/bootstrap.css" rel="stylesheet" />
     <script src="~/lib/bootstrap/dist/js/bootstrap.js"></script>
     <title>Update</title>
-
 </head>
 <body>
-    <div>
-        <h2>消息通知</h2>
-
-    </div>
-
     <div id="AccountAdd" class="modal-body">
         <table class="table table-hover">
             <tr>
-                <td>发布内容</td>
-                <td><input type="text" v-model="releasecontent" /></td>
+                <td><input type="hidden" id="Id" /></td>
             </tr>
             <tr>
-                <td>状态</td>
-                <td><input type="text" v-model="status" /></td>
+                <td>姓名</td>
+                <td><input type="text" v-model="CrewsName" /></td>
             </tr>
             <tr>
-                <td>发布人员</td>
-                <td><input type="text" v-model="releasepeople" /></td>
+                <td>星期一</td>
+                <td><input type="text" v-model="Monday" /></td>
             </tr>
             <tr>
-                <td>发布时间</td>
-                <td><input type="text" v-model="releasetime" value="2019-9-9" /></td>
+                <td>星期二</td>
+                <td><input type="text" v-model="Tuesday" /></td>
             </tr>
             <tr>
-                <td>读取状态</td>
-                <td><input type="text" v-model="readstatus" /></td>
+                <td>星期三</td>
+                <td><input type="text" v-model="Wednesday" /></td>
+            </tr>
+            <tr>
+                <td>星期四</td>
+                <td><input type="text" v-model="Thursday" /></td>
+            </tr>
+            <tr>
+                <td>星期五</td>
+                <td><input type="text" v-model="Friday" /></td>
+            </tr>
+            <tr>
+                <td>星期六</td>
+                <td><input type="text" v-model="Saturday" /></td>
+            </tr>
+            <tr>
+                <td>星期日</td>
+                <td><input type="text" v-model="Sunday" /></td>
             </tr>
             <tr>
                 <td>
@@ -58,12 +67,3 @@
     </div>
 </body>
 </html>
-<script>
-    var vm = new Vue({
-
-
-
-
-
-    })
-</script>

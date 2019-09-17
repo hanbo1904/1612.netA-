@@ -81,7 +81,7 @@ namespace HospitalScheds.Serverce
         /// <summary>
         /// 专业分组设置
         /// </summary>
-        public DbSet<Majorgrouping> Majorgroupinglist { get; set; }
+        public DbSet<Majorgrouping> Majorgrouping{ get; set; }
         /// <summary>
         /// 早班人员列表
         /// </summary>
@@ -138,7 +138,7 @@ namespace HospitalScheds.Serverce
         /// <summary>
         /// 排班规则设置表
         /// </summary>
-        public DbSet<SchedulingRules> SchedulingRuleslist { get; set; }
+        public DbSet<SchedulingRules> SchedulingRules { get; set; }
         /// <summary>
         /// 接龙设置表
         /// </summary>
@@ -150,7 +150,7 @@ namespace HospitalScheds.Serverce
         /// <summary>
         /// 班次规则表
         /// </summary>
-        public DbSet<ShiftRules> ShiftRuleslist { get; set; }
+        public DbSet<ShiftRules> ShiftRules { get; set; }
         /// <summary>
         /// 人员排班
         /// </summary>
