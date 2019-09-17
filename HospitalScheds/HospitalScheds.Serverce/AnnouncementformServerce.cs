@@ -68,5 +68,14 @@ namespace HospitalScheds.Serverce
             int i = db.SaveChanges();
             return i;
         }
+        /// <summary>
+        /// 反填
+        /// </summary>
+        /// <returns></returns>
+        public Announcementform BackFill(int id)
+        {
+            var lsit = db.Announcementform.Find(id);
+            return lsit;
+        }
     }
 }

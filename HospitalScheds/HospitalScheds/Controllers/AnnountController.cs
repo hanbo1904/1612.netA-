@@ -89,5 +89,16 @@ namespace HospitalScheds.Controllers
             int i = _announcementformServerce.Update(announcementform, id);
             return i;
         }
+        /// <summary>
+        /// 反填
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        //[HttpGet]
+        public ActionResult<Announcementform> BackFill(int id)
+        {
+            Announcementform annount = _announcementformServerce.BackFill(id);
+            return annount;
+        }
     }
 }
